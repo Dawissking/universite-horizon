@@ -54,8 +54,8 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
       </div>
 
       {/* Barre de navigation principale */}
-      <div className="hz-container" style={{ padding:'0.875rem 1.5rem' }}>
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:'1.25rem' }}>
+      <div className="hz-container" style={{ padding:'0.75rem 1rem' }}>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:'0.75rem' }}>
 
           {/* Logo */}
           <Link to="/" style={{ display:'flex', alignItems:'center', gap:'12px', flexShrink:0 }}>
@@ -91,7 +91,7 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
           </nav>
 
           {/* Actions */}
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:'6px', flexShrink:0 }}>
             <button
               onClick={onOpenSearch}
               className="btn btn-outline btn-sm"

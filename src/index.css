@@ -528,12 +528,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-600);
-  padding: 0.45rem 0.85rem;
+  padding: 0.4rem 0.65rem;
   border-radius: var(--radius-sm);
   transition: all var(--dur-fast);
   position: relative;
+  white-space: nowrap;
 }
 .nav-link::after {
   content: '';
@@ -748,7 +749,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Petits portables / 14" */
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .hz-container { max-width: 1100px; }
+  .hz-container { max-width: 1240px; }
   h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
   h2 { font-size: clamp(2rem, 3vw, 2.75rem); }
 }
@@ -774,6 +775,12 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .site-header { padding: 0.75rem 0; }
   .nav-link { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
+}
+
+/* Header compact pour 14" */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .nav-link { padding: 0.35rem 0.55rem; font-size: 0.82rem; }
+  #header-cta { padding: 0.5rem 0.9rem !important; font-size: 0.85rem !important; }
 }
 
 /* Cartes et composants */
