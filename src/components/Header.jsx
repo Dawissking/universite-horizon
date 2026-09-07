@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { NavLink, Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import {
@@ -115,8 +116,8 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
         </button>
       </div>
 
-      {/* Menu mobile — overlay plein écran */}
-      {mobileOpen && (
+      {/* Menu mobile — portal outside header stacking context */}
+      {mobileOpen && createPortal(
         <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
           <nav className="mobile-menu-panel" onClick={e => e.stopPropagation()}>
             <div className="mobile-menu-header">
@@ -151,7 +152,8 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
               </button>
             </div>
           </nav>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
