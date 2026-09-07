@@ -977,3 +977,110 @@ h1, h2, h3, h4, h5, h6 {
     grid-column: span 1 !important;
   }
 }
+
+/* ==========================================================================
+   HERO COMPONENT RESPONSIVE
+   ========================================================================== */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.hero-cta-group .btn {
+  flex: 1 1 100%;
+  justify-content: center;
+}
+
+.hero-visual-col {
+  position: relative;
+}
+
+.hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--hz-gold-border);
+  aspect-ratio: 4/3;
+  background: var(--bg-subtle);
+}
+
+.hero-badge-top {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.hero-badge-bottom {
+  position: absolute;
+  bottom: -20px;
+  right: -12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--hz-gold-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-cta-group .btn {
+    flex: 1 1 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .hero-visual-col {
+    margin-top: 2rem;
+  }
+
+  .hero-badge-top {
+    top: -10px;
+    left: -8px;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .hero-badge-top > div:last-child > div:first-child {
+    font-size: 0.8125rem !important;
+  }
+
+  .hero-badge-bottom {
+    bottom: -14px;
+    right: -6px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .hero-badge-bottom > div:last-child > div:first-child {
+    font-size: 0.8125rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-badge-top,
+  .hero-badge-bottom {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 0.75rem;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-image-frame {
+    border-radius: var(--radius-lg);
+  }
+}

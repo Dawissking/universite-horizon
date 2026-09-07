@@ -98,32 +98,21 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
             </p>
 
             {/* Boutons d'Action Principaux */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem' }}>
+            <div className="hero-cta-group">
               <button 
                 onClick={onOpenApply} 
-                className="btn btn-gold btn-lg"
-                style={{ flex: '1 1 200px', justifyContent: 'center' }}
+                className="btn btn-gold"
               >
-                <GraduationCap size={20} />
+                <GraduationCap size={18} />
                 Candidater maintenant
               </button>
 
               <button 
                 onClick={() => onNavigate('formations')} 
-                className="btn btn-primary btn-lg"
-                style={{ flex: '1 1 200px', justifyContent: 'center' }}
+                className="btn btn-primary"
               >
-                <BookOpen size={20} />
+                <BookOpen size={18} />
                 Découvrir nos formations
-              </button>
-
-              <button 
-                onClick={() => onNavigate('orientation')} 
-                className="btn btn-secondary btn-lg"
-                style={{ width: '100%', justifyContent: 'center', borderColor: 'var(--hz-gold-border)' }}
-              >
-                <Compass size={18} color="var(--hz-gold-primary)" />
-                Tester mon profil d'orientation « Horizon Match »
               </button>
             </div>
 
@@ -153,18 +142,10 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
           </div>
 
           {/* Colonne Droite : Composition Visuelle avec Photographie Réelle */}
-          <div style={{ position: 'relative' }}>
+          <div className="hero-visual-col">
             
             {/* Cadre de l'image principale des étudiants Horizon */}
-            <div style={{
-              position: 'relative',
-              borderRadius: 'var(--radius-xl)',
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow-lg)',
-              border: '2px solid var(--hz-gold-border)',
-              aspectRatio: '4/3',
-              background: 'var(--bg-subtle)'
-            }}>
+            <div className="hero-image-frame">
               <img 
                 src="/assets/hero_students.jpeg" 
                 alt="Étudiants de l'Université Horizon" 
@@ -197,20 +178,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
             </div>
 
             {/* Badge flottant supérieur : 2 Campus */}
-            <div style={{
-              position: 'absolute',
-              top: '-20px',
-              left: '-20px',
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--border-medium)',
-              borderRadius: 'var(--radius-md)',
-              padding: '12px 18px',
-              boxShadow: 'var(--shadow-md)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              zIndex: 2
-            }}>
+            <div className="hero-badge-top">
               <div style={{
                 width: '36px',
                 height: '36px',
@@ -233,20 +201,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
             </div>
 
             {/* Badge flottant inférieur : Filières & Formations accélérées */}
-            <div style={{
-              position: 'absolute',
-              bottom: '-25px',
-              right: '-15px',
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--hz-gold-border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '14px 20px',
-              boxShadow: 'var(--shadow-gold)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '14px',
-              zIndex: 2
-            }}>
+            <div className="hero-badge-bottom">
               <div style={{
                 width: '40px',
                 height: '40px',
