@@ -33,7 +33,7 @@ export const ApplicationTracker = ({ searchCode }) => {
       return;
     }
 
-    // Recherche dans le localStorage ou dossiers démos
+    // Recherche dans le localStorage
     const localDossiers = JSON.parse(localStorage.getItem('hz_dossiers') || '[]');
     const foundLocal = localDossiers.find(d => d.id.toUpperCase() === target);
 
@@ -42,24 +42,11 @@ export const ApplicationTracker = ({ searchCode }) => {
         id: foundLocal.id,
         applicant: foundLocal.applicant || "Candidat Horizon",
         course: foundLocal.courseTitle,
-        currentStepIndex: 2, // "En Vérification"
+        currentStepIndex: 2,
         status: "En cours d'instruction",
         statusType: "progress",
-        lastUpdate: "Aujourd'hui, 11h42",
+        lastUpdate: "Aujourd'hui",
         notes: "Les pièces justificatives sont en cours d'authentification auprès du service de scolarité."
-      });
-      setErrorMsg('');
-    } else if (target === 'HZ-DEMO' || target.startsWith('HZ-')) {
-      // Dossier démo
-      setActiveDossier({
-        id: target,
-        applicant: "Amadou Diallo",
-        course: "Licence en Génie Logiciel & Systèmes d'Information",
-        currentStepIndex: 3, // "Dossier Complet"
-        status: "Validé & Conforme",
-        statusType: "success",
-        lastUpdate: "Hier, 16h20",
-        notes: "Dossier académique complet. En attente de la délibération de la commission d'admission."
       });
       setErrorMsg('');
     } else {
@@ -133,16 +120,6 @@ export const ApplicationTracker = ({ searchCode }) => {
               <span>{errorMsg}</span>
             </div>
           )}
-
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '1rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-            <span>Code test démonstration :</span>
-            <button
-              onClick={() => { setQueryCode('HZ-DEMO'); handleSearch('HZ-DEMO'); }}
-              style={{ color: 'var(--hz-gold-primary)', fontWeight: '700', textDecoration: 'underline' }}
-            >
-              HZ-DEMO
-            </button>
-          </div>
         </div>
 
         {/* Affichage de la Timeline Interactive */}

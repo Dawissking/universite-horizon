@@ -30,23 +30,17 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
   return (
     <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
       {/* Bandeau supérieur */}
-      <div style={{
-        background: 'linear-gradient(90deg,#071526,#0D2240)',
-        color: '#fff',
-        fontSize: '0.78rem',
-        padding: '5px 0',
-        borderBottom: '1px solid rgba(201,151,38,0.2)'
-      }}>
-        <div className="hz-container" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:'8px', flexWrap:'wrap' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-            <span style={{ background:'#C0392B', fontSize:'0.65rem', fontWeight:'800', padding:'2px 7px', borderRadius:'4px' }}>OFFICIEL</span>
-            <span>Diplômes reconnus par l'État malien &bull; Baco Djicoroni Golf, Bamako</span>
+      <div className="header-topbar">
+        <div className="hz-container header-topbar-inner">
+          <div className="header-topbar-left">
+            <span className="header-topbar-badge">OFFICIEL</span>
+            <span className="header-topbar-text">Diplômes reconnus par l'État malien &bull; Baco Djicoroni Golf, Bamako</span>
           </div>
-          <div style={{ display:'flex', alignItems:'center', gap:'14px' }}>
-            <a href="tel:+22377677575" style={{ color:'#E9BA4B', display:'flex', alignItems:'center', gap:'4px' }}>
+          <div className="header-topbar-right">
+            <a href="tel:+22377677575" className="header-topbar-phone">
               <Phone size={12}/> +223 77 67 75 75
             </a>
-            <button onClick={onOpenPortals} style={{ color:'#fff', display:'flex', alignItems:'center', gap:'4px' }}>
+            <button onClick={onOpenPortals} className="header-topbar-portals">
               <UserCheck size={12}/> Portails
             </button>
           </div>
@@ -139,32 +133,26 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
 
       {/* Menu mobile plein-écran */}
       {mobileOpen && (
-        <div style={{
-          position:'fixed', top:'102px', left:0, right:0, bottom:0,
-          background:'var(--bg-card)', zIndex:800,
-          padding:'2rem 1.5rem', overflowY:'auto',
-          display:'flex', flexDirection:'column', gap:'0.75rem',
-          animation:'fadeInUp 200ms ease-out',
-          borderTop:'1px solid var(--border-100)'
-        }}>
-          {NAV_ITEMS.map(item => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              onClick={() => setMobileOpen(false)}
-              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
-              style={{ fontSize:'1.125rem', padding:'0.875rem 0', borderBottom:'1px solid var(--border-100)' }}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <div style={{ marginTop:'1.5rem', display:'flex', flexDirection:'column', gap:'10px' }}>
-            <button onClick={() => { setMobileOpen(false); onOpenApply(); }} className="btn btn-gold" style={{ justifyContent:'center' }}>
-              <GraduationCap size={18}/> Candidater en ligne
-            </button>
-            <button onClick={() => { setMobileOpen(false); onOpenPortals(); }} className="btn btn-primary" style={{ justifyContent:'center' }}>
-              <UserCheck size={18}/> Portails (Étudiant / Enseignant)
-            </button>
+        <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
+          <div className="mobile-menu-panel" onClick={e => e.stopPropagation()}>
+            {NAV_ITEMS.map(item => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) => `mobile-nav-link${isActive ? ' active' : ''}`}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+            <div className="mobile-menu-actions">
+              <button onClick={() => { setMobileOpen(false); onOpenApply(); }} className="btn btn-gold" style={{ justifyContent:'center', width:'100%' }}>
+                <GraduationCap size={18}/> Candidater en ligne
+              </button>
+              <button onClick={() => { setMobileOpen(false); onOpenPortals(); }} className="btn btn-primary" style={{ justifyContent:'center', width:'100%' }}>
+                <UserCheck size={18}/> Portails (Étudiant / Enseignant)
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -175,8 +163,66 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
           #header-cta  { display: inline-flex !important; }
           #mobile-menu-btn { display: none !important; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 1023px) {
+          #desktop-nav { display: none !important; }
           #search-label-desktop { display: none; }
+          #header-cta { display: none !important; }
+          #mobile-menu-btn { display: inline-flex !important; }
+        }
+        .mobile-menu-overlay {
+          position: fixed;
+          inset: 0;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(7,21,38,0.6);
+          backdrop-filter: blur(4px);
+          z-index: 999;
+          display: flex;
+          align-items: stretch;
+          justify-content: flex-end;
+          animation: fadeIn 200ms ease-out;
+        }
+        .mobile-menu-panel {
+          width: 85%;
+          max-width: 340px;
+          height: 100%;
+          background: var(--bg-card);
+          box-shadow: -8px 0 30px rgba(0,0,0,0.3);
+          display: flex;
+          flex-direction: column;
+          padding: 1.5rem;
+          overflow-y: auto;
+          animation: fadeInRight 250ms ease-out;
+        }
+        .mobile-nav-link {
+          display: block;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--text-600);
+          padding: 0.9rem 0.75rem;
+          border-radius: var(--radius-sm);
+          border-bottom: 1px solid var(--border-100);
+          transition: all 180ms ease;
+        }
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+          color: var(--hz-gold-500);
+          background: var(--hz-gold-bg);
+        }
+        .mobile-menu-actions {
+          margin-top: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding-top: 1rem;
+          border-top: 1px solid var(--border-100);
+        }
+        @media (max-width: 480px) {
+          .mobile-menu-panel {
+            width: 100%;
+            max-width: none;
+          }
         }
       `}</style>
     </header>

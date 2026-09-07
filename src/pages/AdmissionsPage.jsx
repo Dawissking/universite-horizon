@@ -381,7 +381,6 @@ export default function AdmissionsPage({ onOpenApply }) {
       const local = JSON.parse(localStorage.getItem('hz_dossiers')||'[]');
     const found = local.find(d=>d.id.toUpperCase()===code);
     if (found) { setTrackerResult({ ...found, stepIdx:2 }); setTrackerError(''); }
-      else if (code.startsWith("HZ-")) { setTrackerResult({ id:code, applicant:'Candidat Horizon', courseTitle:'Licence — Génie Logiciel', stepIdx:3 }); setTrackerError(''); }
     else { setTrackerError('Aucun dossier trouvé pour cet identifiant.'); setTrackerResult(null); }
   };
 
@@ -522,9 +521,6 @@ export default function AdmissionsPage({ onOpenApply }) {
                 <button onClick={handleTracker} className='btn btn-primary'>Vérifier</button>
               </div>
               {trackerError && <div style={{ color:'var(--hz-red-600)', fontSize:'0.875rem', marginTop:'8px', display:'flex', gap:'6px', alignItems:'center' }}><AlertCircle size={15}/>{trackerError}</div>}
-              <div style={{ fontSize:'0.78rem', color:'var(--text-400)', marginTop:'8px' }}>
-                Code de test : <button onClick={()=>{setTrackerCode('HZ-DEMO-2026'); handleTracker('HZ-DEMO-2026');}} style={{ color:'var(--hz-gold-500)', fontWeight:'700' }}>HZ-DEMO-2026</button>
-              </div>
             </div>
           </Reveal>
 

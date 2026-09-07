@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Link } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Philosophy } from './components/Philosophy';
 import { Differentiators } from './components/Differentiators';
-import { DomainsSection } from './components/DomainsSection';
-import { OrientationWizard } from './components/OrientationWizard';
-import { CoursesExplorer } from './components/CoursesExplorer';
-import { PathSimulator } from './components/PathSimulator';
-import { CompassSection } from './components/CompassSection';
-import { ApplicationTracker } from './components/ApplicationTracker';
-import { CampusTour } from './components/CampusTour';
-import { HorizonLive } from './components/HorizonLive';
 import { HorizonStories } from './components/HorizonStories';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ApplicationWizard } from './components/ApplicationWizard';
 import { PortalsModal } from './components/PortalsModal';
@@ -34,7 +25,6 @@ export default function App() {
 
   const [portalsModalOpen, setPortalsModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-  const [selectedCourseDetails, setSelectedCourseDetails] = useState(null);
   const [trackerSearchCode, setTrackerSearchCode] = useState('');
 
   const handleNavigate = (sectionId) => {
@@ -77,55 +67,42 @@ export default function App() {
                   onNavigate={handleNavigate} 
                 />
 
-                {/* 02. L'Horizon (Philosophie, Vision, Mission, Valeurs) */}
+                {/* 02. Philosophie, Vision, Mission, Valeurs */}
                 <Philosophy />
 
-                {/* 03. Pourquoi Horizon ? (Différenciateurs Interactifs) */}
+                {/* 03. Pourquoi Horizon — Différenciateurs */}
                 <Differentiators />
 
-                {/* 04. Nos Domaines Académiques */}
-                <DomainsSection
-                  onSelectDomain={() => handleNavigate('formations')}
-                  onOpenDetails={(course) => setSelectedCourseDetails(course)}
-                />
+                {/* 04. Bandeau CTA — Appel à l'action */}
+                <section style={{
+                  background:'linear-gradient(135deg,#0D2240 0%,#15315B 100%)',
+                  padding:'5rem 0',
+                  position:'relative',
+                  overflow:'hidden'
+                }}>
+                  <div className='hero-bg-orb animate-float' style={{ width:'400px', height:'400px', top:'-100px', right:'-80px', background:'radial-gradient(circle, rgba(201,151,38,0.14) 0%, transparent 70%)', opacity:0.5 }}/>
+                  <div className='hz-container' style={{ position:'relative', zIndex:1, textAlign:'center' }}>
+                    <div style={{ opacity:0, transform:'translateY(32px)', animation:'fadeInUp 0.6s ease-out 0.2s both' }}>
+                      <h2 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(1.75rem,3vw,2.5rem)', color:'#fff', marginBottom:'1rem' }}>
+                        Votre Horizon commence <span style={{ color:'var(--hz-gold-400)' }}>maintenant.</span>
+                      </h2>
+                      <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', marginBottom:'2.5rem', maxWidth:'580px', margin:'0 auto 2.5rem' }}>
+                        Rejoignez les étudiantes et étudiants Horizon qui bâtissent leur avenir avec des diplômes reconnus et un encadrement d'excellence.
+                      </p>
+                      <div style={{ display:'flex', justifyContent:'center', flexWrap:'wrap', gap:'1rem' }}>
+                        <button onClick={() => handleOpenApply()} className='btn btn-gold btn-lg'>
+                          Candidater maintenant
+                        </button>
+                        <Link to='/formations' className='btn btn-ghost-white btn-lg'>
+                          Explorer les formations
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </section>
 
-                {/* 05. Assistant Intelligent d'Orientation : Horizon Match™ */}
-                <OrientationWizard
-                  onOpenApply={() => handleOpenApply()}
-                  onOpenCourseDetails={(course) => setSelectedCourseDetails(course)}
-                />
-
-                {/* 06. Explorateur de Formations */}
-                <CoursesExplorer
-                  onOpenApply={(course) => handleOpenApply(course)}
-                  selectedCourseModal={selectedCourseDetails}
-                  setSelectedCourseModal={setSelectedCourseDetails}
-                />
-
-                {/* 07. Simulateur de Parcours : Mon Horizon Architect™ */}
-                <PathSimulator
-                  onOpenApply={(course) => handleOpenApply(course)}
-                />
-
-                {/* 19. Boussole Universitaire : Horizon Compass™ */}
-                <CompassSection />
-
-                {/* 09. Suivi de Candidature : Où en est ma candidature ? */}
-                <ApplicationTracker
-                  searchCode={trackerSearchCode}
-                />
-
-                {/* 14. Campus Numérique : Bamako & Golf */}
-                <CampusTour />
-
-                {/* 15. Horizon Live : Conférences & Événements */}
-                <HorizonLive />
-
-                {/* 16. Horizon Stories : Récits d'Étudiants & Alumni */}
+                {/* 05. Témoignages & Réussites */}
                 <HorizonStories />
-
-                {/* 28. Contact Intelligent & Aiguillage */}
-                <ContactSection />
               </>
             } />
             <Route path="/universite" element={<UniversitePage />} />
@@ -163,7 +140,7 @@ export default function App() {
         <SearchModal
           isOpen={searchModalOpen}
           onClose={() => setSearchModalOpen(false)}
-          onSelectCourse={(course) => setSelectedCourseDetails(course)}
+          onSelectCourse={(course) => { setSelectedCourseForApply(course); setApplyModalOpen(true); }}
           onNavigate={handleNavigate}
         />
 

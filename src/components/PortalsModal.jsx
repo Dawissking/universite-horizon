@@ -122,7 +122,7 @@ export const PortalsModal = ({ isOpen, onClose }) => {
           {/* 1. ESPACE ÉTUDIANT */}
           {activePortal === 'student' && (
             <div>
-              {/* Salutation & Infos Étudiant */}
+              {/* Espace Login Étudiant */}
               <div style={{
                 background: 'linear-gradient(135deg, var(--hz-navy-900) 0%, var(--hz-navy-800) 100%)',
                 color: '#FFFFFF',
@@ -132,90 +132,41 @@ export const PortalsModal = ({ isOpen, onClose }) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 marginBottom: '1.75rem',
-                border: '1px solid var(--hz-gold-border)'
+                border: '1px solid var(--hz-gold-border)',
+                flexWrap: 'wrap',
+                gap: '1rem'
               }}>
                 <div>
                   <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--hz-gold-light)', fontWeight: '700' }}>
-                    MATRICULE : UH-2026-0412 • CAMPUS BAMAKO
+                    ESPACE ÉTUDIANT — UNIVERSITÉ HORIZON
                   </div>
                   <h3 style={{ fontSize: '1.75rem', color: '#FFFFFF', margin: '4px 0' }}>
-                    Bonjour, Mamadou 👋
+                    Tableau de Bord Étudiant
                   </h3>
                   <div style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.8)' }}>
-                    Licence 2 — Génie Logiciel & Systèmes d'Information • Semestre 3
+                    Connectez-vous pour accéder à vos notes, emplois du temps et documents officiels.
                   </div>
-                </div>
-
-                <div style={{
-                  background: 'rgba(255,255,255,0.1)',
-                  backdropFilter: 'blur(8px)',
-                  padding: '12px 20px',
-                  borderRadius: 'var(--radius-md)',
-                  textAlign: 'right',
-                  border: '1px solid rgba(255,255,255,0.15)'
-                }}>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--hz-gold-light)', fontWeight: '700' }}>MOYENNE GÉNÉRALE</div>
-                  <div style={{ fontSize: '1.75rem', fontWeight: '800', color: '#FFFFFF' }}>15.8 / 20</div>
-                  <div style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.7)' }}>Mention Bien</div>
                 </div>
               </div>
 
-              {/* Module MA PROGRESSION */}
-              <div className="card-glass" style={{ marginBottom: '1.5rem', padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-primary)' }}>
-                    Ma Progression Académique (LMD)
-                  </div>
-                  <span style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--hz-gold-primary)' }}>
-                    90 / 180 Crédits ECTS Validés (50%)
-                  </span>
+              {/* Formulaire de connexion placeholder */}
+              <div className="card-glass" style={{ padding: '2rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎓</div>
+                <h3 style={{ fontSize: '1.375rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+                  Connexion Étudiant
+                </h3>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                  Ce portail sera accessible après l'activation de votre compte étudiant lors de votre inscription officielle.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px', margin: '0 auto' }}>
+                  <input className="hz-input" placeholder="Identifiant (matricule)" disabled />
+                  <input className="hz-input" type="password" placeholder="Mot de passe" disabled />
+                  <button className="btn btn-primary" style={{ justifyContent: 'center', opacity: 0.6 }} disabled>
+                    Se connecter
+                  </button>
                 </div>
-                <div style={{ width: '100%', height: '10px', background: 'var(--bg-subtle)', borderRadius: '5px', overflow: 'hidden' }}>
-                  <div style={{ width: '50%', height: '100%', background: 'linear-gradient(90deg, #2563EB 0%, var(--hz-gold-primary) 100%)' }} />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '8px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                  <span>Semestre 1 (Validé)</span>
-                  <span>Semestre 2 (Validé)</span>
-                  <span style={{ fontWeight: '700', color: 'var(--hz-gold-primary)' }}>Semestre 3 (En cours)</span>
-                  <span>Semestre 4</span>
-                  <span>Semestre 5</span>
-                  <span>Semestre 6</span>
-                </div>
-              </div>
-
-              {/* Grille des services étudiants */}
-              <div className="grid-3" style={{ gap: '1rem' }}>
-                <div style={{ padding: '1.25rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <Calendar size={18} color="var(--hz-gold-primary)" />
-                    <span style={{ fontWeight: '700', fontSize: '0.875rem' }}>Emploi du Temps du Jour</span>
-                  </div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)' }}>
-                    • 08h30 - 11h30 : Bases de Données SQL (Salle B2)<br />
-                    • 14h00 - 17h00 : Algorithmique Avancée (Amphi 1)
-                  </div>
-                </div>
-
-                <div style={{ padding: '1.25rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <FileText size={18} color="#2563EB" />
-                    <span style={{ fontWeight: '700', fontSize: '0.875rem' }}>Documents & Attestations</span>
-                  </div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)' }}>
-                    • Certificat de scolarité 2026 (Disponible)<br />
-                    • Relevé officiel Semestre 2 (Téléchargeable)
-                  </div>
-                </div>
-
-                <div style={{ padding: '1.25rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <Bell size={18} color="var(--hz-red-primary)" />
-                    <span style={{ fontWeight: '700', fontSize: '0.875rem' }}>Horizon Alert</span>
-                  </div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)' }}>
-                    • Soutenance des projets tutorés fixée au 15 octobre.<br />
-                    • Inscription aux stages de fin d'année ouverte.
-                  </div>
+                <div style={{ marginTop: '1rem', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
+                  Besoin d'aide ? Contactez la scolarité au +223 77 67 75 75
                 </div>
               </div>
             </div>
@@ -235,37 +186,33 @@ export const PortalsModal = ({ isOpen, onClose }) => {
                   <div>
                     <span className="badge-official">ESPACE PROFESSORAL & CHARGÉ DE COURS</span>
                     <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)', marginTop: '4px' }}>
-                      Pr. Oumar Coulibaly
+                      Portail Enseignant
                     </h3>
                     <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-                      Département Sciences & Technologies • Chaire Informatique
+                      Accédez à vos cours, saisissez les notes et gérez vos syllabus.
                     </div>
-                  </div>
-                  <div style={{ display: 'flex', gap: '10px' }}>
-                    <button className="btn btn-primary btn-sm">Saisir les Notes</button>
-                    <button className="btn btn-secondary btn-sm">Déposer un Syllabus</button>
                   </div>
                 </div>
               </div>
 
-              {/* Modules Enseignant */}
-              <div className="grid-3" style={{ gap: '1rem', marginBottom: '1.5rem' }}>
-                <div className="card-glass" style={{ padding: '1.25rem' }}>
-                  <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--hz-navy-900)' }}>3</div>
-                  <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-primary)' }}>Cours Affectés</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>GL2, L3 Réseaux, Certificat Pro</div>
+              {/* Formulaire de connexion enseignant */}
+              <div className="card-glass" style={{ padding: '2rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📚</div>
+                <h3 style={{ fontSize: '1.375rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+                  Connexion Enseignant
+                </h3>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                  Ce portail sera accessible après activation de votre compte professoral par l'administration.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px', margin: '0 auto' }}>
+                  <input className="hz-input" placeholder="Identifiant professionnel" disabled />
+                  <input className="hz-input" type="password" placeholder="Mot de passe" disabled />
+                  <button className="btn btn-primary" style={{ justifyContent: 'center', opacity: 0.6 }} disabled>
+                    Se connecter
+                  </button>
                 </div>
-
-                <div className="card-glass" style={{ padding: '1.25rem' }}>
-                  <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--hz-gold-primary)' }}>84</div>
-                  <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-primary)' }}>Étudiants Encadrés</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Présences & Suivi continu</div>
-                </div>
-
-                <div className="card-glass" style={{ padding: '1.25rem' }}>
-                  <div style={{ fontSize: '1.75rem', fontWeight: '800', color: '#10B981' }}>100%</div>
-                  <div style={{ fontSize: '0.8125rem', fontWeight: '700', color: 'var(--text-primary)' }}>Évaluations Transmises</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Session Normale Semestre 1 & 2</div>
+                <div style={{ marginTop: '1rem', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
+                  Contact : direction@universite-horizon.ml
                 </div>
               </div>
             </div>
@@ -285,50 +232,41 @@ export const PortalsModal = ({ isOpen, onClose }) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                   <div>
                     <span style={{ background: 'var(--hz-gold-primary)', color: '#071526', fontSize: '0.6875rem', fontWeight: '800', padding: '2px 8px', borderRadius: '4px' }}>
-                      SUPER ADMIN • RBAC LEVEL 4
+                      ADMINISTRATION — RBAC
                     </span>
                     <h3 style={{ fontSize: '1.5rem', color: '#FFFFFF', marginTop: '4px' }}>
                       Système de Gestion Centralisé Horizon
                     </h3>
                     <div style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.7)' }}>
-                      Contrôle des flux d'admission, départements académiques et statistiques
+                      Accès réservé au personnel administratif autorisé
                     </div>
-                  </div>
-                  <div style={{ fontSize: '0.8125rem', color: 'var(--hz-gold-light)' }}>
-                    Session sécurisée TLS 1.3
                   </div>
                 </div>
               </div>
 
-              {/* Métriques d'administration */}
-              <div className="grid-4" style={{ gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text-primary)' }}>142</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)' }}>Candidatures En Ligne</div>
-                  <div style={{ fontSize: '0.6875rem', color: '#10B981', marginTop: '2px' }}>+18 aujourd'hui</div>
+              {/* Formulaire de connexion admin */}
+              <div className="card-glass" style={{ padding: '2rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔐</div>
+                <h3 style={{ fontSize: '1.375rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+                  Connexion Administration
+                </h3>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+                  Accès sécurisé réservé aux administrateurs avec privilèges RBAC.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px', margin: '0 auto' }}>
+                  <input className="hz-input" placeholder="Identifiant administrateur" disabled />
+                  <input className="hz-input" type="password" placeholder="Mot de passe" disabled />
+                  <button className="btn btn-primary" style={{ justifyContent: 'center', opacity: 0.6 }} disabled>
+                    Accéder au tableau de bord
+                  </button>
                 </div>
-
-                <div style={{ padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--hz-gold-primary)' }}>5</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)' }}>Pôles Académiques</div>
-                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', marginTop: '2px' }}>Sciences, Gestion, Droit...</div>
-                </div>
-
-                <div style={{ padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: '#2563EB' }}>2</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)' }}>Campus Opérationnels</div>
-                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', marginTop: '2px' }}>Bamako & Golf</div>
-                </div>
-
-                <div style={{ padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--hz-red-primary)' }}>6</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)' }}>Formations Accélérées</div>
-                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', marginTop: '2px' }}>Sessions certifiantes</div>
+                <div style={{ marginTop: '1rem', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
+                  Session sécurisée — Contactez l'administrateur système
                 </div>
               </div>
 
               {/* Rôles et Permissions RBAC */}
-              <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '1.25rem' }}>
+              <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '1.25rem', marginTop: '1.5rem' }}>
                 <div style={{ fontSize: '0.8125rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>
                   Matrice des Rôles & Accès Sécurisés (RBAC) :
                 </div>

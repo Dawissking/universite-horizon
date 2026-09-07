@@ -553,6 +553,57 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nav-link.active::after, .nav-link:hover::after { width: 60%; }
 
+/* --- HEADER TOP BAR --- */
+.header-topbar {
+  background: linear-gradient(90deg,#071526,#0D2240);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(201,151,38,0.2);
+}
+.header-topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.header-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-topbar-badge {
+  background: #C0392B;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.header-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-topbar-phone {
+  color: #E9BA4B;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.header-topbar-portals {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@media (max-width: 640px) {
+  .header-topbar-text { display: none; }
+  .header-topbar { padding: 4px 0; }
+  .header-topbar-inner { justify-content: center; }
+}
+
 /* ==========================================================================
    PAGE TRANSITIONS
    ========================================================================== */
@@ -795,5 +846,134 @@ h1, h2, h3, h4, h5, h6 {
   .timeline-step:not(:last-child)::after {
     left: calc(50% + 16px);
     right: calc(-50% + 16px);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE COMPLÉMENTAIRE MOBILE
+   ========================================================================== */
+
+/* Header principal sur mobile */
+@media (max-width: 768px) {
+  .site-header .hz-container { padding: 0.5rem 0.75rem; }
+}
+
+/* Modales responsive */
+@media (max-width: 768px) {
+  .modal-overlay { padding: 0.75rem; align-items: flex-end; }
+  .modal-content, .modal-box {
+    max-height: 95vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-width: 100% !important;
+  }
+}
+
+/* Section badges & titres responsive */
+@media (max-width: 480px) {
+  .section-badge { font-size: 0.75rem; padding: 4px 12px; }
+  .section-title { font-size: clamp(1.375rem, 5vw, 1.75rem); }
+  .section-subtitle { font-size: 0.9375rem; }
+}
+
+/* Grilles de cartes responsive */
+@media (max-width: 480px) {
+  .grid-2, .grid-3, .grid-4 { gap: 0.75rem; }
+}
+
+/* Tableaux et timeline responsive */
+@media (max-width: 480px) {
+  .timeline-step { min-width: 50px; }
+}
+
+/* Boutons responsive */
+@media (max-width: 480px) {
+  .btn { padding: 0.625rem 1rem; font-size: 0.875rem; }
+  .btn-lg { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
+  .btn-sm { padding: 0.5rem 0.875rem; font-size: 0.8125rem; }
+}
+
+/* Hero responsive */
+@media (max-width: 480px) {
+  .hz-container { padding: 0 1rem; }
+  .hz-section { padding: 2.5rem 0; }
+  .hz-section-sm { padding: 1.75rem 0; }
+}
+
+/* Inputs responsive */
+@media (max-width: 480px) {
+  .hz-input { padding: 0.75rem 1rem; font-size: 0.9375rem; }
+}
+
+/* Section badges filtres responsive */
+@media (max-width: 480px) {
+  .section-tag { font-size: 0.75rem; padding: 4px 12px; }
+}
+
+/* Card responsive mobile */
+@media (max-width: 480px) {
+  .card { padding: 1rem !important; border-radius: var(--radius-md) !important; }
+  .card-glass { padding: 1rem !important; }
+}
+
+/* Footer responsive */
+@media (max-width: 480px) {
+  footer { padding: 2rem 0 !important; }
+}
+
+/* Campus page responsive */
+@media (max-width: 768px) {
+  .campus-card-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Formations page grid responsive */
+@media (max-width: 480px) {
+  [style*="grid-template-columns: repeat(auto-fill"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Grid filter buttons responsive */
+@media (max-width: 480px) {
+  .btn-sm { font-size: 0.75rem; padding: 0.5rem 0.75rem; }
+}
+
+/* Section lead responsive */
+@media (max-width: 480px) {
+  .section-lead { font-size: 0.9375rem; }
+}
+
+/* Badge section responsive */
+@media (max-width: 480px) {
+  .badge { font-size: 0.75rem; padding: 3px 10px; }
+}
+
+/* Section padding mobile */
+@media (max-width: 480px) {
+  .hz-section > .hz-container { padding-left: 0.75rem; padding-right: 0.75rem; }
+}
+
+/* Cards grid responsive */
+@media (max-width: 640px) {
+  [style*="gridTemplateColumns: repeat(auto-fit, minmax(280px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(auto-fit, minmax(320px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-templateColumns: repeat(auto-fit, minmax(300px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(auto-fit, minmax(240px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gridTemplateColumns: repeat(auto-fit, minmax(220px"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Search input responsive */
+@media (max-width: 640px) {
+  [style*="gridColumn: span 2"] {
+    grid-column: span 1 !important;
   }
 }
