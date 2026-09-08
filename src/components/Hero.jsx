@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GraduationCap, ArrowRight, ShieldCheck, Compass, Sparkles, BookOpen, Users } from 'lucide-react';
 
 export const Hero = ({ onOpenApply, onNavigate }) => {
+  const [revealed, setRevealed] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setRevealed(true), 60);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section 
       id="hero" 
@@ -47,12 +53,12 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
           
           {/* Colonne Gauche : Narration & Appel à l'action */}
           <div>
-            <div className="section-tag" style={{ animation: 'fadeIn 400ms ease-out' }}>
+            <div className={`section-tag hero-reveal${revealed ? ' revealed' : ''}`} data-delay="1" style={{ animation: revealed ? undefined : 'none' }}>
               <Sparkles size={14} />
               Institution d'Enseignement Supérieur au Mali
             </div>
 
-            <h1 style={{
+            <h1 className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="2" style={{
               fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
@@ -62,7 +68,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               UNIVERSITÉ <span className="text-gold-gradient" style={{ fontFamily: 'var(--font-serif)' }}>HORIZON</span>
             </h1>
 
-            <div style={{
+            <div className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="3" style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(1.125rem, 2.2vw, 1.375rem)',
               fontWeight: '700',
@@ -74,7 +80,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               <span style={{ color: 'var(--hz-gold-primary)' }}>«</span> BÂTISSEZ VOTRE AVENIR DANS L’EXCELLENCE. <span style={{ color: 'var(--hz-gold-primary)' }}>»</span>
             </div>
 
-            <div style={{
+            <div className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="4" style={{
               fontFamily: 'var(--font-serif)',
               fontSize: '1.125rem',
               fontWeight: '600',
@@ -85,7 +91,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               « L’Horizon est à Vous. »
             </div>
 
-            <p style={{
+            <p className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="5" style={{
               fontSize: '1.0625rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.7,
@@ -98,7 +104,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
             </p>
 
             {/* Boutons d'Action Principaux */}
-            <div className="hero-cta-group">
+            <div className={`hero-cta-group hero-reveal${revealed ? ' revealed' : ''}`} data-delay="6">
               <button 
                 onClick={onOpenApply} 
                 className="btn btn-gold"
@@ -142,7 +148,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
           </div>
 
           {/* Colonne Droite : Composition Visuelle avec Photographie Réelle */}
-          <div className="hero-visual-col">
+          <div className={`hero-visual-col hero-visual-reveal${revealed ? ' revealed' : ''}`}>
             
             {/* Cadre de l'image principale des étudiants Horizon */}
             <div className="hero-image-frame">

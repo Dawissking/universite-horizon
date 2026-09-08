@@ -20,10 +20,19 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      setAtTop(y < 10);
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docH > 0 ? Math.min((y / docH) * 100, 100) : 0);
+    };
     window.addEventListener('scroll', handler, { passive: true });
+    handler();
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
@@ -38,7 +47,13 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
   }, [mobileOpen]);
 
   return (
-    <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+    <>
+      {/* Scroll progress bar */}
+      <div className="scroll-progress-track" aria-hidden="true">
+        <div className="scroll-progress-fill" style={{ width: `${scrollProgress}%` }} />
+      </div>
+
+      <header className={`site-header${scrolled ? ' scrolled' : ''}${atTop ? ' is-at-top' : ''}`}>
       {/* Bandeau supérieur */}
       <div className="header-topbar">
         <div className="hz-container header-topbar-inner">
@@ -156,5 +171,6 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
         document.body
       )}
     </header>
+    </>
   );
 };

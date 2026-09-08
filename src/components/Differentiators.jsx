@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Award, Users, Lightbulb, Globe, Briefcase, UserCheck, 
   ChevronRight, Check, Sparkles 
 } from 'lucide-react';
 
+function useStaggerInView(threshold = 0.1) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setInView(true); obs.unobserve(el); }
+    }, { threshold });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
 export const Differentiators = () => {
   const [selectedDiff, setSelectedDiff] = useState(0);
+  const [listRef, listInView] = useStaggerInView();
 
   const differentiators = [
     {
@@ -129,7 +145,7 @@ export const Differentiators = () => {
         }}>
           
           {/* Liste interactive des différenciateurs */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div ref={listRef} className={`reveal-stagger${listInView ? ' in-view' : ''}`} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {differentiators.map((diff, idx) => {
               const isSelected = selectedDiff === idx;
               const DiffIcon = diff.icon;

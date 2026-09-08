@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { STORIES } from '../data/horizonData';
 import { Quote, Sparkles, Award } from 'lucide-react';
 
+function useStaggerInView(threshold = 0.1) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setInView(true); obs.unobserve(el); }
+    }, { threshold });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
 export const HorizonStories = () => {
+  const [gridRef, gridInView] = useStaggerInView();
   return (
     <section className="hz-section" style={{ background: 'var(--bg-surface)' }}>
       <div className="hz-container">
@@ -21,7 +37,7 @@ export const HorizonStories = () => {
         </div>
 
         {/* Grille des Récits */}
-        <div style={{
+        <div ref={gridRef} className={`reveal-stagger${gridInView ? ' in-view' : ''}`} style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
           gap: '2rem'

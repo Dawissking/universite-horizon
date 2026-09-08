@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Compass, HeartHandshake, ShieldCheck, CheckCircle2, Users, Globe, Award, Cpu, MapPin, Phone, Mail } from 'lucide-react';
 import { INSTITUTION } from '../data/horizonData';
+import CountUp from '../components/CountUp';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -184,13 +185,15 @@ export default function UniversitePage() {
             {[
               { val:'2', label:'Campus à Bamako' },
               { val:'5', label:'Pôles Académiques' },
-              { val:'10+', label:'Filières de Formation' },
+              { val:'10', suffix:'+', label:'Filières de Formation' },
               { val:'6', label:'Certificats Métiers' },
-              { val:'100%', label:'Diplômes reconnus État malien' },
+              { val:'100', suffix:'%', label:'Diplômes reconnus État malien' },
             ].map((s, i) => (
               <Reveal key={i} delay={i*80}>
                 <div style={{ textAlign:'center', padding:'1.75rem', background:'rgba(255,255,255,0.05)', borderRadius:'var(--radius-md)', border:'1px solid rgba(201,151,38,0.2)' }}>
-                  <div style={{ fontSize:'2.25rem', fontWeight:'800', color:'var(--hz-gold-400)', lineHeight:1, marginBottom:'8px' }}>{s.val}</div>
+                  <div style={{ fontSize:'2.25rem', fontWeight:'800', color:'var(--hz-gold-400)', lineHeight:1, marginBottom:'8px' }}>
+                    <CountUp target={s.val} suffix={s.suffix || ''} />
+                  </div>
                   <div style={{ fontSize:'0.84rem', fontWeight:'600', color:'rgba(255,255,255,0.75)' }}>{s.label}</div>
                 </div>
               </Reveal>

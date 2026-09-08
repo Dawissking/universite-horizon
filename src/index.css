@@ -1274,3 +1274,212 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--radius-lg);
   }
 }
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: HEADER TRANSPARENT → COMPACT
+   ========================================================================== */
+.site-header {
+  transition: background var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out);
+}
+.site-header.is-at-top {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+.site-header.is-at-top .header-topbar {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+}
+
+/* Scroll progress bar */
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+}
+.scroll-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--hz-gold-500), var(--hz-gold-400));
+  width: 0%;
+  transition: width 80ms linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: HERO STAGGER ENTRANCE
+   ========================================================================== */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.hero-reveal.revealed {
+  animation: heroRevealUp 500ms var(--ease-out) forwards;
+}
+.hero-reveal.revealed[data-delay="1"] { animation-delay: 80ms; }
+.hero-reveal.revealed[data-delay="2"] { animation-delay: 160ms; }
+.hero-reveal.revealed[data-delay="3"] { animation-delay: 240ms; }
+.hero-reveal.revealed[data-delay="4"] { animation-delay: 320ms; }
+.hero-reveal.revealed[data-delay="5"] { animation-delay: 400ms; }
+.hero-reveal.revealed[data-delay="6"] { animation-delay: 500ms; }
+
+@keyframes heroRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero visual column: fade-in + slight scale */
+.hero-visual-reveal {
+  opacity: 0;
+  transform: scale(0.96) translateY(12px);
+}
+.hero-visual-reveal.revealed {
+  animation: heroVisualIn 600ms var(--ease-out) 200ms forwards;
+}
+@keyframes heroVisualIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: BUTTON HOVER MICRO-INTERACTIONS
+   ========================================================================== */
+.btn {
+  transition: all var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn:hover {
+  transform: translateY(-1.5px);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-gold:hover {
+  box-shadow: var(--shadow-gold);
+  filter: brightness(1.05);
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-md);
+}
+.btn-outline:hover {
+  border-color: var(--hz-gold-500);
+  color: var(--hz-gold-500);
+  background: var(--hz-gold-bg);
+}
+
+/* Icon shift on hover for buttons with arrows */
+.btn-shift:hover svg {
+  transform: translateX(3px);
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: CARD HOVER POLISH
+   ========================================================================== */
+.card-hover {
+  transition: transform var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out);
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--hz-gold-border);
+}
+.card-hover .card-img {
+  transition: transform 450ms var(--ease-out);
+  will-change: transform;
+}
+.card-hover:hover .card-img {
+  transform: scale(1.04);
+}
+.card-hover .card-arrow {
+  transition: transform var(--dur-fast) var(--ease-spring),
+              opacity var(--dur-fast);
+  opacity: 0;
+}
+.card-hover:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: SCROLL STAGGER REVEALS
+   ========================================================================== */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 450ms var(--ease-out),
+              transform 450ms var(--ease-out);
+}
+.reveal-stagger.in-view > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.in-view > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger.in-view > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger.in-view > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.in-view > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger.in-view > *:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger.in-view > *:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger.in-view > *:nth-child(8) { transition-delay: 560ms; }
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: COUNTER ANIMATION
+   ========================================================================== */
+.count-up-value {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: LINK HOVER ARROW
+   ========================================================================== */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.link-arrow .arrow-icon {
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+.link-arrow:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   PHASE 1 — POLISHING: PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Target, Compass, HeartHandshake, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+
+function useStaggerInView(threshold = 0.1) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setInView(true); obs.unobserve(el); }
+    }, { threshold });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
 
 export const Philosophy = () => {
   const [activeTab, setActiveTab] = useState('vision');
+  const [tabsRef, tabsInView] = useStaggerInView();
 
   const tabs = [
     {
@@ -83,7 +99,7 @@ export const Philosophy = () => {
         </div>
 
         {/* Navigation interactive des 4 piliers */}
-        <div style={{
+        <div ref={tabsRef} className={`reveal-stagger${tabsInView ? ' in-view' : ''}`} style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '12px',
