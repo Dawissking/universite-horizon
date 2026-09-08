@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A3D66"/>
+      <stop offset="100%" stop-color="#0F2847"/>
+    </linearGradient>
+    <linearGradient id="skin3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C68642"/>
+      <stop offset="100%" stop-color="#A0673C"/>
+    </linearGradient>
+    <linearGradient id="gown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D2240"/>
+      <stop offset="100%" stop-color="#071526"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="url(#bg3)"/>
+  <!-- Graduation gown -->
+  <rect x="26" y="82" width="68" height="40" rx="4" fill="url(#gown)"/>
+  <!-- Gown V-neck -->
+  <polygon points="44,82 60,100 76,82" fill="url(#skin3)"/>
+  <!-- Tassel cord -->
+  <line x1="60" y1="30" x2="85" y2="50" stroke="#D4A82A" stroke-width="2"/>
+  <circle cx="85" cy="52" r="4" fill="#D4A82A"/>
+  <!-- Neck -->
+  <rect x="48" y="74" width="24" height="14" rx="4" fill="url(#skin3)"/>
+  <!-- Face -->
+  <ellipse cx="60" cy="52" rx="26" ry="28" fill="url(#skin3)"/>
+  <!-- Graduation cap (mortarboard) -->
+  <polygon points="30,38 60,24 90,38 60,44" fill="#0D2240"/>
+  <rect x="44" y="34" width="32" height="6" rx="1" fill="#0D2240"/>
+  <line x1="60" y1="24" x2="60" y2="34" stroke="#D4A82A" stroke-width="2"/>
+  <circle cx="60" cy="23" r="3" fill="#D4A82A"/>
+  <!-- Eyes -->
+  <ellipse cx="50" cy="52" rx="3.5" ry="4" fill="#1A1A1A"/>
+  <ellipse cx="70" cy="52" rx="3.5" ry="4" fill="#1A1A1A"/>
+  <circle cx="51" cy="51" r="1.2" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="71" cy="51" r="1.2" fill="#FFFFFF" opacity="0.7"/>
+  <!-- Eyebrows -->
+  <path d="M44 46 Q50 43 56 46" stroke="#1A1A1A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M64 46 Q70 43 76 46" stroke="#1A1A1A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Nose -->
+  <path d="M57 54 Q60 60 63 54" stroke="#8B5E3C" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <!-- Happy smile -->
+  <path d="M48 62 Q60 72 72 62" stroke="#8B5E3C" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Gold star decoration -->
+  <polygon points="15,15 17,21 23,21 18,25 20,31 15,27 10,31 12,25 7,21 13,21" fill="#D4A82A" opacity="0.4"/>
+  <polygon points="100,90 102,96 108,96 103,100 105,106 100,102 95,106 97,100 92,96 98,96" fill="#D4A82A" opacity="0.3"/>
+</svg>

@@ -302,7 +302,7 @@ export const STORIES = [
     author: "Fatoumata S.",
     role: "Diplômée — Licence Génie Logiciel",
     quote: "L'encadrement rapproché et les projets pratiques m'ont permis de concevoir ma première application mobile bien avant l'obtention de mon diplôme.",
-    image: "/assets/student_female.jpeg",
+    image: "/assets/avatar-fatoumata.svg",
     tag: "Sciences & Technologies"
   },
   {
@@ -310,7 +310,7 @@ export const STORIES = [
     author: "Ibrahim T.",
     role: "Certifié — Transit Douane",
     quote: "La formation en transit douane m'a ouvert les portes d'un grand cabinet agréé. Apprendre sur des cas concrets maliens fait toute la différence.",
-    image: "/assets/student_grad.jpeg",
+    image: "/assets/avatar-ibrahim.svg",
     tag: "Formation Accélérée"
   },
   {
@@ -318,7 +318,7 @@ export const STORIES = [
     author: "Promotion Horizon",
     role: "Cérémonie Officielle de Diplômes",
     quote: "Voir nos camarades intégrés dans les institutions financières et technologiques du pays donne tout son sens à « Bâtissez votre avenir dans l'Excellence ».",
-    image: "/assets/graduates.jpeg",
+    image: "/assets/avatar-promotion.svg",
     tag: "Réussite & Alumni"
   }
 ];

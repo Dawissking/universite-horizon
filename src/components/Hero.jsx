@@ -72,7 +72,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(1.125rem, 2.2vw, 1.375rem)',
               fontWeight: '700',
-              color: 'var(--hz-navy-800)',
+              color: 'var(--text-primary)',
               letterSpacing: '0.02em',
               marginBottom: '0.5rem',
               lineHeight: 1.3

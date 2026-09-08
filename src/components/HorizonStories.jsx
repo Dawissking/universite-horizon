@@ -78,14 +78,25 @@ export const HorizonStories = () => {
                 paddingTop: '1.25rem',
                 borderTop: '1px solid var(--border-subtle)'
               }}>
-                <div style={{
-                  width: '50px',
-                  height: '50px',
+                <div className="story-avatar" style={{
+                  width: '54px',
+                  height: '54px',
                   borderRadius: '50%',
                   overflow: 'hidden',
                   border: '2px solid var(--hz-gold-primary)',
-                  flexShrink: 0
-                }}>
+                  flexShrink: 0,
+                  transition: 'transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out)',
+                  cursor: 'default'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'scale(1.08)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(201,151,38,0.35)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+                >
                   <img
                     src={story.image}
                     alt={story.author}
