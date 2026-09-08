@@ -32,7 +32,7 @@ export default function CampusPage({ onOpenApply }) {
               Nos <span style={{ color:'var(--hz-gold-400)' }}>Campus</span> & Vie Étudiante
             </h1>
             <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Deux environnements d''excellence à Bamako conçus pour stimuler l''apprentissage, la créativité et l''épanouissement.
+              Deux environnements d'excellence à Bamako conçus pour stimuler l'apprentissage, la créativité et l'épanouissement.
             </p>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function CampusPage({ onOpenApply }) {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:'2rem', alignItems:'center' }}>
             <Reveal>
               <span className='section-badge'><Clock size={13}/> Horaires & Accueil</span>
-              <h2 className='section-title' style={{ textAlign:'left' }}>Horaires d''Ouverture</h2>
+              <h2 className='section-title' style={{ textAlign:'left' }}>Horaires d'Ouverture</h2>
               <div className='card' style={{ padding:'1.75rem' }}>
                 {[
                   { day:'Lundi — Vendredi', time:'07h30 — 18h00' },
@@ -156,7 +156,7 @@ export default function CampusPage({ onOpenApply }) {
             <Reveal delay={150}>
               <h3 style={{ fontSize:'1.375rem', marginBottom:'1rem' }}>Rejoignez-Nous sur le Campus</h3>
               <p style={{ fontSize:'0.9375rem', color:'var(--text-600)', lineHeight:1.75, marginBottom:'1.5rem' }}>
-                Notre équipe administrative est disponible du lundi au samedi pour vous accueillir, répondre à vos questions et vous accompagner dans votre parcours d''admission.
+                Notre équipe administrative est disponible du lundi au samedi pour vous accueillir, répondre à vos questions et vous accompagner dans votre parcours d'admission.
               </p>
               <div style={{ display:'flex', flexDirection:'column', gap:'10px', marginBottom:'1.5rem' }}>
                 {INSTITUTION.contacts.phones.map((phone, i) => (

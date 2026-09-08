@@ -113,7 +113,7 @@ export default function ActualitesPage() {
                     Candidature 2026 — Dossiers Ouverts
                   </h2>
                   <p style={{ fontSize:'1rem', color:'rgba(255,255,255,0.8)', lineHeight:1.7 }}>
-                    Rejoignez la promotion 2026 de l"'Université Horizon : Licences LMD et Certificats Métiers accélérés disponibles sur notre plateforme de candidature en ligne.
+                    Rejoignez la promotion 2026 de l'Université Horizon : Licences LMD et Certificats Métiers accélérés disponibles sur notre plateforme de candidature en ligne.
                   </p>
                 </div>
                 <div style={{ padding:'1.5rem', display:'flex', justifyContent:'space-between', alignItems:'center' }}>

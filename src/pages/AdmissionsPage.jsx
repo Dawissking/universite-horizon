@@ -54,7 +54,7 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
           <div>
             <span className='badge badge-official'>CANDIDATURE OFFICIELLE EN LIGNE</span>
-            <h2 style={{ fontSize:'1.625rem', marginTop:'6px' }}>Rejoindre l''Université Horizon</h2>
+            <h2 style={{ fontSize:'1.625rem', marginTop:'6px' }}>Rejoindre l'Université Horizon</h2>
           </div>
           <button onClick={onClose} style={{ width:'36px', height:'36px', borderRadius:'50%', background:'var(--bg-muted)', display:'flex', alignItems:'center', justifyContent:'center' }}>
             <span style={{ fontSize:'1.25rem', color:'var(--text-400)' }}>×</span>
@@ -176,11 +176,11 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
 
           {step===6 && (
             <div>
-              <h3 style={{ marginBottom:'1.25rem', fontSize:'1.25rem' }}>06 — Déclaration sur l''Honneur & Envoi</h3>
+              <h3 style={{ marginBottom:'1.25rem', fontSize:'1.25rem' }}>06 — Déclaration sur l'Honneur & Envoi</h3>
               <label style={{ display:'flex', gap:'12px', padding:'1.5rem', borderRadius:'var(--radius-md)', background:'var(--bg-muted)', border:'1px solid var(--border-200)', cursor:'pointer', marginBottom:'1.5rem' }}>
                 <input type='checkbox' checked={form.honor} onChange={e=>setForm({...form,honor:e.target.checked})} style={{ marginTop:'3px' }}/>
                 <span style={{ fontSize:'0.9rem', color:'var(--text-600)', lineHeight:1.65 }}>
-                  Je certifie sur l"'honneur l''exactitude des informations transmises et reconnais que toute fausse déclaration entraîne l''annulation de mon dossier conformément au règlement de l''Université Horizon.
+                  Je certifie sur l'honneur l'exactitude des informations transmises et reconnais que toute fausse déclaration entraîne l'annulation de mon dossier conformément au règlement de l'Université Horizon.
                 </span>
               </label>
               <div style={{ display:'flex', gap:'10px', padding:'12px 16px', background:'var(--hz-gold-bg)', borderRadius:'var(--radius-sm)', border:'1px solid var(--hz-gold-border)' }}>
@@ -197,7 +197,7 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
               </div>
               <h3 style={{ fontSize:'1.625rem', marginBottom:'8px' }}>Félicitations ! Dossier Enregistré.</h3>
               <p style={{ fontSize:'0.9375rem', color:'var(--text-600)', maxWidth:'480px', margin:'0 auto 2rem', lineHeight:1.65 }}>
-                Votre candidature a été transmise à la commission d''admission de l''Université Horizon. Conservez précieusement votre identifiant.
+                Votre candidature a été transmise à la commission d'admission de l'Université Horizon. Conservez précieusement votre identifiant.
               </p>
               <div style={{ background:'var(--bg-muted)', border:'2px dashed var(--hz-gold-500)', borderRadius:'var(--radius-md)', padding:'1.25rem', display:'inline-flex', alignItems:'center', gap:'14px', marginBottom:'2rem' }}>
                 <div>
@@ -402,7 +402,7 @@ export default function AdmissionsPage({ onOpenApply }) {
               Admissions & <span style={{ color:'var(--hz-gold-400)' }}>Candidature</span>
             </h1>
             <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Toutes les informations et outils pour intégrer l''Université Horizon et bâtir votre avenir dans l''excellence.
+              Toutes les informations et outils pour intégrer l'Université Horizon et bâtir votre avenir dans l'excellence.
             </p>
             <button onClick={() => handleApply()} className='btn btn-gold' style={{ marginTop:'1.5rem' }}>
               <GraduationCap size={18}/> Candidater en ligne maintenant
@@ -455,7 +455,7 @@ export default function AdmissionsPage({ onOpenApply }) {
                 <div style={{ padding:'12px 16px', borderRadius:'var(--radius-md)', background:'rgba(192,57,43,0.06)', border:'1px solid rgba(192,57,43,0.18)', display:'flex', gap:'10px', alignItems:'flex-start', marginBottom:'1.75rem' }}>
                   <AlertCircle size={17} color='var(--hz-red-600)' style={{ flexShrink:0, marginTop:'2px' }}/>
                   <span style={{ fontSize:'0.8125rem', color:'var(--text-600)', lineHeight:1.55 }}>
-                    Cet outil fournit une recommandation informative et pédagogique. Il ne constitue pas une décision d"'admission, laquelle reste soumise à l''examen officiel de votre dossier.
+                    Cet outil fournit une recommandation informative et pédagogique. Il ne constitue pas une décision d'admission, laquelle reste soumise à l'examen officiel de votre dossier.
                   </span>
                 </div>
               </Reveal>
@@ -465,7 +465,7 @@ export default function AdmissionsPage({ onOpenApply }) {
             {/* Conditions d'admission */}
             <div>
               <Reveal delay={100}>
-                <span className='section-badge' style={{ marginBottom:'1rem' }}>Conditions d''Accès</span>
+                <span className='section-badge' style={{ marginBottom:'1rem' }}>Conditions d'Accès</span>
                 <h3 style={{ fontSize:'1.5rem', marginBottom:'1rem' }}>Prérequis & Documents</h3>
               </Reveal>
               <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
@@ -511,7 +511,7 @@ export default function AdmissionsPage({ onOpenApply }) {
             <Reveal>
               <span className='section-badge'>Transparence Administrative</span>
               <h2 className='section-title'>Où en est ma Candidature ?</h2>
-              <p className='section-lead'>Suivez l''instruction de votre dossier en temps réel grâce à votre identifiant unique.</p>
+              <p className='section-lead'>Suivez l'instruction de votre dossier en temps réel grâce à votre identifiant unique.</p>
             </Reveal>
           </div>
           <Reveal delay={100}>
@@ -535,7 +535,7 @@ export default function AdmissionsPage({ onOpenApply }) {
                   </div>
                   <div style={{ background:'var(--bg-muted)', padding:'10px 18px', borderRadius:'var(--radius-md)', textAlign:'right' }}>
                     <div className='hz-label'>Statut actuel</div>
-                    <div style={{ fontWeight:'800', color:'var(--hz-gold-500)' }}>En cours d"'instruction</div>
+                    <div style={{ fontWeight:'800', color:'var(--hz-gold-500)' }}>En cours d'instruction</div>
                   </div>
                 </div>
                 {/* Timeline */}

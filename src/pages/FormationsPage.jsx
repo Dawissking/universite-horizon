@@ -45,7 +45,7 @@ export default function FormationsPage({ onOpenApply }) {
               Nos <span style={{ color:'var(--hz-gold-400)' }}>Formations</span>
             </h1>
             <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l''international.
+              Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international.
             </p>
           </div>
         </div>

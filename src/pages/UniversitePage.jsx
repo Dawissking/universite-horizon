@@ -61,10 +61,10 @@ export default function UniversitePage() {
               <span style={{ color:'var(--hz-gold-400)', fontSize:'0.875rem', fontWeight:'600' }}>Université</span>
             </div>
             <h1 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(2rem,4vw,3rem)', color:'#fff', marginBottom:'1rem' }}>
-              L''Université <span style={{ color:'var(--hz-gold-400)' }}>Horizon</span>
+              L'Université <span style={{ color:'var(--hz-gold-400)' }}>Horizon</span>
             </h1>
             <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Une institution d''enseignement supérieur fondée sur l''excellence académique, l''encadrement humain et l''ouverture sur le monde.
+              Une institution d'enseignement supérieur fondée sur l'excellence académique, l'encadrement humain et l'ouverture sur le monde.
             </p>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function UniversitePage() {
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <Reveal>
               <span className='section-badge'><Users size={13}/> Corps Enseignant</span>
-              <h2 className='section-title'>Une Équipe Pédagogique d''Excellence</h2>
+              <h2 className='section-title'>Une Équipe Pédagogique d'Excellence</h2>
               <p className='section-lead'>Praticiens en activité, enseignants-chercheurs et experts métiers : une équipe sélectionnée pour sa compétence et son engagement.</p>
             </Reveal>
           </div>
@@ -177,7 +177,7 @@ export default function UniversitePage() {
                 Nos Campus en <span style={{ color:'var(--hz-gold-400)' }}>Chiffres</span>
               </h2>
               <p style={{ color:'rgba(255,255,255,0.7)', maxWidth:'520px', margin:'0 auto' }}>
-                Deux sites d''excellence à Bamako pour un environnement d''apprentissage à la hauteur de vos ambitions.
+                Deux sites d'excellence à Bamako pour un environnement d'apprentissage à la hauteur de vos ambitions.
               </p>
             </div>
           </Reveal>

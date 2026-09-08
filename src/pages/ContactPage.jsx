@@ -161,7 +161,7 @@ export default function ContactPage() {
               <h2 style={{ fontSize:'1.75rem', marginBottom:'1.5rem' }}>Questions Fréquentes</h2>
               <FaqAccordion/>
               <div style={{ marginTop:'1.5rem', padding:'1.25rem', borderRadius:'var(--radius-md)', background:'var(--hz-gold-bg)', border:'1px solid var(--hz-gold-border)' }}>
-                <div style={{ fontWeight:'700', marginBottom:'4px' }}>Besoin d''un rendez-vous physique ?</div>
+                <div style={{ fontWeight:'700', marginBottom:'4px' }}>Besoin d'un rendez-vous physique ?</div>
                 <p style={{ fontSize:'0.875rem', color:'var(--text-600)', marginBottom:'0.75rem' }}>
                   Venez nous rencontrer au campus Baco Djicoroni Golf, du lundi au samedi.
                 </p>
