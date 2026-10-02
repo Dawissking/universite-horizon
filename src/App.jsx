@@ -17,6 +17,9 @@ import CampusPage from './pages/CampusPage';
 import ActualitesPage from './pages/ActualitesPage';
 import ContactPage from './pages/ContactPage';
 import UniversitePage from './pages/UniversitePage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   // États des modales et interactions transversales
@@ -111,6 +114,9 @@ export default function App() {
             <Route path="/campus" element={<CampusPage onOpenApply={handleOpenApply} />} />
             <Route path="/actualites" element={<ActualitesPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/a-propos" element={<AboutPage />} />
+            <Route path="/confidentialite" element={<PrivacyPage />} />
+            <Route path="/conditions" element={<TermsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

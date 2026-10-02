@@ -70,6 +70,9 @@ export const Footer = ({ onOpenApply, onOpenPortals }) => (
             <button onClick={onOpenPortals} style={{ color:'rgba(255,255,255,0.72)', textAlign:'left', fontSize:'0.875rem' }}>
               Portails (Étudiant / Enseignant)
             </button>
+            <Link to="/a-propos" style={{ color:'inherit' }}>À propos</Link>
+            <Link to="/confidentialite" style={{ color:'inherit' }}>Confidentialité</Link>
+            <Link to="/conditions" style={{ color:'inherit' }}>Conditions générales</Link>
           </div>
         </div>
 
@@ -110,7 +113,7 @@ export const Footer = ({ onOpenApply, onOpenPortals }) => (
       {/* Bas de footer */}
       <div style={{ borderTop:'1px solid rgba(255,255,255,0.08)', paddingTop:'1.75rem', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:'1rem', fontSize:'0.75rem', color:'rgba(255,255,255,0.45)' }}>
         <span>© {new Date().getFullYear()} Université Horizon • Bamako, Mali. Tous droits réservés.</span>
-        <span>Plateforme conforme WCAG &bull; Principe Zéro Hallucination</span>
+        <span>Aucune publicité sur ce site • Plateforme accessible WCAG</span>
       </div>
     </div>
   </footer>
