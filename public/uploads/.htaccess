@@ -1,0 +1,24 @@
+# ============================================================
+#  Dossier de téléversement — ACCÈS DIRECT INTERDIT
+#
+#  Ce dossier contient des pièces d'identité et des diplômes.
+#  Aucun fichier ne doit être servi par le serveur web.
+#  Les documents sont transmis au candidat ou à l'administrateur
+#  uniquement via api/document.php, après contrôle d'accès.
+# ============================================================
+
+Options -Indexes -ExecCGI
+
+Require all denied
+
+# Interdit tout moteur PHP (défense en profondeur)
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+AddType text/plain .php .phtml .php3 .php4 .php5 .php7 .php8 .phar

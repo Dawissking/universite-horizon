@@ -49,9 +49,15 @@ jobs:
           LOCAL_DIR: dist/
         with:
           timeout-minutes: 10
+          # Ne jamais purger le dossier distant : les dossiers de candidature
+          # téléversés par les étudiants vivent dans /uploads et doivent
+          # survivre aux déploiements.
+          empty-remote-dir: false
           exclude: |
             .git/
             node_modules/
             src/
             .github/
+            database.sql
+            DEPLOY.md
             package-lock.json

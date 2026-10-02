@@ -4,6 +4,7 @@ import {
   GraduationCap, BookOpen, Compass, ArrowRight,
   ShieldCheck, Users, Globe, Award, Sparkles, Play
 } from 'lucide-react';
+import Icon from '../components/Icon';
 
 /* Hook IntersectionObserver pour animer à l'entrée */
 function useReveal() {
@@ -25,13 +26,13 @@ function useReveal() {
 }
 
 /* Bloc animé générique */
-function Reveal({ children, delay = 0, direction = ""up"' }) {
+function Reveal({ children, delay = 0, direction = "up" }) {
   const ref = useReveal();
   const init = direction === 'left'
-    ? '"translateX(-32px)""
-    : direction === ""right"'
-    ? '"translateX(32px)""
-    : ""translateY(32px)"";
+    ? "translateX(-32px)"
+    : direction === "right"
+    ? "translateX(32px)"
+    : "translateY(32px)";
   return (
     <div ref={ref} style={{
       opacity: 0,
@@ -48,15 +49,15 @@ function StatBadge({ value, label, delay }) {
   return (
     <Reveal delay={delay}>
       <div style={{
-        background: ""var(--bg-card)"",
-        border: ""1px solid var(--border-100)"",
-        borderRadius: ""var(--radius-md)"",
-        padding: ""1rem 1.5rem"',
+        background: "var(--bg-card)",
+        border: "1px solid var(--border-100)",
+        borderRadius: "var(--radius-md)",
+        padding: "1rem 1.5rem",
         textAlign: 'center',
-        boxShadow: '"var(--shadow-sm)""
+        boxShadow: "var(--shadow-sm)"
       }}>
-        <div style={{ fontSize: ""1.75rem"', fontWeight: '"800"", color: ""var(--hz-gold-500)"", lineHeight: 1 }}>{value}</div>
-        <div style={{ fontSize: ""0.78rem"', fontWeight: '"600"", color: ""var(--text-400)"", marginTop: ""4px"' }}>{label}</div>
+        <div style={{ fontSize: "1.75rem", fontWeight: "800", color: "var(--hz-gold-500)", lineHeight: 1 }}>{value}</div>
+        <div style={{ fontSize: "0.78rem", fontWeight: "600", color: "var(--text-400)", marginTop: "4px" }}>{label}</div>
       </div>
     </Reveal>
   );
@@ -71,11 +72,11 @@ export default function HomePage({ onOpenApply }) {
       ====================================== */}
       <section style={{
         position: 'relative',
-        minHeight: '"calc(100vh - 102px)"",
-        display: ""flex"',
+        minHeight: "calc(100vh - 102px)",
+        display: "flex",
         alignItems: 'center',
         overflow: 'hidden',
-        background: '"linear-gradient(135deg, #071526 0%, #0D2240 60%, #15315B 100%)""
+        background: "linear-gradient(135deg, #071526 0%, #0D2240 60%, #15315B 100%)"
       }}>
         {/* Orbes de fond */}
         <div className='hero-bg-orb animate-float' style={{ width:'500px', height:'500px', top:'-100px', right:'-80px', background:'radial-gradient(circle, rgba(201,151,38,0.18) 0%, transparent 70%)' }}/>
@@ -99,44 +100,44 @@ export default function HomePage({ onOpenApply }) {
                 <Sparkles size={13}/> Institution d''Enseignement Supérieur • Mali
               </div>
 
-              <h1 className='"animate-fadeInUp delay-100"" style={{
-                fontFamily: ""var(--font-serif)"",
-                fontSize: ""clamp(2.5rem, 5vw, 4rem)"",
-                color: ""#FFFFFF"',
+              <h1 className='animate-fadeInUp delay-100' style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                color: "#FFFFFF",
                 lineHeight: 1.1,
                 letterSpacing: '-0.02em',
                 marginBottom: '1rem'
               }}>
                 UNIVERSITÉ<br/>
                 <span style={{
-                  background: '"linear-gradient(135deg,#E9BA4B 0%,#C99726 100%)"",
-                  WebkitBackgroundClip: ""text"',
+                  background: "linear-gradient(135deg,#E9BA4B 0%,#C99726 100%)",
+                  WebkitBackgroundClip: "text",
                   WebkitTextFillColor: 'transparent'
                 }}>HORIZON</span>
               </h1>
 
-              <div className='"animate-fadeInUp delay-200"" style={{
-                fontFamily: ""var(--font-serif)"", fontSize: ""clamp(1rem, 2vw, 1.25rem)"",
-                color: ""var(--hz-gold-400)"", fontWeight: ""700"", marginBottom: ""0.5rem"'
+              <div className='animate-fadeInUp delay-200' style={{
+                fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 2vw, 1.25rem)",
+                color: "var(--hz-gold-400)", fontWeight: "700", marginBottom: "0.5rem"
               }}>
-                « Bâtissez votre avenir dans l''Excellence. »
+                Bâtissez votre avenir dans l'Excellence.
               </div>
-              <div className='"animate-fadeInUp delay-300"" style={{
-                fontFamily: ""var(--font-serif)"", fontSize: ""1rem"',
-                fontStyle: 'italic', color: '"rgba(255,255,255,0.72)"", marginBottom: ""2rem"'
+              <div className='animate-fadeInUp delay-300' style={{
+                fontFamily: "var(--font-serif)", fontSize: "1rem",
+                fontStyle: 'italic', color: "rgba(255,255,255,0.72)", marginBottom: "2rem"
               }}>
-                « L''Horizon est à Vous. »
+                L'Horizon est à Vous.
               </div>
 
-              <p className='"animate-fadeInUp delay-300"" style={{
-                fontSize: ""1.0625rem"', color: '"rgba(255,255,255,0.78)"",
-                lineHeight: 1.75, marginBottom: ""2.25rem"', maxWidth: '520px'
+              <p className='animate-fadeInUp delay-300' style={{
+                fontSize: "1.0625rem", color: "rgba(255,255,255,0.78)",
+                lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: '520px'
               }}>
                 Un écosystème universitaire moderne réunissant Licences LMD, formations accélérées
                 certifiantes et encadrement rapproché pour bâtir votre excellence au Mali et à l''international.
               </p>
 
-              <div className='"animate-fadeInUp delay-400"" style={{ display:'flex', flexWrap:'wrap', gap:'12px' }}>
+              <div className='animate-fadeInUp delay-400' style={{ display:'flex', flexWrap:'wrap', gap:'12px' }}>
                 <button onClick={onOpenApply} className='btn btn-gold btn-lg'>
                   <GraduationCap size={20}/> Candidater maintenant
                 </button>
@@ -149,41 +150,41 @@ export default function HomePage({ onOpenApply }) {
               </div>
 
               {/* Gages de confiance */}
-              <div className='"animate-fadeInUp delay-500"" style={{
+              <div className='animate-fadeInUp delay-500' style={{
                 display:'flex', flexWrap:'wrap', gap:'1.25rem', marginTop:'2rem',
                 paddingTop:'1.5rem', borderTop:'1px solid rgba(255,255,255,0.1)'
               }}>
                 <div style={{ display:'flex', alignItems:'center', gap:'7px', fontSize:'0.84rem', color:'rgba(255,255,255,0.8)' }}>
-                  <ShieldCheck size={18} color=""var(--hz-gold-400)""/>
-                  Diplômes reconnus par l"'État malien
+                  <ShieldCheck size={18} color="var(--hz-gold-400)"/>
+                  Diplômes reconnus par l"État malien
                 </div>
                 <div style={{ display:'flex', alignItems:'center', gap:'7px', fontSize:'0.84rem', color:'rgba(255,255,255,0.8)' }}>
-                  <Users size={18} color=""var(--hz-gold-400)""/>
+                  <Users size={18} color="var(--hz-gold-400)"/>
                   Encadrement rapproché individualisé
                 </div>
                 <div style={{ display:'flex', alignItems:'center', gap:'7px', fontSize:'0.84rem', color:'rgba(255,255,255,0.8)' }}>
-                  <Globe size={18} color=""var(--hz-gold-400)""/>
+                  <Globe size={18} color="var(--hz-gold-400)"/>
                   Ouverture internationale
                 </div>
               </div>
             </div>
 
             {/* Visuel */}
-            <div className=""animate-fadeInRight delay-200"">
+            <div className="animate-fadeInRight delay-200">
               <div style={{ position:'relative' }}>
                 <div style={{
-                  borderRadius: '"var(--radius-xl)"",
-                  overflow: ""hidden"',
-                  border: '"2px solid rgba(201,151,38,0.4)"",
-                  boxShadow: ""0 32px 80px rgba(0,0,0,0.5)"",
-                  aspectRatio: ""4/3""
+                  borderRadius: "var(--radius-xl)",
+                  overflow: "hidden",
+                  border: "2px solid rgba(201,151,38,0.4)",
+                  boxShadow: "0 32px 80px rgba(0,0,0,0.5)",
+                  aspectRatio: "4/3"
                 }}>
                   <img src='/assets/hero_students.jpeg' alt='Étudiants Université Horizon'
                     style={{ width:'100%', height:'100%', objectFit:'cover' }}/>
                   <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg, transparent 55%, rgba(7,21,38,0.75) 100%)' }}/>
                   <div style={{ position:'absolute', bottom:'1.25rem', left:'1.25rem', color:'#fff' }}>
                     <div style={{ fontSize:'0.7rem', textTransform:'uppercase', letterSpacing:'0.08em', color:'var(--hz-gold-400)', fontWeight:'800' }}>Promotion Horizon</div>
-                    <div style={{ fontSize:'1rem', fontWeight:'700' }}>L"'excellence en action</div>
+                    <div style={{ fontSize:'1rem', fontWeight:'700' }}>L"excellence en action</div>
                   </div>
                 </div>
 
@@ -231,11 +232,11 @@ export default function HomePage({ onOpenApply }) {
       <section style={{ background:'var(--bg-card)', borderBottom:'1px solid var(--border-100)' }}>
         <div className='hz-container' style={{ padding:'2.5rem 1.5rem' }}>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))', gap:'1.5rem' }}>
-            <StatBadge value='"2"" label='Campus à Bamako' delay={0}/>
-            <StatBadge value='"5"" label='Pôles Académiques' delay={100}/>
-            <StatBadge value='"10+"" label='Filières de Formation' delay={200}/>
-            <StatBadge value='"6"" label='Certificats Métiers Accélérés' delay={300}/>
-            <StatBadge value='"100%"" label='Diplômes reconnus État malien' delay={400}/>
+            <StatBadge value="2" label='Campus à Bamako' delay={0}/>
+            <StatBadge value="5" label='Pôles Académiques' delay={100}/>
+            <StatBadge value="10+" label='Filières de Formation' delay={200}/>
+            <StatBadge value="6" label='Certificats Métiers Accélérés' delay={300}/>
+            <StatBadge value="100%" label='Diplômes reconnus État malien' delay={400}/>
           </div>
         </div>
       </section>
@@ -249,8 +250,8 @@ export default function HomePage({ onOpenApply }) {
             <Reveal>
               <span className='section-badge'><Sparkles size={13}/> Notre Philosophie</span>
               <h2 className='section-title'>
-                « Votre avenir ne se choisit pas seulement.<br/>
-                <span className='text-gold'>Il se construit. »</span>
+                Votre avenir ne se choisit pas seulement.<br/>
+                <span className='text-gold'>Il se construit.</span>
               </h2>
               <p className='section-lead'>
                 À l''Université Horizon, chaque cours, chaque projet et chaque accompagnement
@@ -261,14 +262,14 @@ export default function HomePage({ onOpenApply }) {
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', gap:'1.5rem' }}>
             {[
-              { icon:'🎯', title:'Notre Vision', text:'Devenir le pôle universitaire de référence en Afrique de l'Ouest, reconnu pour la qualité de ses cadres et la rigueur de ses programmes.'", delay:0 },
-              { icon:'🚀', title:'Notre Mission', text:'Délivrer une formation d'excellence articulée autour de l''encadrement rapproché, de la pratique professionnelle et de l''employabilité durable.'", delay:100 },
-              { icon:'⭐', title:'Nos Valeurs', text:'Excellence, Intégrité, Innovation et Solidarité : quatre piliers qui guident chaque décision pédagogique et chaque relation humaine sur nos campus.', delay:200 },
-              { icon:'🤝', title:'Notre Engagement', text:'Un contrat moral avec chaque famille : diplôme reconnu, infrastructures modernes, stages garantis et réseau alumni actif pour votre insertion.', delay:300 },
+              { icon:'target', title:'Notre Vision', text:"Devenir le pôle universitaire de référence en Afrique de l'Ouest, reconnu pour la qualité de ses cadres et la rigueur de ses programmes.", delay:0 },
+              { icon:'rocket', title:'Notre Mission', text:"Délivrer une formation d'excellence articulée autour de l'encadrement rapproché, de la pratique professionnelle et de l'employabilité durable.", delay:100 },
+              { icon:'star', title:'Nos Valeurs', text:'Excellence, Intégrité, Innovation et Solidarité : quatre piliers qui guident chaque décision pédagogique et chaque relation humaine sur nos campus.', delay:200 },
+              { icon:'handshake', title:'Notre Engagement', text:"Un contrat moral avec chaque famille : diplôme reconnu, infrastructures modernes, stages garantis et réseau alumni actif pour votre insertion.", delay:300 },
             ].map(item => (
               <Reveal key={item.title} delay={item.delay}>
                 <div className='card card-hover' style={{ height:'100%' }}>
-                  <div style={{ fontSize:'2rem', marginBottom:'1rem' }}>{item.icon}</div>
+                  <div style={{ marginBottom:'1rem' }}><Icon name={item.icon} size={26} /></div>
                   <h3 style={{ fontSize:'1.25rem', marginBottom:'0.75rem', color:'var(--text-900)' }}>{item.title}</h3>
                   <p style={{ fontSize:'0.9375rem', color:'var(--text-600)', lineHeight:1.7 }}>{item.text}</p>
                 </div>
@@ -293,16 +294,16 @@ export default function HomePage({ onOpenApply }) {
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:'1.5rem' }}>
             {[
-              { icon:'🏆', title:'Enseignement de Qualité', text:'Syllabus actualisés, praticiens d'entreprise et universitaires reconnus forment ensemble une pédagogie d''excellence.'" },
-              { icon:'👥', title:'Encadrement Rapproché', text:'Petits groupes, tuteurs dédiés, disponibilité permanente des enseignants et dispositif de remédiation personnalisé.' },
-              { icon:'💡', title:'Culture de l'Innovation'', text:'Laboratoires équipés, projets digitaux transversaux et initiation aux outils numériques pour toutes les filières.' },
-              { icon:'🌍', title:'Ouverture Internationale', text:'Anglais professionnel intégré, études de cas mondiales et préparation aux certifications internationales reconnues.' },
-              { icon:'🛠️', title:'Approche Pratique & Métier', text:'70 % d'heures pratiques, cas d''entreprises réels, mises en situation chronométrées et stages obligatoires.'" },
-              { icon:'🎓', title:'Accompagnement Professionnel', text:'Pôle Carrières actif, ateliers CV/entretien, job dating annuel et réseau solidaire des 500+ alumni Horizon.' },
+              { icon:'trophy', title:'Enseignement de Qualité', text:"Syllabus actualisés, praticiens d'entreprise et universitaires reconnus forment ensemble une pédagogie d'excellence." },
+              { icon:'users', title:'Encadrement Rapproché', text:'Petits groupes, tuteurs dédiés, disponibilité permanente des enseignants et dispositif de remédiation personnalisé.' },
+              { icon:'bulb', title:"Culture de l'Innovation", text:'Laboratoires équipés, projets digitaux transversaux et initiation aux outils numériques pour toutes les filières.' },
+              { icon:'globe', title:'Ouverture Internationale', text:'Anglais professionnel intégré, études de cas mondiales et préparation aux certifications internationales reconnues.' },
+              { icon:'wrench', title:'Approche Pratique & Métier', text:"70 % d'heures pratiques, cas d'entreprises réels, mises en situation chronométrées et stages obligatoires." },
+              { icon:'graduation', title:'Accompagnement Professionnel', text:"Pôle Carrières actif, ateliers CV/entretien, job dating annuel et réseau solidaire des 500+ alumni Horizon." },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 80}>
                 <div className='card card-hover' style={{ height:'100%' }}>
-                  <div style={{ fontSize:'2rem', marginBottom:'1rem' }}>{item.icon}</div>
+                  <div style={{ marginBottom:'1rem' }}><Icon name={item.icon} size={24} /></div>
                   <h3 style={{ fontSize:'1.125rem', marginBottom:'0.625rem' }}>{item.title}</h3>
                   <p style={{ fontSize:'0.9rem', color:'var(--text-600)', lineHeight:1.7 }}>{item.text}</p>
                 </div>
@@ -364,7 +365,7 @@ export default function HomePage({ onOpenApply }) {
                 <div className='card card-hover card-gold' style={{ height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
                   <div>
                     <div style={{ fontSize:'0.72rem', fontWeight:'800', textTransform:'uppercase', color:'var(--hz-gold-500)', letterSpacing:'0.08em', marginBottom:'1rem' }}>{s.tag}</div>
-                    <p style={{ fontSize:'1rem', fontStyle:'italic', color:'var(--text-600)', lineHeight:1.75, marginBottom:'1.5rem' }}>'"{s.quote}""</p>
+                    <p style={{ fontSize:'1rem', fontStyle:'italic', color:'var(--text-600)', lineHeight:1.75, marginBottom:'1.5rem' }}>{s.quote}</p>
                   </div>
                   <div style={{ display:'flex', alignItems:'center', gap:'12px', paddingTop:'1.25rem', borderTop:'1px solid var(--border-100)' }}>
                     <div style={{ width:'46px', height:'46px', borderRadius:'50%', overflow:'hidden', border:'2px solid var(--hz-gold-500)', flexShrink:0 }}>

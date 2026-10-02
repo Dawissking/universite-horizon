@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { INSTITUTION } from '../data/horizonData';
 import { 
   Mail, Phone, MapPin, Send, CheckCircle2, ShieldCheck, 
-  HelpCircle, MessageSquare, Clock, UserCheck 
+  HelpCircle, MessageSquare, Clock, UserCheck, AlertCircle 
 } from 'lucide-react';
+import { sendMessage } from '../lib/api';
 
 export const ContactSection = () => {
   const [selectedService, setSelectedService] = useState('admissions');
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,9 +29,22 @@ export const ContactSection = () => {
 
   const currentService = services.find(s => s.id === selectedService) || services[0];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setSendError('');
+    try {
+      await sendMessage({
+        ...formData,
+        subject: formData.subject || currentService.label,
+      });
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      setSendError(error?.message || "L'envoi a échoué. Vérifiez votre connexion et réessayez.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -205,13 +221,21 @@ export const ContactSection = () => {
                   </div>
                 </div>
 
+                {sendError && (
+                  <div role="alert" style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '12px', padding: '10px 14px', background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.32)', borderRadius: 'var(--radius-sm)' }}>
+                    <AlertCircle size={16} color="#DC2626" style={{ flexShrink: 0, marginTop: '1px' }} />
+                    <span style={{ fontSize: '0.8125rem', color: '#DC2626' }}>{sendError}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   className="btn btn-gold"
                   style={{ width: '100%', justifyContent: 'center' }}
+                  disabled={sending}
                 >
                   <Send size={18} />
-                  <span>Transmettre au service {currentService.label}</span>
+                  <span>{sending ? 'Transmission…' : `Transmettre au service ${currentService.label}`}</span>
                 </button>
               </form>
             ) : (

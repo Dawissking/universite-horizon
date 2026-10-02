@@ -87,9 +87,9 @@ export const Philosophy = () => {
           </div>
           
           <h2 className="section-title">
-            « Votre avenir ne se choisit pas seulement.<br />
+            Votre avenir ne se choisit pas seulement.<br />
             <span className="text-gold-gradient" style={{ fontFamily: 'var(--font-serif)' }}>
-              Il se construit. »
+              Il se construit.
             </span>
           </h2>
           

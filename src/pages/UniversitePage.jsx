@@ -3,6 +3,7 @@ import { Target, Compass, HeartHandshake, ShieldCheck, CheckCircle2, Users, Glob
 import { INSTITUTION } from '../data/horizonData';
 import CountUp from '../components/CountUp';
 import PageBanner from '../components/PageBanner';
+import Icon from '../components/Icon';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -66,7 +67,7 @@ export default function UniversitePage() {
             <Reveal>
               <span className='section-badge'><Compass size={13}/> Éthique & Philosophie</span>
               <h2 className='section-title'>
-                « Votre avenir ne se choisit pas seulement. <span className='text-gold'>Il se construit. »</span>
+                Votre avenir ne se choisit pas seulement. <span className='text-gold'>Il se construit.</span>
               </h2>
             </Reveal>
           </div>
@@ -140,14 +141,14 @@ export default function UniversitePage() {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:'1.5rem' }}>
             {[
-              { icon:'🎓', title:'Enseignants-Chercheurs', desc:'Docteurs et agrégés combinant rigueur académique et ouverture disciplinaire.' },
-              { icon:'💼', title:"Praticiens d'Entreprise", desc:'Directeurs, experts et consultants en activité partageant leur expérience opérationnelle.' },
-                { icon:'🌐', title:'Experts Internationaux', desc:'Intervenants et conférenciers de la sous-région et de l\'international pour une vision globale.' },
-              { icon:'🤝', title:'Tuteurs & Mentors', desc:"Chaque étudiant dispose d'un tuteur académique dédié pour un suivi personnalisé." },
+      { icon:'graduation', title:'Enseignants-Chercheurs', desc:'Docteurs et agrégés combinant rigueur académique et ouverture disciplinaire.' },
+      { icon:'briefcase', title:"Praticiens d'Entreprise", desc:'Directeurs, experts et consultants en activité partageant leur expérience opérationnelle.' },
+      { icon:'globe', title:'Experts Internationaux', desc:'Intervenants et conférenciers de la sous-région et de l\'international pour une vision globale.' },
+      { icon:'handshake', title:'Tuteurs & Mentors', desc:"Chaque étudiant dispose d'un tuteur académique dédié pour un suivi personnalisé." },
             ].map((item, i) => (
               <Reveal key={i} delay={i*100}>
                 <div className='card card-hover' style={{ height:'100%' }}>
-                  <div style={{ fontSize:'2rem', marginBottom:'1rem' }}>{item.icon}</div>
+                  <div style={{ marginBottom:'1rem' }}><Icon name={item.icon} size={24} /></div>
                   <h3 style={{ fontSize:'1.1rem', marginBottom:'0.625rem' }}>{item.title}</h3>
                   <p style={{ fontSize:'0.9rem', color:'var(--text-600)', lineHeight:1.7 }}>{item.desc}</p>
                 </div>

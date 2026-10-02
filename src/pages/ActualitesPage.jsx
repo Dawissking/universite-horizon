@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, BookOpen, Award, Users, Sparkles } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
+import Icon from '../components/Icon';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -21,7 +22,7 @@ const ACTUALITES = [
     date:'Rentrée 2026',
     title:'Ouverture des dossiers de candidature 2026',
     excerpt:"L'Université Horizon ouvre officiellement sa plateforme de candidature pour toutes ses filières : Licences LMD et Certificats Métiers accélérés. Rejoignez la promotion 2026.",
-    icon:'🎓',
+    icon:'graduation',
     cta:'Candidater maintenant',
     ctaLink:'/admissions'
   },
@@ -31,7 +32,7 @@ const ACTUALITES = [
     date:'Septembre 2026',
     title:'Nouvelle session — Formation Transit Douane & Procédures Portuaires',
     excerpt:'Une nouvelle session intensive de la formation Transit Douane démarre. Places limitées. Contacter le campus Baco Djicoroni Golf pour les inscriptions.',
-    icon:'🚢',
+    icon:'ship',
     cta:'Voir la formation',
     ctaLink:'/formations'
   },
@@ -41,7 +42,7 @@ const ACTUALITES = [
     date:'Septembre 2026',
     title:'Nouvelle session — QHSE & Responsabilité Sociétale (RSE)',
     excerpt:'Devenez un expert certifié en management QHSE (ISO 9001, 14001, 45001). Formation accélérée à intensité professionnelle. Inscription ouverte.',
-    icon:'⚙️',
+    icon:'settings',
     cta:'En savoir plus',
     ctaLink:'/formations'
   },
@@ -49,9 +50,9 @@ const ACTUALITES = [
     id:4,
     type:'Événement', typeColor:'#7C3AED',
     date:'[DATE À FOURNIR]',
-    title:'Horizon Forum 2026 — « Innovation & Emploi au Mali »',
+    title:'Horizon Forum 2026 — Innovation & Emploi au Mali',
     excerpt:"L'Université Horizon organise son forum annuel réunissant professionnels, anciens étudiants et recruteurs pour des conférences, tables rondes et job dating.",
-    icon:'🌍',
+    icon:'globe',
     cta:'En savoir plus',
     ctaLink:'/contact'
   },
@@ -61,7 +62,7 @@ const ACTUALITES = [
     date:'En continu',
       title:"Pôle Carrières — Ateliers CV & Simulation d'Entretien",
     excerpt:'Notre Pôle Carrières organise régulièrement des ateliers pratiques : rédaction de CV professionnel, préparation aux entretiens et stratégies de recherche d\'emploi.',
-    icon:'🤝',
+    icon:'briefcase',
     cta:'Découvrir le campus',
     ctaLink:'/campus'
   },
@@ -71,7 +72,7 @@ const ACTUALITES = [
     date:'[DATE À FOURNIR]',
     title:'Convention avec des entreprises partenaires — [À FOURNIR]',
       excerpt:"L'Université Horizon développe activement son réseau de partenariats pour favoriser les stages et l'insertion professionnelle de ses étudiants.",
-    icon:'🤝',
+    icon:'handshake',
     cta:'Voir nos partenariats',
     ctaLink:'/universite'
   },
@@ -97,7 +98,7 @@ export default function ActualitesPage() {
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:'2rem', marginBottom:'3.5rem' }}>
               <div className='card' style={{ padding:0, overflow:'hidden', borderColor:'var(--hz-gold-border)', boxShadow:'var(--shadow-gold)' }}>
                 <div style={{ background:'linear-gradient(135deg,#0D2240,#15315B)', padding:'2.5rem', position:'relative', overflow:'hidden' }}>
-                  <div style={{ fontSize:'3.5rem', marginBottom:'1rem' }}>🎓</div>
+                  <div style={{ marginBottom:'1rem' }}><Icon name='graduation' size={34} /></div>
                   <span style={{ background:'var(--hz-gold-500)', color:'#071526', fontSize:'0.72rem', fontWeight:'800', padding:'3px 10px', borderRadius:'4px', textTransform:'uppercase', letterSpacing:'0.07em' }}>À LA UNE</span>
                   <h2 style={{ fontSize:'clamp(1.5rem,2.5vw,2rem)', color:'#fff', marginTop:'1rem', marginBottom:'0.75rem', lineHeight:1.2 }}>
                     Candidature 2026 — Dossiers Ouverts
@@ -148,7 +149,7 @@ export default function ActualitesPage() {
                         <Calendar size={13}/> {actu.date}
                       </div>
                     </div>
-                    <div style={{ fontSize:'2rem', marginBottom:'0.75rem' }}>{actu.icon}</div>
+                    <div style={{ marginBottom:'0.75rem' }}><Icon name={actu.icon} size={26} /></div>
                     <h3 style={{ fontSize:'1.125rem', marginBottom:'0.75rem', lineHeight:1.35 }}>{actu.title}</h3>
                     <p style={{ fontSize:'0.875rem', color:'var(--text-600)', lineHeight:1.65 }}>{actu.excerpt}</p>
                   </div>

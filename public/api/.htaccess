@@ -1,0 +1,28 @@
+# ============================================================
+#  UNIVERSITÉ HORIZON — API PHP (dossier /api)
+#  Ce dossier exécute du PHP : seule la liste blanche
+#  ci-dessous est autorisée. Tout le reste est refusé.
+# ============================================================
+
+# --- Fichiers de configuration et sources à ne jamais servir ---
+<FilesMatch "^(config\.php|setup-admin\.php|README\.md)$">
+  Require all denied
+</FilesMatch>
+
+# --- Extensions non autorisées ---
+<FilesMatch "\.(env|ini|log|sql|lock|bak|old|sh|yml|yaml|ts|map|md|swp|swo|save|orig)$">
+  Require all denied
+</FilesMatch>
+
+# --- Fichiers d'éditeur et fichiers temporaires ---
+<FilesMatch "(~$|^\.#|\.orig$|\.save$)">
+  Require all denied
+</FilesMatch>
+
+# --- Pas d'exploration de répertoire ---
+Options -Indexes
+
+# --- Les fichiers temporaires ne doivent jamais être accessibles ---
+<FilesMatch "\.(tmp|temp|log)$">
+  Require all denied
+</FilesMatch>

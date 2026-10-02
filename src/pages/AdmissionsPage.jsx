@@ -3,6 +3,8 @@ import { COURSES } from '../data/horizonData';
 import { CheckCircle2, ArrowRight, ArrowLeft, Upload, Check, ShieldCheck, GraduationCap, Sparkles, Copy, Compass, AlertCircle, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import PageBanner from '../components/PageBanner';
+import Icon from '../components/Icon';
+import { submitApplication, trackApplication, DOC_KEYS, validateDocument } from '../lib/api';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -21,28 +23,70 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
   const [step, setStep] = useState(1);
   const [dossierId, setDossierId] = useState('');
   const [copied, setCopied] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [docErrors, setDocErrors] = useState({});
   const [form, setForm] = useState({
     civility:'M.', firstName:'', lastName:'', email:'', phone:'', nationality:'Malienne',
     courseId: initialCourse?.id || COURSES[0].id, campus:'golf',
       lastDegree:'Baccalauréat', serieBac:'', highSchool:'',
-    docs:{ diploma:false, birthCert:false, idCard:false, photo:false },
-    honor:false
+    docs:{}, honor:false
   });
 
-  const handleNext = () => {
+  /** Sélectionne et valide un fichier pour une pièce du dossier. */
+  const handleDocChange = (key, file) => {
+    setDocErrors((prev) => ({ ...prev, [key]: '' }));
+    if (!file) {
+      setForm((f) => ({ ...f, docs: { ...f.docs, [key]: null } }));
+      return;
+    }
+    const check = validateDocument(file, key);
+    if (!check.ok) {
+      setDocErrors((prev) => ({ ...prev, [key]: check.message }));
+      setForm((f) => ({ ...f, docs: { ...f.docs, [key]: null } }));
+      return;
+    }
+    setForm((f) => ({ ...f, docs: { ...f.docs, [key]: file } }));
+  };
+
+  const handleNext = async () => {
     if (step === 6) {
-      const id = `HZ-2026-${Math.floor(1000+Math.random()*9000)}`;
-      setDossierId(id);
-        const all = JSON.parse(localStorage.getItem('hz_dossiers')||'[]');
-        all.push({ id, applicant:`${form.firstName} ${form.lastName}`, courseTitle:(COURSES.find(c=>c.id===form.courseId)||{}).title||'Formation Horizon', status:'DOSSIER REÇU' });
-      localStorage.setItem('hz_dossiers', JSON.stringify(all));
-      try { confetti({ particleCount:80, spread:70, origin:{y:0.6} }); } catch(e){}
+      setSubmitting(true);
+      setSubmitError('');
+      try {
+        const result = await submitApplication(
+          {
+            civility: form.civility,
+            firstName: form.firstName,
+            lastName: form.lastName,
+            email: form.email,
+            phone: form.phone,
+            nationality: form.nationality,
+            courseId: form.courseId,
+            lastDegree: form.lastDegree,
+            serieBac: form.serieBac,
+            highSchool: form.highSchool,
+          },
+          DOC_KEYS.map(({ key }) => ({ key, file: form.docs[key] }))
+        );
+        setDossierId(result.reference);
+        try { confetti({ particleCount:80, spread:70, origin:{y:0.6} }); } catch(e){}
+        setStep(s => s+1);
+        return;
+      } catch (error) {
+        setSubmitError(
+          error?.message || "Une erreur est survenue. Vérifiez votre connexion et réessayez."
+        );
+        setSubmitting(false);
+        return;
+      }
     }
     setStep(s => s+1);
   };
 
   const canNext = () => {
-    if (step===1) return form.firstName && form.lastName && form.email;
+    if (submitting) return false;
+    if (step===1) return form.firstName && form.lastName && /\S+@\S+\.\S+/.test(form.email);
     if (step===6) return form.honor;
     return true;
   };
@@ -145,16 +189,60 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
           {step===4 && (
             <div>
               <h3 style={{ marginBottom:'0.75rem', fontSize:'1.25rem' }}>04 — Documents Requis</h3>
-              <p style={{ fontSize:'0.875rem', color:'var(--text-400)', marginBottom:'1.5rem' }}>Téléversez vos pièces en PDF ou JPEG (max 5 Mo).</p>
-              <div style={{ display:'flex', flexDirection:'column', gap:'10px' }}>
-                 {[{key:'diploma',label:'Attestation du Baccalauréat ou dernier diplôme'},{key:'birthCert',label:'Extrait d\'Acte de Naissance'},{key:'idCard',label:'Pièce d\'Identité ou Passeport'},{key:'photo',label:'Photo d\'identité récente (fond blanc)'}].map(doc=>{
-                  const up = form.docs[doc.key];
+              <p style={{ fontSize:'0.875rem', color:'var(--text-400)', marginBottom:'1.5rem' }}>
+                Format PDF, JPEG ou PNG. 5 Mo maximum par pièce, 2 Mo pour la photo.
+                Les pièces sont transmises de façon confidentielle au service des Admissions.
+              </p>
+              <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
+                {DOC_KEYS.map(doc => {
+                  const file = form.docs[doc.key];
+                  const err = docErrors[doc.key];
                   return (
-                    <div key={doc.key} style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 16px', borderRadius:'var(--radius-md)', background:'var(--bg-muted)', border:'1px dashed var(--border-200)' }}>
-                      <span style={{ fontSize:'0.875rem', fontWeight:'600' }}>{doc.label}</span>
-                      <button onClick={() => setForm({...form,docs:{...form.docs,[doc.key]:!up}})} className={`btn btn-sm ${up?'btn-outline':'btn-primary'}`}>
-                        {up ? <><Check size={14}/> Validé</> : <><Upload size={14}/> Ajouter</>}
-                      </button>
+                    <div
+                      key={doc.key}
+                      style={{
+                        display:'flex', alignItems:'center', justifyContent:'space-between',
+                        gap:'12px', flexWrap:'wrap',
+                        padding:'12px 16px', borderRadius:'var(--radius-md)',
+                        background: err ? 'rgba(220,38,38,0.06)' : 'var(--bg-muted)',
+                        border: `1px ${err ? 'solid' : 'dashed'} ${err ? 'rgba(220,38,38,0.45)' : 'var(--border-200)'}`
+                      }}
+                    >
+                      <div style={{ minWidth:0, flex:'1 1 240px' }}>
+                        <div style={{ fontSize:'0.875rem', fontWeight:'600' }}>{doc.label}</div>
+                        {file ? (
+                          <div style={{ fontSize:'0.78rem', color:'var(--hz-emerald, #059669)', marginTop:'3px', wordBreak:'break-all' }}>
+                            {file.name} — {(file.size/1024).toFixed(0)} Ko
+                          </div>
+                        ) : err ? (
+                          <div style={{ fontSize:'0.78rem', color:'#DC2626', marginTop:'3px' }}>{err}</div>
+                        ) : (
+                          <div style={{ fontSize:'0.78rem', color:'var(--text-400)', marginTop:'3px' }}>Aucun fichier sélectionné</div>
+                        )}
+                      </div>
+                      <div style={{ display:'flex', gap:'8px', alignItems:'center' }}>
+                        {file && (
+                          <button
+                            type='button'
+                            className='btn btn-outline btn-sm'
+                            onClick={() => handleDocChange(doc.key, null)}
+                            aria-label={`Retirer ${doc.label}`}
+                          >
+                            Retirer
+                          </button>
+                        )}
+                        <label className={`btn btn-sm ${file ? 'btn-outline' : 'btn-primary'}`} style={{ cursor:'pointer' }}>
+                          <Upload size={14}/>
+                          <span>{file ? 'Remplacer' : 'Choisir un fichier'}</span>
+                          <input
+                            type='file'
+                            accept='.pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png'
+                            onChange={e => handleDocChange(doc.key, e.target.files?.[0])}
+                            style={{ display:'none' }}
+                            aria-label={doc.label}
+                          />
+                        </label>
+                      </div>
                     </div>
                   );
                 })}
@@ -170,8 +258,14 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
                 <div><div className='hz-label'>Formation</div><div style={{ fontWeight:'700', color:'var(--hz-gold-500)' }}>{(COURSES.find(c=>c.id===form.courseId)||{}).title}</div></div>
                 <div><div className='hz-label'>Campus</div><div style={{ fontWeight:'600' }}>{form.campus==='golf'?'Campus Baco Djicoroni Golf':'Campus Bamako'}</div></div>
                   <div><div className='hz-label'>Contact</div><div style={{ color:'var(--text-600)' }}>{form.email||'—'} · {form.phone||'—'}</div></div>
+                  <div>
+                    <div className='hz-label'>Pièces jointes</div>
+                    <div style={{ color:'var(--text-600)', fontSize:'0.9rem' }}>
+                      {DOC_KEYS.filter(d => form.docs[d.key]).length} sur {DOC_KEYS.length} document(s) prêt(s) à envoyer
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
           )}
 
           {step===6 && (
@@ -187,6 +281,12 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
                 <ShieldCheck size={18} color='var(--hz-gold-500)' style={{ flexShrink:0 }}/>
                 <span style={{ fontSize:'0.84rem' }}>Traitement sécurisé et confidentiel par le service officiel des Admissions.</span>
               </div>
+              {submitError && (
+                <div role='alert' style={{ display:'flex', gap:'10px', alignItems:'flex-start', marginTop:'1rem', padding:'12px 16px', background:'rgba(220,38,38,0.08)', borderRadius:'var(--radius-sm)', border:'1px solid rgba(220,38,38,0.35)' }}>
+                  <AlertCircle size={18} color='#DC2626' style={{ flexShrink:0, marginTop:'1px' }}/>
+                  <span style={{ fontSize:'0.875rem', color:'#DC2626' }}>{submitError}</span>
+                </div>
+              )}
             </div>
           )}
 
@@ -224,9 +324,11 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
             <button onClick={() => setStep(s=>s-1)} disabled={step===1} className='btn btn-outline btn-sm' style={{ opacity:step===1?0.4:1 }}>
               <ArrowLeft size={16}/> Précédent
             </button>
-            <button onClick={handleNext} disabled={!canNext()} className='btn btn-gold' style={{ opacity:canNext()?1:0.55 }}>
-              {step===6?'Confirmer et Transmettre':'Étape Suivante'} <ArrowRight size={16}/>
-            </button>
+                <button onClick={handleNext} disabled={!canNext()} className='btn btn-gold' style={{ opacity:canNext()?1:0.55 }}>
+                  {step===6
+                    ? (submitting ? 'Transmission en cours…' : 'Confirmer et Transmettre')
+                    : 'Étape Suivante'} <ArrowRight size={16}/>
+                </button>
           </div>
         )}
       </div>
@@ -370,6 +472,7 @@ function OrientationTool({ onOpenApply, onViewCourse }) {
 // ---- PAGE ADMISSIONS ----
 export default function AdmissionsPage({ onOpenApply }) {
   const [trackerCode, setTrackerCode] = useState('');
+  const [trackerEmail, setTrackerEmail] = useState('');
   const [trackerResult, setTrackerResult] = useState(null);
   const [trackerError, setTrackerError] = useState('');
   const [applyOpen, setApplyOpen] = useState(false);
@@ -377,13 +480,22 @@ export default function AdmissionsPage({ onOpenApply }) {
 
   const handleApply = (course=null) => { setSelectedCourseForApply(course); setApplyOpen(true); };
 
-  const handleTracker = () => {
+const handleTracker = async () => {
     const code = trackerCode.trim().toUpperCase();
     if (!code) { setTrackerError('Saisissez votre identifiant de candidature.'); return; }
-      const local = JSON.parse(localStorage.getItem('hz_dossiers')||'[]');
-    const found = local.find(d=>d.id.toUpperCase()===code);
-    if (found) { setTrackerResult({ ...found, stepIdx:2 }); setTrackerError(''); }
-    else { setTrackerError('Aucun dossier trouvé pour cet identifiant.'); setTrackerResult(null); }
+    if (!/\S+@\S+\.\S+/.test(trackerEmail)) {
+      setTrackerError("Renseignez l'adresse e-mail utilisée lors de la candidature.");
+      setTrackerResult(null);
+      return;
+    }
+    setTrackerError('');
+    setTrackerResult(null);
+    try {
+      const data = await trackApplication(code, trackerEmail);
+      setTrackerResult(data.dossier);
+    } catch (error) {
+      setTrackerError(error?.message || 'Aucun dossier trouvé pour cet identifiant.');
+    }
   };
 
     const TRACK_STEPS = ['Dossier créé','Dossier reçu','En vérification','Dossier complet','Décision d\'admission','Inscription & Badge'];
@@ -414,15 +526,15 @@ export default function AdmissionsPage({ onOpenApply }) {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'1.5rem' }}>
             {[
-                { n:'01', title:'Choisir votre filière', desc:"Utilisez notre outil d'orientation ou explorez le catalogue des formations.", icon:'🎯' },
-                { n:'02', title:'Constituer votre dossier', desc:"Rassemblez : diplômes, acte de naissance, pièce d'identité et photos récentes.", icon:'📁' },
-              { n:'03', title:'Candidater en ligne', desc:'Remplissez le formulaire officiel en 7 étapes sur notre plateforme sécurisée.', icon:'🖥️' },
-              { n:'04', title:'Suivi & Commission', desc:"Suivez l'état de votre dossier en temps réel via votre identifiant unique.", icon:'📊' },
-              { n:'05', title:'Inscription & Campus', desc:"Après l'avis favorable, finalisez votre inscription sur l'un de nos deux campus.", icon:'🎓' },
+    { n:'01', title:'Choisir votre filière', desc:"Utilisez notre outil d'orientation ou explorez le catalogue des formations.", icon:'target' },
+    { n:'02', title:'Constituer votre dossier', desc:"Rassemblez : diplômes, acte de naissance, pièce d'identité et photos récentes.", icon:'folder' },
+    { n:'03', title:'Candidater en ligne', desc:'Remplissez le formulaire officiel en 7 étapes sur notre plateforme sécurisée.', icon:'monitor' },
+    { n:'04', title:'Suivi & Commission', desc:"Suivez l'état de votre dossier en temps réel via votre identifiant unique.", icon:'chart' },
+    { n:'05', title:'Inscription & Campus', desc:"Après l'avis favorable, finalisez votre inscription sur l'un de nos deux campus.", icon:'graduation' },
             ].map((item, i) => (
               <Reveal key={i} delay={i*80}>
                 <div className='card card-hover' style={{ textAlign:'center', height:'100%' }}>
-                  <div style={{ fontSize:'2.5rem', marginBottom:'0.75rem' }}>{item.icon}</div>
+                  <div style={{ marginBottom:'0.75rem' }}><Icon name={item.icon} size={28} /></div>
                   <div style={{ fontSize:'2rem', fontWeight:'800', color:'var(--hz-gold-500)', lineHeight:1, marginBottom:'0.5rem' }}>{item.n}</div>
                   <h3 style={{ fontSize:'1.0625rem', marginBottom:'0.625rem' }}>{item.title}</h3>
                   <p style={{ fontSize:'0.875rem', color:'var(--text-600)', lineHeight:1.65 }}>{item.desc}</p>
@@ -507,9 +619,27 @@ export default function AdmissionsPage({ onOpenApply }) {
             </Reveal>
           </div>
           <Reveal delay={100}>
-            <div style={{ maxWidth:'600px', margin:'0 auto 2.5rem' }}>
-              <div style={{ display:'flex', gap:'10px' }}>
-                <input className='hz-input' placeholder='Ex: HZ-2026-1234' value={trackerCode} onChange={e=>{setTrackerCode(e.target.value);setTrackerError('');}} onKeyDown={e=>e.key==='Enter'&&handleTracker()} style={{ flex:1 }}/>
+<div style={{ maxWidth:'600px', margin:'0 auto 2.5rem' }}>
+              <div style={{ display:'flex', gap:'10px', flexWrap:'wrap' }}>
+                <input
+                  className='hz-input'
+                  placeholder='Ex: HZ-2026-ABC123'
+                  aria-label='Identifiant de candidature'
+                  value={trackerCode}
+                  onChange={e=>{setTrackerCode(e.target.value);setTrackerError('');}}
+                  onKeyDown={e=>e.key==='Enter'&&handleTracker()}
+                  style={{ flex:'1 1 200px' }}
+                />
+                <input
+                  className='hz-input'
+                  type='email'
+                  placeholder='Adresse e-mail utilisée'
+                  aria-label='Adresse e-mail de candidature'
+                  value={trackerEmail}
+                  onChange={e=>{setTrackerEmail(e.target.value);setTrackerError('');}}
+                  onKeyDown={e=>e.key==='Enter'&&handleTracker()}
+                  style={{ flex:'1 1 200px' }}
+                />
                 <button onClick={handleTracker} className='btn btn-primary'>Vérifier</button>
               </div>
               {trackerError && <div style={{ color:'var(--hz-red-600)', fontSize:'0.875rem', marginTop:'8px', display:'flex', gap:'6px', alignItems:'center' }}><AlertCircle size={15}/>{trackerError}</div>}
@@ -521,37 +651,55 @@ export default function AdmissionsPage({ onOpenApply }) {
               <div className='card card-gold' style={{ maxWidth:'860px', margin:'0 auto', padding:'2.5rem' }}>
                 <div style={{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:'1rem', marginBottom:'2rem', paddingBottom:'1.5rem', borderBottom:'1px solid var(--border-100)' }}>
                   <div>
-                    <span className='badge badge-official' style={{ marginBottom:'6px' }}>DOSSIER : {trackerResult.id}</span>
-                    <h3 style={{ fontSize:'1.375rem', marginTop:'4px' }}>{trackerResult.applicant}</h3>
-                    <div style={{ color:'var(--hz-gold-500)', fontWeight:'700', fontSize:'0.9375rem' }}>{trackerResult.courseTitle}</div>
+                    <span className='badge badge-official' style={{ marginBottom:'6px' }}>DOSSIER : {trackerResult.reference}</span>
+                    <h3 style={{ fontSize:'1.375rem', marginTop:'4px' }}>{trackerResult.firstName} {trackerResult.lastName}</h3>
+                    <div style={{ color:'var(--hz-gold-500)', fontWeight:'700', fontSize:'0.9375rem' }}>{trackerResult.course || 'Formation à préciser'}</div>
                   </div>
                   <div style={{ background:'var(--bg-muted)', padding:'10px 18px', borderRadius:'var(--radius-md)', textAlign:'right' }}>
                     <div className='hz-label'>Statut actuel</div>
-                    <div style={{ fontWeight:'800', color:'var(--hz-gold-500)' }}>En cours d'instruction</div>
+                    <div style={{ fontWeight:'800', color:'var(--hz-gold-500)' }}>{trackerResult.statusLabel}</div>
+                    {trackerResult.note && (
+                      <div style={{ fontSize:'0.8125rem', color:'var(--text-600)', marginTop:'6px', maxWidth:'260px', textAlign:'left' }}>
+                        {trackerResult.note}
+                      </div>
+                    )}
                   </div>
                 </div>
-                {/* Timeline */}
-                <div style={{ display:'flex', justifyContent:'space-between', gap:'4px', flexWrap:'wrap' }}>
-                  {TRACK_STEPS.map((s, i) => {
-                    const done = i <= (trackerResult.stepIdx||0);
-                    const current = i === (trackerResult.stepIdx||0);
-                    return (
-                      <div key={i} className={`timeline-step ${done?'done':''}`} style={{ flex:'1', minWidth:'90px' }}>
-                        <div style={{
-                          width:'40px', height:'40px', borderRadius:'50%', marginBottom:'8px',
-                          background:done?(current?'var(--hz-gold-500)':'var(--hz-navy-900)'):'var(--bg-muted)',
-                          border:current?'3px solid var(--hz-gold-400)':'1px solid var(--border-200)',
-                          display:'flex', alignItems:'center', justifyContent:'center', color:'#fff',
-                          boxShadow:current?'var(--shadow-gold)':'none',
-                          transition:'all 300ms'
-                        }}>
-                          {done ? <Check size={17}/> : <span style={{ fontSize:'0.84rem', fontWeight:'700', color:'var(--text-400)' }}>{i+1}</span>}
+
+                {trackerResult.documents?.length > 0 && (
+                  <div style={{ marginBottom:'2rem' }}>
+                    <div className='hz-label'>Pièces reçues ({trackerResult.documents.length} sur {DOC_KEYS.length})</div>
+                    <div style={{ display:'flex', gap:'8px', flexWrap:'wrap', marginTop:'8px' }}>
+                      {DOC_KEYS.map(({ key, label }) => {
+                        const received = trackerResult.documents.some(d => d.key === key);
+                        return (
+                          <span key={key} style={{
+                            fontSize:'0.75rem', fontWeight:'700', padding:'4px 10px', borderRadius:'var(--radius-full)',
+                            background: received ? 'rgba(5,150,105,0.1)' : 'var(--bg-muted)',
+                            color: received ? '#059669' : 'var(--text-400)',
+                            border: `1px solid ${received ? 'rgba(5,150,105,0.3)' : 'var(--border-200)'}`
+                          }}>
+                            {received ? 'Reçu' : 'Manquant'} — {label}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {trackerResult.timeline?.length > 0 && (
+                  <div>
+                    <div className='hz-label'>Historique</div>
+                    <div style={{ display:'flex', flexDirection:'column', gap:'8px', marginTop:'8px' }}>
+                      {trackerResult.timeline.map((ev, i) => (
+                        <div key={i} style={{ display:'flex', justifyContent:'space-between', gap:'12px', flexWrap:'wrap', fontSize:'0.8125rem', color:'var(--text-600)', paddingBottom:'8px', borderBottom:'1px solid var(--border-100)' }}>
+                          <span>{ev.note || ev.status}</span>
+                          <span>{new Date(ev.created_at).toLocaleString('fr-FR')}</span>
                         </div>
-                        <div style={{ fontSize:'0.75rem', fontWeight:done?700:500, color:done?'var(--text-900)':'var(--text-400)', lineHeight:1.3 }}>{s}</div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </Reveal>
           )}

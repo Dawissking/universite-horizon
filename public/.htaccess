@@ -64,7 +64,11 @@ ErrorDocument 404 /index.html
 </IfModule>
 
 # --- 7. PROTECTION DE FICHIERS SENSIBLES ---
-<FilesMatch "\.(htaccess|htpasswd|ini|log|env|json|lock|md)$">
+<FilesMatch "\.(htaccess|htpasswd|ini|log|env|json|lock|md|sql|bak|old|sh|yml|yaml|swp|swo|save|orig)$">
+  Require all denied
+</FilesMatch>
+# Fichiers d'éditeur et ~
+<FilesMatch "(^\.|~$|\.orig$|\.save$|\.bak$)">
   Require all denied
 </FilesMatch>
 

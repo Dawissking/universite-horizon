@@ -77,7 +77,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               marginBottom: '0.5rem',
               lineHeight: 1.3
             }}>
-              <span style={{ color: 'var(--hz-gold-primary)' }}>«</span> BÂTISSEZ VOTRE AVENIR DANS L’EXCELLENCE. <span style={{ color: 'var(--hz-gold-primary)' }}>»</span>
+              BÂTISSEZ VOTRE AVENIR DANS L’EXCELLENCE.
             </div>
 
             <div className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="4" style={{
@@ -88,7 +88,7 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
               color: 'var(--text-secondary)',
               marginBottom: '1.75rem'
             }}>
-              « L’Horizon est à Vous. »
+              L’Horizon est à Vous.
             </div>
 
             <p className={`hero-reveal${revealed ? ' revealed' : ''}`} data-delay="5" style={{

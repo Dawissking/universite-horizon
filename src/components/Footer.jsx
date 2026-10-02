@@ -29,10 +29,10 @@ export const Footer = ({ onOpenApply, onOpenPortals }) => (
             </div>
           </div>
           <div style={{ fontFamily:'var(--font-serif)', fontSize:'0.9rem', color:'var(--hz-gold-400)', lineHeight:1.5, marginBottom:'0.5rem' }}>
-            « {INSTITUTION.tagline1} »
+            {INSTITUTION.tagline1}
           </div>
           <div style={{ fontFamily:'var(--font-serif)', fontSize:'0.85rem', fontStyle:'italic', color:'rgba(255,255,255,0.75)', marginBottom:'1.5rem' }}>
-            « {INSTITUTION.tagline2} »
+            {INSTITUTION.tagline2}
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:'8px', padding:'8px 12px', background:'rgba(255,255,255,0.06)', borderRadius:'var(--radius-sm)', border:'1px solid rgba(201,151,38,0.25)' }}>
             <ShieldCheck size={16} color="var(--hz-gold-500)"/>

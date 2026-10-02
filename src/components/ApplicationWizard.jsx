@@ -5,6 +5,7 @@ import {
   ShieldCheck, AlertCircle, X, Sparkles, Copy, Check 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { submitApplication, DOC_KEYS, validateDocument } from '../lib/api';
 
 export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracker }) => {
   const [step, setStep] = useState(1);
@@ -28,16 +29,31 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
     serieBac: 'TSS',
     highSchool: '',
     yearGraduation: '2026',
-    // Étape 4 : Documents (fichiers simulés)
-    documents: {
-      diploma: false,
-      birthCert: false,
-      idCard: false,
-      photo: false
-    },
+    // Étape 4 : Documents (fichiers réels)
+    documents: {},
     // Étape 5 & 6 : Engagement
     honorDeclaration: false
   });
+
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [docErrors, setDocErrors] = useState({});
+
+  /** Sélectionne et valide un fichier pour une pièce du dossier. */
+  const handleDocChange = (key, file) => {
+    setDocErrors((prev) => ({ ...prev, [key]: '' }));
+    if (!file) {
+      setFormData((f) => ({ ...f, documents: { ...f.documents, [key]: null } }));
+      return;
+    }
+    const check = validateDocument(file, key);
+    if (!check.ok) {
+      setDocErrors((prev) => ({ ...prev, [key]: check.message }));
+      setFormData((f) => ({ ...f, documents: { ...f.documents, [key]: null } }));
+      return;
+    }
+    setFormData((f) => ({ ...f, documents: { ...f.documents, [key]: file } }));
+  };
 
   useEffect(() => {
     if (initialCourse) {
@@ -59,32 +75,40 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
 
   const handleNext = () => {
     if (step === 6) {
-      // Générer le numéro de dossier unique
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const generatedId = `HZ-2026-${randomNum}`;
-      setDossierId(generatedId);
-      
-      // Sauvegarder dans le localStorage pour permettre le suivi
-      const existingDossiers = JSON.parse(localStorage.getItem('hz_dossiers') || '[]');
-      existingDossiers.push({
-        id: generatedId,
-        date: new Date().toLocaleDateString('fr-FR'),
-        applicant: `${formData.firstName} ${formData.lastName}`,
-        courseTitle: (COURSES.find(c => c.id === formData.courseId) || {}).title || 'Formation Horizon',
-        status: 'DOSSIER REÇU'
-      });
-      localStorage.setItem('hz_dossiers', JSON.stringify(existingDossiers));
-
-      // Lancer confettis célébrant l'ambition de l'étudiant
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 }
+      setSubmitting(true);
+      setSubmitError('');
+      submitApplication(
+        {
+          civility: formData.civility,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          birthDate: formData.birthDate,
+          nationality: formData.nationality,
+          courseId: formData.courseId,
+          lastDegree: formData.lastDegree,
+          serieBac: formData.serieBac,
+          highSchool: formData.highSchool,
+        },
+        DOC_KEYS.map(({ key }) => ({ key, file: formData.documents[key] }))
+      )
+        .then((result) => {
+          setDossierId(result.reference);
+          try {
+            confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+          } catch (e) {
+            // Confettis indisponibles : la candidature est déjà enregistrée
+          }
+          setStep(prev => prev + 1);
+        })
+        .catch((error) => {
+          setSubmitError(
+            error?.message || "Une erreur est survenue. Vérifiez votre connexion et réessayez."
+          );
+          setSubmitting(false);
         });
-      } catch (e) {
-        // Fallback sans confetti
-      }
+      return;
     }
     setStep(prev => prev + 1);
   };
@@ -358,13 +382,9 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {[
-                  { key: 'diploma', label: "Attestation du Baccalauréat ou dernier diplôme" },
-                  { key: 'birthCert', label: "Copie de l'Extrait d'Acte de Naissance" },
-                  { key: 'idCard', label: "Copie de la Pièce d'Identité ou Passeport" },
-                  { key: 'photo', label: "Photo d'identité récente (fond blanc)" }
-                ].map((doc) => {
-                  const isUploaded = formData.documents[doc.key];
+                {DOC_KEYS.map((doc) => {
+                  const file = formData.documents[doc.key];
+                  const err = docErrors[doc.key];
                   return (
                     <div
                       key={doc.key}
@@ -372,38 +392,59 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
+                        gap: '12px',
+                        flexWrap: 'wrap',
                         padding: '12px 16px',
                         borderRadius: 'var(--radius-md)',
-                        background: 'var(--bg-main)',
-                        border: '1px dashed var(--border-medium)'
+                        background: err ? 'rgba(220,38,38,0.06)' : 'var(--bg-main)',
+                        border: `1px ${err ? 'solid' : 'dashed'} ${err ? 'rgba(220,38,38,0.45)' : 'var(--border-medium)'}`
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <FileText size={18} color="var(--hz-gold-primary)" />
-                        <span style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-primary)' }}>
-                          {doc.label}
-                        </span>
+                      <div style={{ minWidth: 0, flex: '1 1 240px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <FileText size={18} color="var(--hz-gold-primary)" style={{ flexShrink: 0 }} />
+                          <span style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-primary)' }}>
+                            {doc.label}
+                          </span>
+                        </div>
+                        {file ? (
+                          <div style={{ fontSize: '0.78rem', color: '#059669', marginTop: '5px', marginLeft: '28px', wordBreak: 'break-all' }}>
+                            {file.name} — {(file.size / 1024).toFixed(0)} Ko
+                          </div>
+                        ) : err ? (
+                          <div style={{ fontSize: '0.78rem', color: '#DC2626', marginTop: '5px', marginLeft: '28px' }}>
+                            {err}
+                          </div>
+                        ) : (
+                          <div style={{ fontSize: '0.78rem', color: 'var(--text-400)', marginTop: '5px', marginLeft: '28px' }}>
+                            Aucun fichier sélectionné
+                          </div>
+                        )}
                       </div>
 
-                      <button
-                        onClick={() => setFormData({
-                          ...formData,
-                          documents: { ...formData.documents, [doc.key]: !isUploaded }
-                        })}
-                        className={isUploaded ? "btn btn-secondary btn-sm" : "btn btn-primary btn-sm"}
-                      >
-                        {isUploaded ? (
-                          <>
-                            <Check size={14} color="#10B981" />
-                            <span>Téléversé (Fichier validé)</span>
-                          </>
-                        ) : (
-                          <>
-                            <Upload size={14} />
-                            <span>Ajouter fichier</span>
-                          </>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        {file && (
+                          <button
+                            type="button"
+                            onClick={() => handleDocChange(doc.key, null)}
+                            className="btn btn-secondary btn-sm"
+                            aria-label={`Retirer ${doc.label}`}
+                          >
+                            Retirer
+                          </button>
                         )}
-                      </button>
+                        <label className={`btn btn-sm ${file ? 'btn-outline' : 'btn-primary'}`} style={{ cursor: 'pointer' }}>
+                          <Upload size={14} />
+                          <span>{file ? 'Remplacer' : 'Choisir un fichier'}</span>
+                          <input
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                            onChange={(e) => handleDocChange(doc.key, e.target.files?.[0])}
+                            style={{ display: 'none' }}
+                            aria-label={doc.label}
+                          />
+                        </label>
+                      </div>
                     </div>
                   );
                 })}
@@ -487,6 +528,25 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
                   Traitement garanti sécurisé et confidentiel par le service officiel des admissions.
                 </span>
               </div>
+
+              {submitError && (
+                <div
+                  role="alert"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                    marginTop: '1rem',
+                    padding: '12px 16px',
+                    background: 'rgba(220,38,38,0.08)',
+                    borderRadius: 'var(--radius-sm)',
+                    border: '1px solid rgba(220,38,38,0.35)'
+                  }}
+                >
+                  <AlertCircle size={18} color="#DC2626" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <span style={{ fontSize: '0.875rem', color: '#DC2626' }}>{submitError}</span>
+                </div>
+              )}
             </div>
           )}
 
@@ -581,10 +641,10 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
 
             <button
               onClick={handleNext}
-              disabled={step === 6 && !formData.honorDeclaration}
+              disabled={submitting || (step === 6 && !formData.honorDeclaration)}
               className="btn btn-gold"
             >
-              <span>{step === 6 ? "Confirmer et Transmettre" : "Étape Suivante"}</span>
+              <span>{step === 6 ? (submitting ? "Transmission en cours…" : "Confirmer et Transmettre") : "Étape Suivante"}</span>
               <ArrowRight size={16} />
             </button>
           </div>

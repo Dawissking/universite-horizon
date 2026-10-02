@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { INSTITUTION } from '../data/horizonData';
 import { MapPin, Phone, Clock, GraduationCap, CheckCircle2, ArrowRight } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
+import Icon from '../components/Icon';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -103,16 +104,16 @@ export default function CampusPage({ onOpenApply }) {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:'1.5rem' }}>
             {[
-              { emoji:'📚', title:'Bibliothèque Numérique', desc:'Accès à une bibliothèque digitale de ressources académiques, manuels professionnels et bases de données scientifiques.' },
-              { emoji:'💻', title:'Laboratoires Informatiques', desc:'Postes informatiques récents, connexion haut-débit, logiciels professionnels sous licence et infrastructure cloud.' },
-              { emoji:'🤝', title:'Association des Étudiants', desc:'Bureau des étudiants actif, clubs thématiques, événements culturels et solidarité intraprofessionnelle.' },
-              { emoji:'🎯', title:'Pôle Carrières', desc:"Accompagnement à l'insertion : CV, simulation d'entretien, job dating annuel et réseau alumni solidaire.", },
-              { emoji:'🏆', title:'Compétitions & Prix', desc:'Olympiades académiques, concours professionnels et challenges innovants récompensant les meilleurs étudiants Horizon.' },
-              { emoji:'🌍', title:'Événements & Conférences', desc:"Interventions régulières d'experts nationaux et internationaux, tables rondes et Horizon Forum annuel.", },
+              { icon:'library', title:'Bibliothèque Numérique', desc:'Accès à une bibliothèque digitale de ressources académiques, manuels professionnels et bases de données scientifiques.' },
+              { icon:'laptop', title:'Laboratoires Informatiques', desc:'Postes informatiques récents, connexion haut-débit, logiciels professionnels sous licence et infrastructure cloud.' },
+              { icon:'handshake', title:'Association des Étudiants', desc:'Bureau des étudiants actif, clubs thématiques, événements culturels et solidarité intraprofessionnelle.' },
+              { icon:'target', title:'Pôle Carrières', desc:"Accompagnement à l'insertion : CV, simulation d'entretien, job dating annuel et réseau alumni solidaire." },
+              { icon:'trophy', title:'Compétitions & Prix', desc:'Olympiades académiques, concours professionnels et challenges innovants récompensant les meilleurs étudiants Horizon.' },
+              { icon:'globe', title:'Événements & Conférences', desc:"Interventions régulières d'experts nationaux et internationaux, tables rondes et Horizon Forum annuel." },
             ].map((item, i) => (
               <Reveal key={i} delay={i*70}>
                 <div className='card card-hover' style={{ height:'100%' }}>
-                  <div style={{ fontSize:'2.25rem', marginBottom:'1rem' }}>{item.emoji}</div>
+                  <div style={{ marginBottom:'1rem' }}><Icon name={item.icon} size={24} /></div>
                   <h3 style={{ fontSize:'1.1rem', marginBottom:'0.625rem' }}>{item.title}</h3>
                   <p style={{ fontSize:'0.875rem', color:'var(--text-600)', lineHeight:1.7 }}>{item.desc}</p>
                 </div>
