@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DOMAINS, COURSES } from '../data/horizonData';
 import { 
-  Cpu, TrendingUp, PieChart, Palette, Scale, ArrowRight, 
+  Cpu, TrendingUp, PieChart, Palette, Scale, HeartPulse, ArrowRight, 
   BookOpen, CheckCircle, Sparkles, Layers 
 } from 'lucide-react';
 
@@ -10,7 +10,8 @@ const iconMap = {
   TrendingUp,
   PieChart,
   Palette,
-  Scale
+  Scale,
+  HeartPulse
 };
 
 export const DomainsSection = ({ onSelectDomain, onOpenDetails }) => {

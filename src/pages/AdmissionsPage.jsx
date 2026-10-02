@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { COURSES } from '../data/horizonData';
 import { CheckCircle2, ArrowRight, ArrowLeft, Upload, Check, ShieldCheck, GraduationCap, Sparkles, Copy, Compass, AlertCircle, RotateCcw } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import PageBanner from '../components/PageBanner';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -249,6 +249,7 @@ const QUESTIONS = [
     {label:'Droit & Institutions',value:'droit'},
     {label:'Communication & Médias',value:'comm'},
     {label:'Action humanitaire & ONG',value:'humanitaire'},
+    {label:'Santé & Soins aux populations',value:'sante'},
     {label:'Sécurité, Environnement & QHSE',value:'qhse'},
   ]},
   { id:'duration', title:'Format souhaité ?', type:'single', options:[
@@ -267,6 +268,7 @@ function computeProfile(answers) {
   else if (interests.includes('transit') || interests.includes('humanitaire')) courses = COURSES.filter(c=>c.domainId==='management-eco');
   else if (interests.includes('droit')) courses = COURSES.filter(c=>c.domainId==='droit');
   else if (interests.includes('comm')) courses = COURSES.filter(c=>c.domainId==='arts-comm');
+  else if (interests.includes('sante')) courses = COURSES.filter(c=>c.domainId==='sante');
   else if (interests.includes('qhse')) courses = COURSES.filter(c=>c.id==='fa-qhse');
   else courses = COURSES.slice(0, 3);
   if (duration==='court') { const acc=COURSES.filter(c=>c.type==='accelerated'); if(acc.length) courses=acc.slice(0,3); }
@@ -389,27 +391,17 @@ export default function AdmissionsPage({ onOpenApply }) {
   return (
     <div className='page-enter'>
       {/* BANDEAU */}
-      <section style={{ background:'linear-gradient(135deg,#0D2240,#15315B)', padding:'4.5rem 0', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize:'40px 40px', pointerEvents:'none' }}/>
-        <div className='hz-container' style={{ position:'relative', zIndex:1 }}>
-          <div className='animate-fadeInUp'>
-            <div style={{ display:'flex', alignItems:'center', gap:'8px', marginBottom:'1rem' }}>
-              <Link to='/' style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.875rem' }}>Accueil</Link>
-              <span style={{ color:'rgba(255,255,255,0.3)' }}>/</span>
-              <span style={{ color:'var(--hz-gold-400)', fontSize:'0.875rem', fontWeight:'600' }}>Admissions</span>
-            </div>
-            <h1 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(2rem,4vw,3rem)', color:'#fff', marginBottom:'1rem' }}>
-              Admissions & <span style={{ color:'var(--hz-gold-400)' }}>Candidature</span>
-            </h1>
-            <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Toutes les informations et outils pour intégrer l'Université Horizon et bâtir votre avenir dans l'excellence.
-            </p>
-            <button onClick={() => handleApply()} className='btn btn-gold' style={{ marginTop:'1.5rem' }}>
-              <GraduationCap size={18}/> Candidater en ligne maintenant
-            </button>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        image='/assets/graduates.jpeg'
+        breadcrumb='Admissions'
+        title='Admissions &'
+        highlight='Candidature'
+        description="Toutes les informations et outils pour intégrer l'Université Horizon et bâtir votre avenir dans l'excellence."
+      >
+        <button onClick={() => handleApply()} className='btn btn-gold' style={{ marginTop: '1.5rem' }}>
+          <GraduationCap size={18}/> Candidater en ligne maintenant
+        </button>
+      </PageBanner>
 
       {/* ÉTAPES D'ADMISSION */}
       <section className='hz-section' style={{ background:'var(--bg-page)' }}>

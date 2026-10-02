@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { INSTITUTION } from '../data/horizonData';
 import { Phone, Mail, MapPin, MessageCircle, Clock, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { FAQ } from '../data/horizonData';
+import PageBanner from '../components/PageBanner';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -101,24 +101,13 @@ export default function ContactPage() {
     <div className='page-enter'>
 
       {/* BANDEAU */}
-      <section style={{ background:'linear-gradient(135deg,#0D2240,#15315B)', padding:'4.5rem 0', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize:'40px 40px', pointerEvents:'none' }}/>
-        <div className='hz-container' style={{ position:'relative', zIndex:1 }}>
-          <div className='animate-fadeInUp'>
-            <div style={{ display:'flex', alignItems:'center', gap:'8px', marginBottom:'1rem' }}>
-              <Link to='/' style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.875rem' }}>Accueil</Link>
-              <span style={{ color:'rgba(255,255,255,0.3)' }}>/</span>
-              <span style={{ color:'var(--hz-gold-400)', fontSize:'0.875rem', fontWeight:'600' }}>Contact</span>
-            </div>
-            <h1 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(2rem,4vw,3rem)', color:'#fff', marginBottom:'1rem' }}>
-              Contactez-<span style={{ color:'var(--hz-gold-400)' }}>Nous</span>
-            </h1>
-            <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'540px', lineHeight:1.7 }}>
-              Notre équipe est disponible pour répondre à toutes vos questions, vous orienter et vous accompagner dans votre projet universitaire.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        image='/assets/Pro.jpeg'
+        breadcrumb='Contact'
+        title='Contactez-'
+        highlight='Nous'
+        description="Notre équipe est disponible pour répondre à toutes vos questions, vous orienter et vous accompagner dans votre projet universitaire."
+      />
 
       {/* COORDONNÉES */}
       <section className='hz-section' style={{ background:'var(--bg-page)' }}>

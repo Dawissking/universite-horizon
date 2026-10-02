@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Pas de zones privées
+Disallow: /dist/
+Disallow: /src/
+
+Sitemap: https://universite-horizon.ml/sitemap.xml

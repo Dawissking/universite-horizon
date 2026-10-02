@@ -1,0 +1,72 @@
+# ============================================================
+#  UNIVERSITÉ HORIZON — Configuration Apache / LiteSpeed
+#  Déploiement Hostinger (hPanel / public_html)
+#  Site : React SPA (Vite) avec React Router (BrowserRouter)
+# ============================================================
+
+# --- 1. REDIRECTION SPA : toutes les routes -> index.html ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force le/www et le HTTPS en production (décommenter une fois le domaine actif)
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+  # Ne pas réécrire les fichiers/dossiers existants (assets, images, etc.)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# --- 2. PAGE D'ERREUR PERSONNALISÉE ---
+ErrorDocument 404 /index.html
+
+# --- 3. COMPRESSION GZIP ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# --- 4. TYPES MIME ---
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType image/jpeg .jpeg .jpg
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# --- 5. EN-TÊTES DE SÉCURITÉ ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# --- 6. CACHE DES ASSETS (fichiers hachés + images) ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType image/jpeg             "access plus 6 months"
+  ExpiresByType image/png              "access plus 6 months"
+  ExpiresByType image/webp             "access plus 6 months"
+  ExpiresByType image/svg+xml          "access plus 6 months"
+  ExpiresByType font/woff2             "access plus 1 year"
+  # index.html ne doit jamais être mis en cache
+  ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
+
+# --- 7. PROTECTION DE FICHIERS SENSIBLES ---
+<FilesMatch "\.(htaccess|htpasswd|ini|log|env|json|lock|md)$">
+  Require all denied
+</FilesMatch>
+
+# --- 8. INDEX PAR DÉFAUT ---
+DirectoryIndex index.html

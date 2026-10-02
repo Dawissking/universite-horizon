@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { COURSES, DOMAINS } from '../data/horizonData';
 import { Search, BookOpen, ArrowRight, X, CheckCircle, GraduationCap, Filter } from 'lucide-react';
+import PageBanner from '../components/PageBanner';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -32,24 +32,13 @@ export default function FormationsPage({ onOpenApply }) {
     <div className='page-enter'>
 
       {/* BANDEAU */}
-      <section style={{ background:'linear-gradient(135deg,#0D2240,#15315B)', padding:'4.5rem 0', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize:'40px 40px', pointerEvents:'none' }}/>
-        <div className='hz-container' style={{ position:'relative', zIndex:1 }}>
-          <div className='animate-fadeInUp'>
-            <div style={{ display:'flex', alignItems:'center', gap:'8px', marginBottom:'1rem' }}>
-              <Link to='/' style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.875rem' }}>Accueil</Link>
-              <span style={{ color:'rgba(255,255,255,0.3)' }}>/</span>
-              <span style={{ color:'var(--hz-gold-400)', fontSize:'0.875rem', fontWeight:'600' }}>Formations</span>
-            </div>
-            <h1 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(2rem,4vw,3rem)', color:'#fff', marginBottom:'1rem' }}>
-              Nos <span style={{ color:'var(--hz-gold-400)' }}>Formations</span>
-            </h1>
-            <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageBanner
+        image='/assets/Etudiant_Informatique.jpeg'
+        breadcrumb='Formations'
+        title='Nos'
+        highlight='Formations'
+        description="Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
+      />
 
       {/* DOMAINES */}
       <section style={{ background:'var(--bg-card)', borderBottom:'1px solid var(--border-100)', padding:'2.5rem 0' }}>

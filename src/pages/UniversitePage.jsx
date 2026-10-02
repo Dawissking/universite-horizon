@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Target, Compass, HeartHandshake, ShieldCheck, CheckCircle2, Users, Globe, Award, Cpu, MapPin, Phone, Mail } from 'lucide-react';
 import { INSTITUTION } from '../data/horizonData';
 import CountUp from '../components/CountUp';
+import PageBanner from '../components/PageBanner';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -50,25 +50,14 @@ export default function UniversitePage() {
   return (
     <div className='page-enter'>
 
-      {/* Bandeau Page */}
-      <section style={{ background:'linear-gradient(135deg,#0D2240,#15315B)', padding:'4.5rem 0', position:'relative', overflow:'hidden' }}>
-        <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize:'40px 40px', pointerEvents:'none' }}/>
-        <div className='hz-container' style={{ position:'relative', zIndex:1 }}>
-          <div className='animate-fadeInUp'>
-            <div style={{ display:'flex', alignItems:'center', gap:'8px', marginBottom:'1rem' }}>
-              <Link to='/' style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.875rem' }}>Accueil</Link>
-              <span style={{ color:'rgba(255,255,255,0.3)' }}>/</span>
-              <span style={{ color:'var(--hz-gold-400)', fontSize:'0.875rem', fontWeight:'600' }}>Université</span>
-            </div>
-            <h1 style={{ fontFamily:'var(--font-serif)', fontSize:'clamp(2rem,4vw,3rem)', color:'#fff', marginBottom:'1rem' }}>
-              L'Université <span style={{ color:'var(--hz-gold-400)' }}>Horizon</span>
-            </h1>
-            <p style={{ fontSize:'1.0625rem', color:'rgba(255,255,255,0.78)', maxWidth:'580px', lineHeight:1.7 }}>
-              Une institution d'enseignement supérieur fondée sur l'excellence académique, l'encadrement humain et l'ouverture sur le monde.
-            </p>
-          </div>
-        </div>
-      </section>
+{/* Bandeau Page */}
+      <PageBanner
+        image='/assets/campus_students.jpeg'
+        breadcrumb='Université'
+        title="L'Université"
+        highlight='Horizon'
+        description="Une institution d'enseignement supérieur fondée sur l'excellence académique, l'encadrement humain et l'ouverture sur le monde."
+      />
 
       {/* PHILOSOPHIE INTERACTIVE */}
       <section className='hz-section' style={{ background:'var(--bg-page)' }}>

@@ -195,7 +195,7 @@ export default function HomePage({ onOpenApply }) {
                   boxShadow:'var(--shadow-md)', display:'flex', alignItems:'center', gap:'10px', zIndex:2
                 }}>
                   <div style={{ width:'34px', height:'34px', borderRadius:'8px', background:'var(--hz-gold-bg)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                    <Sparkles size={16} color='"var(--hz-gold-500)""/>
+                    <Sparkles size={16} color="var(--hz-gold-500)"/>
                   </div>
                   <div>
                     <div style={{ fontSize:'0.875rem', fontWeight:'800' }}>2 Campus</div>
@@ -211,7 +211,7 @@ export default function HomePage({ onOpenApply }) {
                   boxShadow:'var(--shadow-gold)', display:'flex', alignItems:'center', gap:'12px', zIndex:2
                 }}>
                   <div style={{ width:'38px', height:'38px', borderRadius:'50%', background:'linear-gradient(135deg,#0D2240,#15315B)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                    <GraduationCap size={20} color='"var(--hz-gold-400)""/>
+                    <GraduationCap size={20} color="var(--hz-gold-400)"/>
                   </div>
                   <div>
                     <div style={{ fontSize:'0.875rem', fontWeight:'800' }}>LMD + Certificats Métiers</div>
@@ -357,7 +357,7 @@ export default function HomePage({ onOpenApply }) {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:'2rem' }}>
             {[
               { quote:'L'encadrement rapproché et les projets pratiques m''ont permis de créer ma première app mobile avant même d''obtenir mon diplôme.'", author:'Fatoumata S.', role:'Diplômée — Licence Génie Logiciel', img:'/assets/student_female.jpeg', tag:'Sciences & Tech' },
-              { quote:'La formation en transit douane m'a ouvert les portes d''un cabinet agréé. Apprendre sur des cas concrets maliens fait toute la différence.'", author:'Ibrahim T.', role:'Certifié — Transit Douane', img:'/assets/student_grad.jpeg', tag:'Formation Accélérée' },
+              { quote:'La formation en transit douane m'a ouvert les portes d''un cabinet agréé. Apprendre sur des cas concrets maliens fait toute la différence.'", author:'Ibrahim T.', role:'Certifié — Transit Douane', img:'/assets/Etudiant_Informatique.jpeg', tag:'Formation Accélérée' },
               { quote:'Voir nos camarades intégrés dans les grandes institutions du pays donne tout son sens à « Bâtissez votre avenir dans l'Excellence ».'", author:'Promotion Horizon', role:'Cérémonie de Diplômes', img:'/assets/graduates.jpeg', tag:'Réussite Alumni' },
             ].map((s, i) => (
               <Reveal key={i} delay={i * 120}>

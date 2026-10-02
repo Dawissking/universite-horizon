@@ -106,6 +106,15 @@ export const DOMAINS = [
     icon:        "Scale",
     description: "Droit des affaires OHADA, droit public, carrières juridiques et diplomatiques.",
     programs:    "Droit des Affaires, Droit Public, Sciences Politiques"
+  },
+  {
+    id:          "sante",
+    name:        "Sciences de la Santé",
+    badge:       "Pôle Vitalité",
+    color:       "#0E9F6E",
+    icon:        "HeartPulse",
+    description: "Former des professionnels de santé de qualité : soignants, sages-femmes, techniciens de laboratoire et gestionnaires hospitaliers.",
+    programs:    "Infirmier Obstétricien, Sage-Femme, Biologie Médicale, Labo Pharmacie"
   }
 ];
 
@@ -263,6 +272,98 @@ export const COURSES = [
     objectives: "Former des stratèges de la communication capables de piloter l'image de marque et les campagnes digitales.",
     skills: ["Stratégie de marque", "Community Management", "Production audiovisuelle", "Relations presse"],
     careers: ["Responsable communication", "Social Media Manager", "Attaché de presse", "Concepteur de campagnes"]
+  },
+  {
+    id: "lic-gesta",
+    title: "Licence — Gestion des Entreprises et des Administrations (G.E.S.T.A.)",
+    domainId: "management-eco",
+    domainName: "Management & Économie",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Stages en entreprise et administration",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Former des cadres capables de piloter la gestion d'entreprise et la conduite des affaires publiques dans un contexte africain.",
+    skills: ["Management & Organisation", "Comptabilité analytique", "Finances publiques", "Droit des affaires & marchés publics", "Ressources humaines"],
+    careers: ["Cadre d'entreprise", "Attaché d'administration", "Gestionnaire de budgets", "Chargé de méthodes & opérations"]
+  },
+
+  // FILIÈRES SANTÉ — SCIENCES DE LA SANTÉ
+  {
+    id: "lic-infirmier-obstetricien",
+    title: "Licence — Infirmier Obstétricien (IFO)",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Stages cliniques hospitaliers",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat (série scientifique ou toutes séries)",
+    objectives: "Former des infirmiers obstétriciens capables d'assurer le suivi de la grossesse, l'accouchement, le post-partum et les soins néonatals de base.",
+    skills: ["Sciences obstétricales", "Suivi de grossesse & gynécologie", "Soins néonatals", "Urgences obstétricales", "Éducation sanitaire"],
+    careers: ["Infirmier obstétricien", "Accoucheur / Accoucheuse", "Soignant en matemité", "Coordinateur de programme de santé maternelle"]
+  },
+  {
+    id: "lic-sage-femme",
+    title: "Licence — Sage-Femme (Maîtrise en Maïeutique)",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Clinique et simulation obstétricale",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat (série scientifique ou toutes séries)",
+    objectives: "Former des sages-femmes capables d'assurer la consultations prénatale, l'accouchement, le suivi post-natal et le dépistage précoce.",
+    skills: ["Consultation prénatale", "Obstétrique & gynécologie", "Suivi post-partum & soins néonatals", "Allaitement & nutrition maternelle", "Planning familial"],
+    careers: ["Sage-femme", "Accoucheuse", "Conseillère en santé maternelle", "Coordinateur de centre de santé"]
+  },
+  {
+    id: "lic-sante-publique",
+    title: "Licence — Santé Publique & Épidémiologie",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Stage sur le terrain et enforcement",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat (série scientifique ou toutes séries)",
+    objectives: "Former des spécialistes de la santé des populations : prévention, surveillance épidémiologique, promotion de la santé et politiques sanitaires.",
+    skills: ["Épidémiologie", "Biostatistique", "Santé publique & promotion", "Surveillance des maladies", "Gestion de programmes sanitaires"],
+    careers: ["Épidémiologiste", "Chargé de programmes de santé", "Agent de promotion de la santé", "Consultant en politiques sanitaires"]
+  },
+  {
+    id: "lic-biologie-medicale",
+    title: "Licence — Biologie Médicale & Analyses Cliniques",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Laboratoire et stages hospitaliers",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat série scientifique ou toutes séries",
+    objectives: "Former des techniciens de laboratoire capables d'analyser les échantillons biologiques et de contribuer au diagnostic médical.",
+    skills: ["Hématologie & Biochimie", "Microbiologie & Parasitologie", "Immunologie & Sérologie", "Contrôle qualité", "Biologie du laboratoire"],
+    careers: ["Technicien de laboratoire", "Analyste biologique", "Contrôleur qualité", "Chercheur en biologie médicale"]
+  },
+  {
+    id: "lic-labo-pharmacie",
+    title: "Licence — Laboratoire de Pharmacie & Dispensation",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Laboratoire pharmaceutique et officine",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat (série scientifique ou toutes séries)",
+    objectives: "Former des préparateurs en pharmacie capables d'assurer la dispensation, le stockage des médicaments et le conseil pharmaceutique.",
+    skills: ["Pharmacognosie", "Chimie pharmaceutique", "Pharmacie clinique", "Dispensation & Conseil", "Réglementation pharmaceutique"],
+    careers: ["Préparateur en pharmacie", "Responsable d'officine", "Gestionnaire de stock pharmaceutique", "Conseiller en pharmacie"]
   }
 ];
 

@@ -44,6 +44,7 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
         { label: 'Droit, Justice & Institutions politiques', value: 'droit' },
         { label: 'Communication, Médias & Création graphique', value: 'comm' },
         { label: 'Action humanitaire, Solidarité & ONG', value: 'humanitaire' },
+        { label: 'Santé, Soins & Bien-être des populations', value: 'sante' },
         { label: 'Hygiène, Sécurité & Environnement (QHSE)', value: 'qhse' }
       ]
     },
@@ -58,6 +59,7 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
         { label: 'Sciences économiques & Comptabilité', value: 'eco' },
         { label: 'Français, Philosophie & Expression écrite', value: 'litteraire' },
         { label: 'Technologies, Informatique & Pratique sur machine', value: 'info' },
+        { label: 'Sciences de la vie, Biologie & Anatomie', value: 'bio' },
         { label: 'Sciences humaines, Histoire & Société', value: 'socio' }
       ]
     },
@@ -165,6 +167,9 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
     if (interests.includes('tech') || answers.subjects.includes('info')) {
       recommendedDomain = DOMAINS.find(d => d.id === 'sciences-tech') || DOMAINS[0];
       recommendedCourses = COURSES.filter(c => c.domainId === 'sciences-tech');
+    } else if (interests.includes('sante') || answers.subjects.includes('bio')) {
+      recommendedDomain = DOMAINS.find(d => d.id === 'sante') || DOMAINS[5];
+      recommendedCourses = COURSES.filter(c => c.domainId === 'sante');
     } else if (interests.includes('transit') || interests.includes('humanitaire')) {
       recommendedDomain = DOMAINS.find(d => d.id === 'management-eco') || DOMAINS[2];
       recommendedCourses = COURSES.filter(c => c.id.includes('transit') || c.id.includes('humanitaire') || c.id.includes('logistique'));
@@ -177,6 +182,9 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
     } else if (interests.includes('comm')) {
       recommendedDomain = DOMAINS.find(d => d.id === 'arts-comm') || DOMAINS[3];
       recommendedCourses = COURSES.filter(c => c.domainId === 'arts-comm');
+    } else if (interests.includes('sante')) {
+      recommendedDomain = DOMAINS.find(d => d.id === 'sante') || DOMAINS[5];
+      recommendedCourses = COURSES.filter(c => c.domainId === 'sante');
     } else {
       recommendedCourses = COURSES.slice(0, 3);
     }

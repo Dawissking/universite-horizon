@@ -338,6 +338,33 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
+/* Bannière de page avec visuel adaptatif */
+.page-banner {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-banner h1 {
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .page-banner {
+    min-height: clamp(14rem, 34vh, 18rem) !important;
+    background-attachment: scroll;
+  }
+  .page-banner .hz-container {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 1025px) {
+  .page-banner {
+    background-attachment: fixed;
+  }
+}
+
 .text-gold-gradient {
   background: linear-gradient(135deg, #C99726 0%, #F5D77F 55%, #B8860B 100%);
   -webkit-background-clip: text;
@@ -1086,26 +1113,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Petits portables / 14" */
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .hz-container { max-width: 1240px; }
   h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
   h2 { font-size: clamp(2rem, 3vw, 2.75rem); }
 }
 
 /* Portables standards / 15-17" */
 @media (min-width: 1281px) and (max-width: 1440px) {
-  .hz-container { max-width: 1200px; }
+  h1 { font-size: clamp(2.75rem, 3.6vw, 3.75rem); }
+  h2 { font-size: clamp(2.25rem, 2.8vw, 3rem); }
 }
 
 /* Grands écrans */
 @media (min-width: 1441px) and (max-width: 1920px) {
-  .hz-container { max-width: 1320px; }
+  h1 { font-size: clamp(3rem, 3.2vw, 4rem); }
+  h2 { font-size: clamp(2.5rem, 2.6vw, 3.25rem); }
 }
 
 /* Très grands écrans */
 @media (min-width: 1921px) {
-  .hz-container { max-width: 1440px; }
-  h1 { font-size: clamp(3rem, 3.5vw, 4rem); }
-  h2 { font-size: clamp(2.5rem, 2.8vw, 3rem); }
+  h1 { font-size: clamp(3.5rem, 3vw, 4.5rem); }
+  h2 { font-size: clamp(2.75rem, 2.4vw, 3.5rem); }
 }
 
 /* Cartes et composants */
