@@ -1,0 +1,57 @@
+# ============================================================
+#  CI/CD — GitHub Actions -> Hostinger (FTP)
+#  Build Vite + upload du dossier dist/ vers public_html
+# ============================================================
+name: Déployer sur Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
+
+      - name: Upload to Hostinger
+        uses: SamMills/ftp-deploy-action@v4.4.3
+        env:
+          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+          FTP_PORT: ${{ secrets.HOSTINGER_FTP_PORT }}
+          FTP_DIRECTORY: /
+          LOCAL_DIR: dist/
+        with:
+          timeout-minutes: 10
+          exclude: |
+            .git/
+            node_modules/
+            src/
+            .github/
+            package-lock.json

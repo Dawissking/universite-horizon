@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Pas de zones privées
+# No private areas
 Disallow: /dist/
 Disallow: /src/
 

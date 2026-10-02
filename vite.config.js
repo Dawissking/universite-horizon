@@ -1,12 +1,31 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-export default defineConfig({
-  // Chemin public : "/" pour un domaine racine (ex: https://universite-horizon.ml)
-  // Utiliser "./" si le site est déployé dans un sous-dossier (ex: /university/)
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const siteUrl = (env.VITE_SITE_URL || 'https://universite-horizon.ml').replace(/\/+$/, '');
+
+  return {
+  // URL publique du site : "/" pour un domaine racine.
+  // Pilotée par VITE_SITE_URL (variable d'environnement GitHub Actions).
   base: '/',
-  plugins: [react()],
+  define: {
+    __SITE_URL__: JSON.stringify(siteUrl),
+  },
+  plugins: [
+    react(),
+    // Remplace %VITE_SITE_URL% dans index.html par l'URL réelle
+    {
+      name: 'site-url-html',
+      transformIndexHtml: {
+        order: 'pre',
+        handler(html) {
+          return html.replace(/%VITE_SITE_URL%/g, siteUrl);
+        },
+      },
+    },
+  ],
   build: {
     outDir: 'dist',
     // Nettoie le dossier dist avant chaque build (évite les fichiers orphelins)
@@ -25,4 +44,5 @@ export default defineConfig({
     port: 3000,
     open: false
   }
+  };
 });
