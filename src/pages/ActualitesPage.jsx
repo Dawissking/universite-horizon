@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, BookOpen, Award, Users, Sparkles } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
 import Icon from '../components/Icon';
+import { COURSES, KEY_DOMAIN_COUNT, HEALTH_COURSES } from '../data/horizonData';
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -25,6 +26,26 @@ const ACTUALITES = [
     icon:'graduation',
     cta:'Candidater maintenant',
     ctaLink:'/admissions'
+  },
+  {
+    id:7,
+    type:'Institut', typeColor:'#0E9F6E',
+    date:'Première rentrée',
+    title:"Institut d'Excellence en Sciences de la Santé Horizon",
+    excerpt:`Nouveau pôle de l'Université Horizon : ${HEALTH_COURSES.length} licences de santé, domaines clés cliniques, laboratoires et débouchés hospitaliers. Les candidatures pour la première rentrée sont ouvertes en ligne.`,
+    icon:'health',
+    cta:"Découvrir l'Institut",
+    ctaLink:'/institut-sante'
+  },
+  {
+    id:8,
+    type:'Formation', typeColor:'#7C3AED',
+    date:'Rentrée 2026',
+    title:`${KEY_DOMAIN_COUNT} domaines clés : nouveau catalogue de formations`,
+    excerpt:'Passation des Marchés Publics, Énergies Renouvelables, Gestion des Projets, Informatique et IA, Logistique et Supply Chain… Retrouvez les 12 domaines clés de l’Université Horizon et leurs Licences LMD.',
+    icon:'graduation',
+    cta:'Explorer les formations',
+    ctaLink:'/formations'
   },
   {
     id:2,
@@ -115,8 +136,8 @@ export default function ActualitesPage() {
 
               <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
                 {[
-                  { icon:BookOpen, color:'#2563EB', title:'10+ formations', sub:'disponibles' },
-                  { icon:Users, color:'#7C3AED', title:'2 Campus', sub:'à Bamako' },
+                  { icon:BookOpen, color:'#2563EB', title:`${COURSES.length} formations`, sub:'disponibles' },
+                  { icon:Users, color:'#7C3AED', title:`${KEY_DOMAIN_COUNT} domaines`, sub:'clés' },
                   { icon:Award, color:'var(--hz-gold-500)', title:'Diplômes', sub:'reconnus État' },
                   { icon:Sparkles, color:'#10B981', title:'Encadrement', sub:'rapproché' },
                 ].map((s, i) => {

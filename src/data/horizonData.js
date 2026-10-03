@@ -61,51 +61,118 @@ export const INSTITUTION = {
 };
 
 // ---- DOMAINES ACADÉMIQUES ----
+// Les 12 domaines clés officiellement retenus par l'Université Horizon,
+// plus le pôle Sciences de la Santé rattaché à l'Institut d'Excellence.
+export const KEY_DOMAIN_COUNT = 12;
+
 export const DOMAINS = [
   {
-    id:          "sciences-tech",
-    name:        "Sciences & Technologies",
-    badge:       "Pôle Innovation",
+    id:          "marches-publics",
+    name:        "Passation des Marchés Publics",
+    badge:       "Pôle Achats Publics",
+    color:       "#B45309",
+    icon:        "Gavel",
+    description: "Maîtriser la commande publique : préparation, mise en concurrence, attribution et suivi des marchés de l'État.",
+    programs:    "Marchés Publics, Contrats Publics, Contrôle & Audit des Achats"
+  },
+  {
+    id:          "energie-renouvelable",
+    name:        "Énergies Renouvelables",
+    badge:       "Pôle Transition Énergétique",
+    color:       "#16A34A",
+    icon:        "Zap",
+    description: "Concevoir, installer et exploiter les installations solaires, éoliennes et hybrides au service du Mali.",
+    programs:    "Solaire, Éolien, Efficacité Énergétique, Réseaux intelligents"
+  },
+  {
+    id:          "gestion-projets",
+    name:        "Gestion des Projets",
+    badge:       "Pôle Pilotage",
     color:       "#2563EB",
-    icon:        "Cpu",
-    description: "Former les ingénieurs du numérique et les acteurs de la transformation digitale africaine.",
-    programs:    "Génie Logiciel, Réseaux, Systèmes d'Information"
+    icon:        "FolderKanban",
+    description: "Conduire des projets de bout en bout : cadrage, planification, budget, risques et pilotage de la performance.",
+    programs:    "Méthodologies Agiles, Planification, Gestion des Risques, QHSE"
   },
   {
-    id:          "management-finance",
-    name:        "Management & Finance",
-    badge:       "Pôle Excellence",
-    color:       "#C99726",
-    icon:        "TrendingUp",
-    description: "Préparer les dirigeants, auditeurs et experts financiers du Mali et de la sous-région.",
-    programs:    "Comptabilité, Audit, Finance d'Entreprise, Banque"
-  },
-  {
-    id:          "management-eco",
-    name:        "Management & Économie",
-    badge:       "Pôle Stratégique",
-    color:       "#0D2240",
-    icon:        "PieChart",
-    description: "Analyse économique, commerce international, gouvernance et politiques publiques.",
-    programs:    "Transit Douane, Logistique, Commerce International"
-  },
-  {
-    id:          "arts-comm",
-    name:        "Arts, Communication & Design",
-    badge:       "Pôle Créatif",
-    color:       "#7C3AED",
-    icon:        "Palette",
-    description: "Maîtriser les médias, la communication stratégique et la création graphique moderne.",
-    programs:    "Communication Digitale, Relations Publiques, Design"
-  },
-  {
-    id:          "droit",
-    name:        "Droit & Sciences Politiques",
+    id:          "droit-politique",
+    name:        "Droit et Sciences Politiques",
     badge:       "Pôle Régalien",
     color:       "#C0392B",
     icon:        "Scale",
-    description: "Droit des affaires OHADA, droit public, carrières juridiques et diplomatiques.",
+    description: "Droit des affaires OHADA, droit public, institutions politiques et carrières juridiques.",
     programs:    "Droit des Affaires, Droit Public, Sciences Politiques"
+  },
+  {
+    id:          "relation-internationale",
+    name:        "Relation Internationnelle",
+    badge:       "Pôle Coopération",
+    color:       "#0D9488",
+    icon:        "Globe",
+    description: "Diplomatie, coopération au développement, organisations internationales et affaires géopolitiques.",
+    programs:    "Diplomatie, Coopération, Organisations Internationales, ONG"
+  },
+  {
+    id:          "informatique-ia",
+    name:        "Informatique et IA",
+    badge:       "Pôle Innovation",
+    color:       "#7C3AED",
+    icon:        "Cpu",
+    description: "Développement logiciel, data et intelligence artificielle au service de la transformation digitale africaine.",
+    programs:    "Génie Logiciel, Intelligence Artificielle, Data, Cybersécurité"
+  },
+  {
+    id:          "marketing-digital",
+    name:        "Marketing Digital & Commerce",
+    badge:       "Pôle Croissance",
+    color:       "#DB2777",
+    icon:        "Megaphone",
+    description: "Construire la marque, piloter les campagnes digitales et développer le commerce en ligne.",
+    programs:    "Marketing Digital, Communication, E-commerce, Commerce International"
+  },
+  {
+    id:          "comptabilite-finance-audit",
+    name:        "Comptabilité-Finances-Audit",
+    badge:       "Pôle Excellence",
+    color:       "#C99726",
+    icon:        "Calculator",
+    description: "Comptabilité SYSCOHADA, contrôle de gestion, audit légal et analyse financière.",
+    programs:    "Comptabilité, Contrôle de Gestion, Audit, Fiscalité"
+  },
+  {
+    id:          "banque-finance-assurance",
+    name:        "Banque Finances et Assurance",
+    badge:       "Pôle Marchés Financiers",
+    color:       "#1D4ED8",
+    icon:        "Landmark",
+    description: "Ingénierie financière, gestion de portefeuille, assurance et conformité des institutions financières.",
+    programs:    "Banque, Marchés Financiers, Assurance, Ingénierie Financière"
+  },
+  {
+    id:          "management-rh",
+    name:        "Management des RH",
+    badge:       "Pôle Capital Humain",
+    color:       "#EA580C",
+    icon:        "Users",
+    description: "Attirer, développer et fidéliser les talents : recrutement, paie, droit du travail et stratégie RH.",
+    programs:    "Ressources Humaines, Droit du Travail, Paie, Développement des Compétences"
+  },
+  {
+    id:          "logistique-supply-chain",
+    name:        "Logistique et Supply Chain",
+    badge:       "Pôle Flux & Transit",
+    color:       "#0F766E",
+    icon:        "Truck",
+    description: "Maîtriser les flux physiques : transit douane, transport, entreposage et chaîne d'approvisionnement.",
+    programs:    "Transit Douane, Transport, Entreposage, Supply Chain"
+  },
+  {
+    id:          "reseaux-telecom",
+    name:        "Réseaux et Télécommunications",
+    badge:       "Pôle Connectivité",
+    color:       "#475569",
+    icon:        "Network",
+    description: "Concevoir, déployer et sécuriser les infrastructures de communications fixes, mobiles et fibre optique.",
+    programs:    "Réseaux, Télécoms, Fibre Optique, Sécurité des Systèmes"
   },
   {
     id:          "sante",
@@ -114,9 +181,99 @@ export const DOMAINS = [
     color:       "#0E9F6E",
     icon:        "HeartPulse",
     description: "Former des professionnels de santé de qualité : soignants, sages-femmes, techniciens de laboratoire et gestionnaires hospitaliers.",
-    programs:    "Infirmier Obstétricien, Sage-Femme, Biologie Médicale, Labo Pharmacie"
+    programs:    "Infirmier Obstétricien, Sage-Femme, Biologie Médicale, Labo Pharmacie",
+    // L'institut d'excellence est l'entité de rattachement du pôle santé.
+    institute:   "institut-sante"
   }
 ];
+
+// ============================================================
+//  INSTITUT D'EXCELLENCE EN SCIENCES DE LA SANTÉ HORIZON
+//  Entité de rattachement du pôle santé, à la rentrée.
+//  Principe Zéro Hallucination : toute information non fournie
+//  est marquée [À FOURNIR] plutôt qu'inventée.
+// ============================================================
+export const INSTITUTE = {
+  id: "institut-sante",
+  name: "Institut d'Excellence en Sciences de la Santé Horizon",
+  shortName: "Institut Sciences de la Santé",
+  domainId: "sante",
+  color: "#0E9F6E",
+  icon: "HeartPulse",
+  status: "Première rentrée — [DATE À FOURNIR]",
+
+  mission:
+    "Former des professionnels de santé de qualité, capables d'exercer avec rigueur scientifique, hygiène et humanité dans les structures de santé du Mali et de la sous-région.",
+
+  summary:
+    "L'Institut d'Excellence en Sciences de la Santé Horizon regroupe l'ensemble des formations de santé de l'Université Horizon dans une entité dédiée. Il structure les cursus cliniques, ouvre des séries de santé dédiées et crée une passerelle entre formation initiale, recherche appliquée et exercice hospitalier.",
+
+  // --- Domaines clés ---
+  // Les domaines définitifs seront ceux communiqués par l'Université.
+  // Liste provisoire, alignée sur les formations déjà présentes.
+  keyDomains: [
+    {
+      id: "sante-maternelle",
+      name: "Santé Maternelle et Infantile",
+      icon: "graduation",
+      description:
+        "Suivi de la grossesse, accouchement, soins néonatals et accompagnement de la femme et de l'enfant.",
+      courseIds: ["lic-infirmier-obstetricien", "lic-sage-femme"]
+    },
+    {
+      id: "sante-publique",
+      name: "Santé Publique et Épidémiologie",
+      icon: "chart",
+      description:
+        "Prévention, surveillance des maladies, statistiques sanitaires et politiques de santé publique.",
+      courseIds: ["lic-sante-publique"]
+    },
+    {
+      id: "biologie-medicale",
+      name: "Biologie Médicale et Analyses Cliniques",
+      icon: "laptop",
+      description:
+        "Analyses d'échantillons biologiques, hématologie, biochimie, microbiologie et contrôle qualité.",
+      courseIds: ["lic-biologie-medicale"]
+    },
+    {
+      id: "pharmacie-dispensation",
+      name: "Pharmacie et Dispensation",
+      icon: "settings",
+      description:
+        "Pharmacognosie, chimie pharmaceutique, dispensation, conseil pharmaceutique et réglementation.",
+      courseIds: ["lic-labo-pharmacie"]
+    }
+  ],
+
+  // --- Infrastructures prevues ---
+  facilities: [
+    { icon: "laptop", name: "Laboratoires de biologie médicale", text: "Équipements d'analyse, colorimétrie, automates et contrôle qualité." },
+    { icon: "graduation", name: "Laboratoire de simulation clinique", text: "Mannequins obstétricaux, matériel de réanimation, simulation de urgences." },
+    { icon: "users", name: "Centre de formation clinique", text: "Partenariats avec les structures de santé pour les stages et l'enseignement clinique." },
+    { icon: "book", name: "Ressources documentaires santé", text: "Bibliothèque numérique spécialisée, bases de données médicales et périodiques scientifiques." }
+  ],
+
+  // --- Débouchés ---
+  outlets: [
+    "Structures de santé publiques et privées",
+    "Hôpitaux de district et centres de santé",
+    "Laboratoires d'analyses médicales",
+    "Officines et pharmacies hospitalières",
+    "Programmes et ONG de santé publique",
+    "Administration sanitaire et coordination régionale",
+    "Poursuite en études supérieures et recherche"
+  ],
+
+  // --- Cibles de la première rentrée ---
+  intake: {
+    year: "[ANNÉE À FOURNIR]",
+    date: "[DATE À FOURNIR]",
+    capacity: "[EFFECTIFS À FOURNIR]",
+    eligibility: "Baccalauréat, série scientifique ou toutes séries",
+    application: "Via le portail de candidature en ligne, rubrique Sciences de la Santé"
+  }
+};
 
 // ---- FORMATIONS ----
 export const COURSES = [
@@ -124,8 +281,8 @@ export const COURSES = [
   {
     id: "fa-transit",
     title: "Transit Douane & Procédures Portuaires",
-    domainId: "management-eco",
-    domainName: "Management & Économie",
+    domainId: "logistique-supply-chain",
+    domainName: "Logistique et Supply Chain",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -139,8 +296,8 @@ export const COURSES = [
   {
     id: "fa-qhse",
     title: "QHSE & Responsabilité Sociétale (RSE)",
-    domainId: "sciences-tech",
-    domainName: "Sciences & Technologies",
+    domainId: "gestion-projets",
+    domainName: "Gestion des Projets",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -154,8 +311,8 @@ export const COURSES = [
   {
     id: "fa-bureautique",
     title: "Informatique Bureautique & Outils Collaboratifs",
-    domainId: "sciences-tech",
-    domainName: "Sciences & Technologies",
+    domainId: "informatique-ia",
+    domainName: "Informatique et IA",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -169,8 +326,8 @@ export const COURSES = [
   {
     id: "fa-comptable",
     title: "Assistante Comptable & Gestion Financière",
-    domainId: "management-finance",
-    domainName: "Management & Finance",
+    domainId: "comptabilite-finance-audit",
+    domainName: "Comptabilité-Finances-Audit",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -184,8 +341,8 @@ export const COURSES = [
   {
     id: "fa-humanitaire",
     title: "Action Humanitaire & Protection de l'Enfance",
-    domainId: "droit",
-    domainName: "Droit & Sciences Politiques",
+    domainId: "relation-internationale",
+    domainName: "Relation Internationnelle",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -199,8 +356,8 @@ export const COURSES = [
   {
     id: "fa-logistique",
     title: "Logistique Humanitaire & Gestion des Crises",
-    domainId: "management-eco",
-    domainName: "Management & Économie",
+    domainId: "logistique-supply-chain",
+    domainName: "Logistique et Supply Chain",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -216,8 +373,8 @@ export const COURSES = [
   {
     id: "lic-genie-logiciel",
     title: "Licence — Génie Logiciel & Systèmes d'Information",
-    domainId: "sciences-tech",
-    domainName: "Sciences & Technologies",
+    domainId: "informatique-ia",
+    domainName: "Informatique et IA",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -231,8 +388,8 @@ export const COURSES = [
   {
     id: "lic-comptabilite",
     title: "Licence — Comptabilité, Contrôle & Audit (CCA)",
-    domainId: "management-finance",
-    domainName: "Management & Finance",
+    domainId: "comptabilite-finance-audit",
+    domainName: "Comptabilité-Finances-Audit",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -246,8 +403,8 @@ export const COURSES = [
   {
     id: "lic-droit",
     title: "Licence — Droit des Affaires & Carrières Juridiques",
-    domainId: "droit",
-    domainName: "Droit & Sciences Politiques",
+    domainId: "droit-politique",
+    domainName: "Droit et Sciences Politiques",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -261,8 +418,8 @@ export const COURSES = [
   {
     id: "lic-communication",
     title: "Licence — Communication Digitale & Médias",
-    domainId: "arts-comm",
-    domainName: "Arts, Communication & Design",
+    domainId: "marketing-digital",
+    domainName: "Marketing Digital & Commerce",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -276,8 +433,8 @@ export const COURSES = [
   {
     id: "lic-gesta",
     title: "Licence — Gestion des Entreprises et des Administrations (G.E.S.T.A.)",
-    domainId: "management-eco",
-    domainName: "Management & Économie",
+    domainId: "management-rh",
+    domainName: "Management des RH",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -287,6 +444,143 @@ export const COURSES = [
     objectives: "Former des cadres capables de piloter la gestion d'entreprise et la conduite des affaires publiques dans un contexte africain.",
     skills: ["Management & Organisation", "Comptabilité analytique", "Finances publiques", "Droit des affaires & marchés publics", "Ressources humaines"],
     careers: ["Cadre d'entreprise", "Attaché d'administration", "Gestionnaire de budgets", "Chargé de méthodes & opérations"]
+  },
+
+  // ---- LICENCES — 12 DOMAINES CLÉS OFFICIELS ----
+  {
+    id: "lic-marches-publics",
+    title: "Licence — Passation des Marchés Publics & Contrats Publics",
+    domainId: "marches-publics",
+    domainName: "Passation des Marchés Publics",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Cas de passation réels",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Maîtriser la chaîne de la commande publique : préparation des achats, mise en concurrence, évaluation des offres, attribution et exécution des contrats conformément au Code des marchés publics.",
+    skills: ["Code des marchés publics UEMOA", "Mise en concurrence & appels d'offres", "Rédaction des dossiers de consultation", "Suivi & exécution des contrats"],
+    careers: ["Chargé des achats publics", "Membre d'une commission d'appel d'offres", "Gestionnaire de marchés", "Consultant en passation de marchés"]
+  },
+  {
+    id: "lic-energie-renouvelable",
+    title: "Licence — Énergies Renouvelables & Efficacité Énergétique",
+    domainId: "energie-renouvelable",
+    domainName: "Énergies Renouvelables",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Travaux pratiques de chantier",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat série scientifique ou technique",
+    objectives: "Concevoir, installer, exploiter et maintenir des installations solaires, éoliennes et hybrides, et conduire des programmes d'efficacité énergétique.",
+    skills: ["Photovoltaïque & solaire thermique", "Éolien & systèmes hybrides", "Stockage & gestion de la demande", "Audit énergétique"],
+    careers: ["Technicien en énergies renouvelables", "Installateur solaire", "Chargé d'audit énergétique", "Gestionnaire de projets ENR"]
+  },
+  {
+    id: "lic-gestion-projets",
+    title: "Licence — Gestion de Projet & Management de Projet",
+    domainId: "gestion-projets",
+    domainName: "Gestion des Projets",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Projets tutorés en entreprise",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Conduire un projet de la définition du cadrage à la recette : planification, budget, allocation des ressources, pilotage des risques et mesure de la performance.",
+    skills: ["Cadrage & planification", "Méthodes agiles & cycle en V", "Budget & allocation des ressources", "Gestion des risques & qualité"],
+    careers: ["Chef de projet junior", "Chargé de planification", "Analyste en organisation", "Coordinateur de projets associatifs"]
+  },
+  {
+    id: "lic-relation-internationale",
+    title: "Licence — Relation Internationnelle & Coopération",
+    domainId: "relation-internationale",
+    domainName: "Relation Internationnelle",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Simulations de négociation",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Comprendre et intervenir dans les relations entre États, organisations internationales et acteurs du développement : diplomatie, négociation, coopération et affaires géopolitiques.",
+    skills: ["Diplomatie & négociation internationale", "Organisations internationales (ONU, UA, CEDEAO)", "Coopération & programmes de développement", "Analyse géopolitique"],
+    careers: ["Chargé de mission coopération", "Attaché / collaborateur diplomatique", "Chargé de plaidoyer ONG", "Analyste en affaires internationales"]
+  },
+  {
+    id: "lic-informatique-ia",
+    title: "Licence — Informatique & Intelligence Artificielle",
+    domainId: "informatique-ia",
+    domainName: "Informatique et IA",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Laboratoires de données",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat série scientifique ou technique",
+    objectives: "Concevoir des solutions numériques intelligentes : programmation, traitement de la donnée, modèles d'apprentissage automatique et déploiement d'applications IA.",
+    skills: ["Programmation Python & structures de données", "Machine learning & Deep learning", "Ingénierie de la donnée", "Éthique & applications métiers de l'IA"],
+    careers: ["Développeur IA / Machine Learning", "Data analyst", "Ingénieur data", "Intégrateur de solutions IA"]
+  },
+  {
+    id: "lic-marketing-digital",
+    title: "Licence — Marketing Digital & Commerce Électronique",
+    domainId: "marketing-digital",
+    domainName: "Marketing Digital & Commerce",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Campagnes réelles en laboratoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Construire la notoriété d'une marque, piloter des campagnes d'acquisition digitales et développer des canaux de vente en ligne rentables.",
+    skills: ["Stratégie digitale, SEO & SEA", "Réseaux sociaux & publicité en ligne", "E-commerce & marketplaces", "Analytics, KPI & retour sur investissement"],
+    careers: ["Chargé de marketing digital", "Community manager", "Gestionnaire e-commerce", "Spécialiste acquisition / growth"]
+  },
+  {
+    id: "lic-banque-finance-assurance",
+    title: "Licence — Banque, Finance & Assurance",
+    domainId: "banque-finance-assurance",
+    domainName: "Banque Finances et Assurance",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Simulations de marchés",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat série Économique ou Scientifique",
+    objectives: "Maîtriser les produits et services bancaires, la gestion de portefeuille, le financement des entreprises et les mécanismes de l'assurance.",
+    skills: ["Produits bancaires & analyse de crédit", "Marchés financiers & portefeuille", "Assurance & gestion des risques", "Conformité & lutte anti-blanchiment"],
+    careers: ["Chargé de clientèle bancaire", "Analyste crédit", "Courtier / chargé de sinistres", "Conseiller financier"]
+  },
+  {
+    id: "lic-management-rh",
+    title: "Licence — Management des Ressources Humaines",
+    domainId: "management-rh",
+    domainName: "Management des RH",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Mises en situation en entreprise",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat toutes séries",
+    objectives: "Piloter le capital humain de l'organisation : recrutement, intégration, paie, développement des compétences et relations sociales.",
+    skills: ["Recrutement & intégration", "Paie & droit du travail malien", "Développement des compétences", "Dialogue social & qualité de vie au travail"],
+    careers: ["Chargé de recrutement", "Gestionnaire de paie", "Coressource RH", "Chargé de formation"]
+  },
+  {
+    id: "lic-reseaux-telecom",
+    title: "Licence — Réseaux & Télécommunications",
+    domainId: "reseaux-telecom",
+    domainName: "Réseaux et Télécommunications",
+    level: "Licence (Bac+3)",
+    type: "degree",
+    duration: "3 ans — 6 semestres",
+    modality: "Présentiel + Baie de brassage et terrain",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Baccalauréat série scientifique ou technique",
+    objectives: "Concevoir, déployer, superviser et sécuriser les infrastructures réseaux et télécoms fixes, mobiles et fibre optique.",
+    skills: ["Architecture réseaux & routage", "Fibre optique & transmissions", "Sécurité des réseaux", "Téléphonie IP & datacenters"],
+    careers: ["Ingénieur réseau", "Technicien télécom", "Administrateur systèmes & réseaux", "Technicien fibre optique"]
   },
 
   // FILIÈRES SANTÉ — SCIENCES DE LA SANTÉ
@@ -367,8 +661,21 @@ export const COURSES = [
   }
 ];
 
+/** Formations rattachées à l'institut de santé. */
+export const HEALTH_COURSES = COURSES.filter(c => c.domainId === 'sante');
+
 // ---- FAQ OFFICIELLE ----
 export const FAQ = [
+  {
+    q: "Quels sont les domaines clés de l'Université Horizon ?",
+    a: "Nos 12 domaines clés sont : Passation des Marchés Publics, Énergies Renouvelables, Gestion des Projets, Droit et Sciences Politiques, Relation Internationuelle, Informatique et IA, Marketing Digital & Commerce, Comptabilité-Finances-Audit, Banque Finances et Assurance, Management des RH, Logistique et Supply Chain, Réseaux et Télécommunications. S'y ajoute le pôle Sciences de la Santé, porté par notre Institut d'Excellence.",
+    cat: "Formations"
+  },
+  {
+    q: "Quand ouvre l'Institut d'Excellence en Sciences de la Santé Horizon ?",
+    a: "L'Institut accueille sa première rentrée à la date communiquée par le service des admissions ([DATE À FOURNIR]). Les candidatures se font en ligne, rubrique Sciences de la Santé, ou sur le campus Baco Djicoroni Golf.",
+    cat: "Institut Sciences de la Santé"
+  },
   {
     q: "Les diplômes sont-ils reconnus par l'État malien ?",
     a: "Oui. Les formations et diplômes délivrés par l'Université Horizon sont officiellement reconnus par l'État malien et respectent le schéma LMD.",

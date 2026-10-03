@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { COURSES } from '../data/horizonData';
-import { CheckCircle2, ArrowRight, ArrowLeft, Upload, Check, ShieldCheck, GraduationCap, Sparkles, Copy, Compass, AlertCircle, RotateCcw } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { COURSES, HEALTH_COURSES, INSTITUTE } from '../data/horizonData';
+import { CheckCircle2, ArrowRight, ArrowLeft, Upload, Check, ShieldCheck, GraduationCap, Sparkles, Copy, Compass, AlertCircle, RotateCcw, HeartPulse } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import PageBanner from '../components/PageBanner';
 import Icon from '../components/Icon';
@@ -345,11 +346,18 @@ const QUESTIONS = [
     {label:'Bac+2 ou plus, en réorientation',value:'bac2+'},
   ]},
     { id:'interests', title:"Vos centres d'intérêt (2 max)", type:'multiple', max:2, options:[
-    {label:'Informatique & Numérique',value:'tech'},
-    {label:'Finance, Banque & Comptabilité',value:'finance'},
-    {label:'Commerce international & Douane',value:'transit'},
-    {label:'Droit & Institutions',value:'droit'},
-    {label:'Communication & Médias',value:'comm'},
+    {label:'Informatique, IA & Numérique',value:'tech'},
+    {label:'Comptabilité, Finance & Audit',value:'finance'},
+    {label:'Banque & Assurance',value:'banque'},
+    {label:'Logistique, Transit & Douane',value:'transit'},
+    {label:'Passation des marchés publics',value:'marches'},
+    {label:'Droit & Sciences Politiques',value:'droit'},
+    {label:'Relation Internationnelle',value:'ri'},
+    {label:'Marketing Digital & Commerce',value:'comm'},
+    {label:'Gestion de Projet',value:'projets'},
+    {label:'Management des RH',value:'rh'},
+    {label:'Réseaux & Télécommunications',value:'telecom'},
+    {label:'Énergies Renouvelables',value:'energie'},
     {label:'Action humanitaire & ONG',value:'humanitaire'},
     {label:'Santé & Soins aux populations',value:'sante'},
     {label:'Sécurité, Environnement & QHSE',value:'qhse'},
@@ -364,13 +372,16 @@ const QUESTIONS = [
 function computeProfile(answers) {
   const interests = answers.interests || [];
   const duration = answers.duration;
+  const INTEREST_DOMAIN = {
+    tech:'informatique-ia', finance:'comptabilite-finance-audit', banque:'banque-finance-assurance',
+    transit:'logistique-supply-chain', marches:'marches-publics', droit:'droit-politique',
+    ri:'relation-internationale', humanitaire:'relation-internationale', comm:'marketing-digital',
+    projets:'gestion-projets', qhse:'gestion-projets', rh:'management-rh',
+    telecom:'reseaux-telecom', energie:'energie-renouvelable', sante:'sante'
+  };
   let courses = [];
-  if (interests.includes('tech')) courses = COURSES.filter(c=>c.domainId==='sciences-tech');
-  else if (interests.includes('finance')) courses = COURSES.filter(c=>c.domainId==='management-finance');
-  else if (interests.includes('transit') || interests.includes('humanitaire')) courses = COURSES.filter(c=>c.domainId==='management-eco');
-  else if (interests.includes('droit')) courses = COURSES.filter(c=>c.domainId==='droit');
-  else if (interests.includes('comm')) courses = COURSES.filter(c=>c.domainId==='arts-comm');
-  else if (interests.includes('sante')) courses = COURSES.filter(c=>c.domainId==='sante');
+  const domainId = interests.map(i => INTEREST_DOMAIN[i]).find(Boolean);
+  if (domainId) courses = COURSES.filter(c=>c.domainId===domainId);
   else if (interests.includes('qhse')) courses = COURSES.filter(c=>c.id==='fa-qhse');
   else courses = COURSES.slice(0, 3);
   if (duration==='court') { const acc=COURSES.filter(c=>c.type==='accelerated'); if(acc.length) courses=acc.slice(0,3); }
@@ -541,6 +552,30 @@ const handleTracker = async () => {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RENVOI INSTITUT SANTÉ — PREMIÈRE RENTRÉE */}
+      <section style={{ background:'rgba(14,159,110,0.06)', borderBottom:'1px solid rgba(14,159,110,0.2)', padding:'1.5rem 0' }}>
+        <div className='hz-container'>
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:'1.25rem', flexWrap:'wrap' }}>
+            <div style={{ display:'flex', alignItems:'center', gap:'14px', minWidth:0 }}>
+              <div style={{ width:'44px', height:'44px', borderRadius:'12px', background:'rgba(14,159,110,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                <HeartPulse size={22} color="#0E9F6E"/>
+              </div>
+              <div style={{ minWidth:0 }}>
+                <div style={{ fontWeight:'800', fontSize:'0.9375rem' }}>
+                  Institut d'Excellence en Sciences de la Santé Horizon
+                </div>
+                <div style={{ fontSize:'0.8125rem', color:'var(--text-600)' }}>
+                  Première rentrée {INSTITUTE.intake.date} — {HEALTH_COURSES.length} licences de santé et {INSTITUTE.keyDomains.length} domaines clés
+                </div>
+              </div>
+            </div>
+            <Link to='/institut-sante' className='btn btn-sm' style={{ background:'#0E9F6E', color:'#fff', border:'none' }}>
+              Candidater en santé <ArrowRight size={14}/>
+            </Link>
           </div>
         </div>
       </section>

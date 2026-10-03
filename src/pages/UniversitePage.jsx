@@ -174,8 +174,8 @@ export default function UniversitePage() {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'1.5rem' }}>
             {[
               { val:'2', label:'Campus à Bamako' },
-              { val:'5', label:'Pôles Académiques' },
-              { val:'10', suffix:'+', label:'Filières de Formation' },
+              { val:'13', label:'Pôles & Domaines Clés' },
+              { val:'25', label:'Filières de Formation' },
               { val:'6', label:'Certificats Métiers' },
               { val:'100', suffix:'%', label:'Diplômes reconnus État malien' },
             ].map((s, i) => (

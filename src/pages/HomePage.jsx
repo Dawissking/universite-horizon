@@ -233,8 +233,8 @@ export default function HomePage({ onOpenApply }) {
         <div className='hz-container' style={{ padding:'2.5rem 1.5rem' }}>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))', gap:'1.5rem' }}>
             <StatBadge value="2" label='Campus à Bamako' delay={0}/>
-            <StatBadge value="5" label='Pôles Académiques' delay={100}/>
-            <StatBadge value="10+" label='Filières de Formation' delay={200}/>
+            <StatBadge value="13" label='Pôles & Domaines Clés' delay={100}/>
+            <StatBadge value="25" label='Filières de Formation' delay={200}/>
             <StatBadge value="6" label='Certificats Métiers Accélérés' delay={300}/>
             <StatBadge value="100%" label='Diplômes reconnus État malien' delay={400}/>
           </div>

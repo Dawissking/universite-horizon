@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LegalPage } from '../components/LegalPage';
-import { INSTITUTION, DOMAINS } from '../data/horizonData';
+import { INSTITUTION, DOMAINS, INSTITUTE, HEALTH_COURSES } from '../data/horizonData';
 import { Compass, Handshake, ShieldCheck, Globe, Target, Award } from 'lucide-react';
 import Icon from '../components/Icon';
 
@@ -79,6 +79,18 @@ export default function AboutPage() {
       <p>
         Le catalogue complet des licences et des certificats est consultable sur la{' '}
         <Link to="/formations">page des formations</Link>.
+      </p>
+
+      <h2>L'Institut d'Excellence en Sciences de la Santé Horizon</h2>
+      <p>
+        Le pôle Sciences de la Santé est porté par l'Institut d'Excellence en Sciences de la
+        Santé Horizon, qui accueille sa première rentrée. Il regroupe {HEALTH_COURSES.length} licences
+        professionnelles — infirmier obstétricien, sage-femme, santé publique, biologie médicale
+        et laboratoire de pharmacie — ainsi que {INSTITUTE.keyDomains.length} domaines cliniques, des laboratoires
+        et des conventions avec des structures de soins.
+      </p>
+      <p>
+        <Link to="/institut-sante">Découvrir l'Institut d'Excellence en Sciences de la Santé</Link>.
       </p>
 
       <h2>Notre campus</h2>

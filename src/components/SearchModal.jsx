@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { COURSES, DOMAINS, INSTITUTION, FAQ } from '../data/horizonData';
-import { Search, X, BookOpen, Layers, MapPin, HelpCircle, ArrowRight } from 'lucide-react';
+import { COURSES, DOMAINS, INSTITUTION, INSTITUTE, FAQ } from '../data/horizonData';
+import { Search, X, BookOpen, Layers, MapPin, HelpCircle, ArrowRight, HeartPulse } from 'lucide-react';
 
-export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate }) => {
+export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate, onNavigatePath }) => {
   const [query, setQuery] = useState('');
 
   const searchResults = useMemo(() => {
@@ -21,8 +21,8 @@ export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate }) => 
     );
 
     const matchedFaq = FAQ.filter(f => 
-      f.question.toLowerCase().includes(q) || 
-      f.answer.toLowerCase().includes(q)
+      (f.q || '').toLowerCase().includes(q) || 
+      (f.a || '').toLowerCase().includes(q)
     );
 
     const matchedCampuses = INSTITUTION.campuses.filter(c => 
@@ -30,12 +30,17 @@ export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate }) => 
       c.city.toLowerCase().includes(q)
     );
 
+    const instituteMatched = [
+      INSTITUTE.name, INSTITUTE.shortName, INSTITUTE.summary, INSTITUTE.mission, ...INSTITUTE.outlets
+    ].some(t => (t || '').toLowerCase().includes(q));
+
     return {
       courses: matchedCourses,
       domains: matchedDomains,
       faq: matchedFaq,
       campuses: matchedCampuses,
-      total: matchedCourses.length + matchedDomains.length + matchedFaq.length + matchedCampuses.length
+      institute: instituteMatched,
+      total: matchedCourses.length + matchedDomains.length + matchedFaq.length + matchedCampuses.length + (instituteMatched ? 1 : 0)
     };
   }, [query]);
 
@@ -117,18 +122,49 @@ export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate }) => 
                 </div>
               )}
 
+              {/* Institut d'Excellence Santé */}
+              {searchResults.institute && (
+                <div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', color: '#0E9F6E', letterSpacing: '0.08em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <HeartPulse size={14} />
+                    <span>Institut d'Excellence</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <div
+                      onClick={() => { onClose(); onNavigatePath ? onNavigatePath('/institut-sante') : onNavigate('domaines'); }}
+                      style={{
+                        padding: '10px 14px',
+                        background: 'rgba(14,159,110,0.08)',
+                        border: '1px solid rgba(14,159,110,0.25)',
+                        borderRadius: 'var(--radius-sm)',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <div>
+                        <div style={{ fontSize: '0.9375rem', fontWeight: '600', color: 'var(--text-primary)' }}>{INSTITUTE.name}</div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Pôle Santé • Première rentrée {INSTITUTE.intake.date}</div>
+                      </div>
+                      <ArrowRight size={14} color="#0E9F6E" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Domaines trouvés */}
               {searchResults.domains.length > 0 && (
                 <div>
                   <div style={{ fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--hz-gold-primary)', letterSpacing: '0.08em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <Layers size={14} />
-                    <span>Pôles Académiques ({searchResults.domains.length})</span>
+                    <span>Domaines Clés ({searchResults.domains.length})</span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     {searchResults.domains.map(d => (
                       <div
                         key={d.id}
-                        onClick={() => { onClose(); onNavigate('domaines'); }}
+                        onClick={() => { onClose(); onNavigatePath ? onNavigatePath('/formations') : onNavigate('domaines'); }}
                         style={{
                           padding: '10px 14px',
                           background: 'var(--bg-subtle)',
@@ -161,8 +197,8 @@ export const SearchModal = ({ isOpen, onClose, onSelectCourse, onNavigate }) => 
                           borderRadius: 'var(--radius-sm)'
                         }}
                       >
-                        <div style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '4px' }}>{f.question}</div>
-                        <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)' }}>{f.answer}</div>
+                        <div style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '4px' }}>{f.q}</div>
+                        <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)' }}>{f.a}</div>
                       </div>
                     ))}
                   </div>

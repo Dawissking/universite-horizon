@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Philosophy } from './components/Philosophy';
 import { Differentiators } from './components/Differentiators';
+import { DomainsSection } from './components/DomainsSection';
+import { InstituteSection } from './components/InstituteSection';
 import { HorizonStories } from './components/HorizonStories';
 import { Footer } from './components/Footer';
 import { ApplicationWizard } from './components/ApplicationWizard';
@@ -20,8 +22,10 @@ import UniversitePage from './pages/UniversitePage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import AboutPage from './pages/AboutPage';
+import HealthInstitutePage from './pages/HealthInstitutePage';
 
 export default function App() {
+  const navigate = useNavigate();
   // États des modales et interactions transversales
   const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [selectedCourseForApply, setSelectedCourseForApply] = useState(null);
@@ -76,7 +80,16 @@ export default function App() {
                 {/* 03. Pourquoi Horizon — Différenciateurs */}
                 <Differentiators />
 
-                {/* 04. Bandeau CTA — Appel à l'action */}
+                {/* 04. Domaines clés — les 12 domaines officiels + pôle Santé */}
+                <DomainsSection
+                  onSelectDomain={() => navigate('/formations')}
+                  onOpenDetails={(course) => handleOpenApply(course)}
+                />
+
+                {/* 05. Institut d'Excellence en Sciences de la Santé Horizon */}
+                <InstituteSection />
+
+                {/* 06. Bandeau CTA — Appel à l'action */}
                 <section style={{
                   background:'linear-gradient(135deg,#0D2240 0%,#15315B 100%)',
                   padding:'5rem 0',
@@ -104,12 +117,13 @@ export default function App() {
                   </div>
                 </section>
 
-                {/* 05. Témoignages & Réussites */}
+                {/* 07. Témoignages & Réussites */}
                 <HorizonStories />
               </>
             } />
             <Route path="/universite" element={<UniversitePage />} />
             <Route path="/formations" element={<FormationsPage onOpenApply={handleOpenApply} />} />
+            <Route path="/institut-sante" element={<HealthInstitutePage onOpenApply={handleOpenApply} />} />
             <Route path="/admissions" element={<AdmissionsPage onOpenApply={handleOpenApply} />} />
             <Route path="/campus" element={<CampusPage onOpenApply={handleOpenApply} />} />
             <Route path="/actualites" element={<ActualitesPage />} />
@@ -148,6 +162,7 @@ export default function App() {
           onClose={() => setSearchModalOpen(false)}
           onSelectCourse={(course) => { setSelectedCourseForApply(course); setApplyModalOpen(true); }}
           onNavigate={handleNavigate}
+          onNavigatePath={(path) => { setSearchModalOpen(false); navigate(path); }}
         />
 
         {/* Assistant Flottant Zéro Hallucination : Horizon Assist™ */}

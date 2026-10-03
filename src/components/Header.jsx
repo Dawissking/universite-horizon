@@ -10,6 +10,7 @@ import {
 const NAV_ITEMS = [
   { label: "Université",  path: "/universite" },
   { label: "Formations",  path: "/formations" },
+  { label: "Institut Santé", path: "/institut-sante" },
   { label: "Admissions",  path: "/admissions" },
   { label: "Campus",      path: "/campus" },
   { label: "Actualités",  path: "/actualites" },

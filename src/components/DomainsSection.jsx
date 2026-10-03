@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { DOMAINS, COURSES } from '../data/horizonData';
+import { DOMAINS, COURSES, KEY_DOMAIN_COUNT } from '../data/horizonData';
 import { 
-  Cpu, TrendingUp, PieChart, Palette, Scale, HeartPulse, ArrowRight, 
+  Cpu, Gavel, Zap, FolderKanban, Scale, Globe, Megaphone, Calculator,
+  Landmark, Users, Truck, Network, HeartPulse, ArrowRight, 
   BookOpen, CheckCircle, Sparkles, Layers 
 } from 'lucide-react';
 
 const iconMap = {
   Cpu,
-  TrendingUp,
-  PieChart,
-  Palette,
+  Gavel,
+  Zap,
+  FolderKanban,
   Scale,
+  Globe,
+  Megaphone,
+  Calculator,
+  Landmark,
+  Users,
+  Truck,
+  Network,
   HeartPulse
 };
 
@@ -28,13 +36,13 @@ export const DomainsSection = ({ onSelectDomain, onOpenDetails }) => {
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <div className="section-tag">
             <Layers size={14} />
-            Pôles d'Enseignement
+            {KEY_DOMAIN_COUNT} Domaines Clés &bull; Pôle Santé rattaché à l'Institut d'Excellence
           </div>
           <h2 className="section-title">
-            Nos Grands Domaines Académiques
+            Nos Domaines Clés
           </h2>
           <p className="section-subtitle">
-            Une offre de formation structurée pour répondre avec précision aux besoins stratégiques des entreprises et organisations du Mali et de l'Afrique.
+            Une offre de formation structurée en {KEY_DOMAIN_COUNT} domaines clés, auxquels s'ajoute le pôle Sciences de la Santé porté par l'Institut d'Excellence en Sciences de la Santé Horizon.
           </p>
         </div>
 
@@ -117,6 +125,11 @@ export const DomainsSection = ({ onSelectDomain, onOpenDetails }) => {
                 Filières & Certificats au programme
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {domainCourses.length === 0 && (
+                  <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    Programme en cours de structuration — contactez le service des admissions pour le détail.
+                  </div>
+                )}
                 {domainCourses.map((c) => (
                   <div 
                     key={c.id}

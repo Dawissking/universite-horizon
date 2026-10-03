@@ -3,7 +3,8 @@ import {
   Target, Rocket, Star, Handshake, Trophy, Users, Lightbulb,
   Globe, Wrench, GraduationCap, Library, Laptop, Briefcase, CalendarDays,
   CheckCircle2, FolderOpen, MonitorPlay, BarChart3, Ship, Settings,
-  Building2, UserCog, MapPinned
+  Building2, UserCog, MapPinned, HeartPulse, BookOpen, Microscope,
+  Activity, ShieldPlus, Stethoscope, Syringe
 } from 'lucide-react';
 
 /**
@@ -34,7 +35,14 @@ export const ICON_MAP = {
   settings: Settings,
   building: Building2,
   usercog: UserCog,
-  mappin: MapPinned
+  mappin: MapPinned,
+  health: HeartPulse,
+  book: BookOpen,
+  microscope: Microscope,
+  activity: Activity,
+  shieldplus: ShieldPlus,
+  stethoscope: Stethoscope,
+  syringe: Syringe
 };
 
 /**

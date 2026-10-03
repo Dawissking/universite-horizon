@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { INSTITUTION } from '../data/horizonData';
+import { INSTITUTION, DOMAINS, KEY_DOMAIN_COUNT } from '../data/horizonData';
 import { Phone, Mail, MapPin, GraduationCap, ShieldCheck } from 'lucide-react';
 
 export const Footer = ({ onOpenApply, onOpenPortals }) => (
@@ -48,11 +48,13 @@ export const Footer = ({ onOpenApply, onOpenPortals }) => (
             Formations
           </div>
           <div style={{ display:'flex', flexDirection:'column', gap:'8px', fontSize:'0.875rem', color:'rgba(255,255,255,0.72)' }}>
-            <Link to="/formations" style={{ color:'inherit', transition:'color 180ms' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>Sciences & Technologies</Link>
-            <Link to="/formations" style={{ color:'inherit' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>Management & Finance</Link>
-            <Link to="/formations" style={{ color:'inherit' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>Droit & Sciences Politiques</Link>
-            <Link to="/formations" style={{ color:'inherit' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>Transit Douane (Accéléré)</Link>
-            <Link to="/formations" style={{ color:'inherit' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>QHSE & RSE (Accéléré)</Link>
+            {DOMAINS.filter(d => d.id !== 'sante').slice(0, 6).map((d) => (
+              <Link key={d.id} to="/formations" style={{ color:'inherit' }} onMouseEnter={e=>e.target.style.color='var(--hz-gold-400)'} onMouseLeave={e=>e.target.style.color='rgba(255,255,255,0.72)'}>{d.name}</Link>
+            ))}
+            <Link to="/formations" style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.8125rem' }}>
+              Voir les {KEY_DOMAIN_COUNT} domaines clés →
+            </Link>
+            <Link to="/institut-sante" style={{ color:'var(--hz-gold-400)', fontWeight:'700' }}>Institut d'Excellence Santé</Link>
           </div>
         </div>
 

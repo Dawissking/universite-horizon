@@ -18,6 +18,7 @@ const routes = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/universite', changefreq: 'monthly', priority: '0.8' },
   { path: '/formations', changefreq: 'weekly', priority: '0.9' },
+  { path: '/institut-sante', changefreq: 'weekly', priority: '0.9' },
   { path: '/admissions', changefreq: 'weekly', priority: '0.9' },
   { path: '/campus', changefreq: 'monthly', priority: '0.8' },
   { path: '/actualites', changefreq: 'daily', priority: '0.7' },

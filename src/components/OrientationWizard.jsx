@@ -39,10 +39,17 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
       maxSelect: 3,
       options: [
         { label: 'Informatique, Code & Intelligence Artificielle', value: 'tech' },
-        { label: 'Gestion d’entreprise, Finance & Banques', value: 'finance' },
-        { label: 'Commerce international, Transit & Douanes', value: 'transit' },
+        { label: 'Gestion d’entreprise, Finance & Comptabilité', value: 'finance' },
+        { label: 'Banque, Assurance & Marchés financiers', value: 'banque' },
+        { label: 'Commerce international, Transit & Logistique', value: 'transit' },
+        { label: 'Passation des marchés publics', value: 'marches' },
         { label: 'Droit, Justice & Institutions politiques', value: 'droit' },
-        { label: 'Communication, Médias & Création graphique', value: 'comm' },
+        { label: 'Relation Internationnelle & Coopération', value: 'ri' },
+        { label: 'Marketing Digital, Communication & Commerce', value: 'comm' },
+        { label: 'Gestion de projet & Pilotage', value: 'projets' },
+        { label: 'Management des Ressources Humaines', value: 'rh' },
+        { label: 'Réseaux & Télécommunications', value: 'telecom' },
+        { label: 'Énergies renouvelables & environnement', value: 'energie' },
         { label: 'Action humanitaire, Solidarité & ONG', value: 'humanitaire' },
         { label: 'Santé, Soins & Bien-être des populations', value: 'sante' },
         { label: 'Hygiène, Sécurité & Environnement (QHSE)', value: 'qhse' }
@@ -159,35 +166,38 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
   const calculateProfile = () => {
     const interests = answers.interests || [];
     const duration = answers.duration;
-    
-    // Détection dominante
-    let recommendedDomain = DOMAINS[0];
-    let recommendedCourses = [];
 
-    if (interests.includes('tech') || answers.subjects.includes('info')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'sciences-tech') || DOMAINS[0];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'sciences-tech');
-    } else if (interests.includes('sante') || answers.subjects.includes('bio')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'sante') || DOMAINS[5];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'sante');
-    } else if (interests.includes('transit') || interests.includes('humanitaire')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'management-eco') || DOMAINS[2];
-      recommendedCourses = COURSES.filter(c => c.id.includes('transit') || c.id.includes('humanitaire') || c.id.includes('logistique'));
-    } else if (interests.includes('finance') || answers.subjects.includes('eco')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'management-finance') || DOMAINS[1];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'management-finance');
-    } else if (interests.includes('droit')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'droit') || DOMAINS[4];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'droit');
-    } else if (interests.includes('comm')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'arts-comm') || DOMAINS[3];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'arts-comm');
-    } else if (interests.includes('sante')) {
-      recommendedDomain = DOMAINS.find(d => d.id === 'sante') || DOMAINS[5];
-      recommendedCourses = COURSES.filter(c => c.domainId === 'sante');
-    } else {
-      recommendedCourses = COURSES.slice(0, 3);
+    // Rattachement d'une réponse d'intérêt à l'un des domaines clés officiels
+    const INTEREST_DOMAIN = {
+      tech:       'informatique-ia',
+      finance:    'comptabilite-finance-audit',
+      banque:     'banque-finance-assurance',
+      transit:    'logistique-supply-chain',
+      marches:    'marches-publics',
+      droit:      'droit-politique',
+      ri:         'relation-internationale',
+      humanitaire:'relation-internationale',
+      comm:       'marketing-digital',
+      projets:    'gestion-projets',
+      qhse:       'gestion-projets',
+      rh:         'management-rh',
+      telecom:    'reseaux-telecom',
+      energie:    'energie-renouvelable',
+      sante:      'sante'
+    };
+
+    let domainId = interests.map(i => INTEREST_DOMAIN[i]).find(Boolean);
+    if (!domainId) {
+      if (answers.subjects.includes('info'))        domainId = 'informatique-ia';
+      else if (answers.subjects.includes('bio'))    domainId = 'sante';
+      else if (answers.subjects.includes('eco'))    domainId = 'comptabilite-finance-audit';
+      else if (answers.subjects.includes('socio'))  domainId = 'droit-politique';
     }
+
+    let recommendedDomain = DOMAINS.find(d => d.id === domainId) || DOMAINS[0];
+    let recommendedCourses = domainId
+      ? COURSES.filter(c => c.domainId === domainId)
+      : COURSES.slice(0, 3);
 
     if (duration === 'court') {
       const acc = COURSES.filter(c => c.type === 'accelerated');

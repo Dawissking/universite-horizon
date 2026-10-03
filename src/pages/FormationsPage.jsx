@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { COURSES, DOMAINS } from '../data/horizonData';
-import { Search, BookOpen, ArrowRight, X, CheckCircle, GraduationCap, Filter } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { COURSES, DOMAINS, INSTITUTE, HEALTH_COURSES } from '../data/horizonData';
+import { Search, BookOpen, ArrowRight, X, CheckCircle, GraduationCap, Filter, HeartPulse } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
 
 function Reveal({ children, delay = 0 }) {
@@ -39,6 +40,30 @@ export default function FormationsPage({ onOpenApply }) {
         highlight='Formations'
         description="Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
       />
+
+      {/* RENVOI INSTITUT SANTÉ */}
+      <section style={{ background:'rgba(14,159,110,0.06)', borderBottom:'1px solid rgba(14,159,110,0.2)', padding:'1.5rem 0' }}>
+        <div className='hz-container'>
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:'1.25rem', flexWrap:'wrap' }}>
+            <div style={{ display:'flex', alignItems:'center', gap:'14px', minWidth:0 }}>
+              <div style={{ width:'44px', height:'44px', borderRadius:'12px', background:'rgba(14,159,110,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                <HeartPulse size={22} color="#0E9F6E"/>
+              </div>
+              <div style={{ minWidth:0 }}>
+                <div style={{ fontWeight:'800', fontSize:'0.9375rem' }}>
+                  Institut d'Excellence en Sciences de la Santé Horizon
+                </div>
+                <div style={{ fontSize:'0.8125rem', color:'var(--text-600)' }}>
+                  {HEALTH_COURSES.length} licences de santé, domaines clés et débouchés — première rentrée {INSTITUTE.intake.date}
+                </div>
+              </div>
+            </div>
+            <Link to='/institut-sante' className='btn btn-sm' style={{ background:'#0E9F6E', color:'#fff', border:'none' }}>
+              Découvrir l'Institut <ArrowRight size={14}/>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* DOMAINES */}
       <section style={{ background:'var(--bg-card)', borderBottom:'1px solid var(--border-100)', padding:'2.5rem 0' }}>
