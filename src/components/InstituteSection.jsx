@@ -117,7 +117,7 @@ export const InstituteSection = () => (
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '14px' }}>
-          <STAT icon={GraduationCap} label='Formations rattachées' value={`${HEALTH_COURSES.length} licences`} color='#6EE7B7' delay={0}/>
+          <STAT icon={GraduationCap} label='Formations rattachées' value={`${HEALTH_COURSES.length} formations`} color='#6EE7B7' delay={0}/>
           <STAT icon={Target} label='Domaines clés' value={`${INSTITUTE.keyDomains.length} pôles`} color='#E9BA4B' delay={90}/>
           <STAT icon={Calendar} label='Première rentrée' value={INSTITUTE.intake.date} color='#93C5FD' delay={180}/>
           <STAT icon={Users} label='Effectifs' value={INSTITUTE.intake.capacity} color='#F0ABFC' delay={270}/>

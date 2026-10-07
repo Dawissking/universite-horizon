@@ -90,10 +90,6 @@ export const Footer = ({ onOpenApply, onOpenPortals }) => (
             </div>
             <div style={{ display:'flex', gap:'8px', alignItems:'center' }}>
               <Phone size={16} color="var(--hz-gold-500)"/>
-              <a href="tel:+22377677575" style={{ color:'inherit' }}>+223 77 67 75 75</a>
-            </div>
-            <div style={{ display:'flex', gap:'8px', alignItems:'center' }}>
-              <Phone size={16} color="var(--hz-gold-500)"/>
               <a href="tel:+22376757329" style={{ color:'inherit' }}>+223 76 75 73 29</a>
             </div>
             <div style={{ display:'flex', gap:'8px', alignItems:'center' }}>

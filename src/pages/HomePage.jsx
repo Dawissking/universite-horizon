@@ -133,7 +133,7 @@ export default function HomePage({ onOpenApply }) {
                 fontSize: "1.0625rem", color: "rgba(255,255,255,0.78)",
                 lineHeight: 1.75, marginBottom: "2.25rem", maxWidth: '520px'
               }}>
-                Un écosystème universitaire moderne réunissant Licences LMD, formations accélérées
+                Un écosystème universitaire moderne réunissant Licences et Masters LMD, formations accélérées
                 certifiantes et encadrement rapproché pour bâtir votre excellence au Mali et à l''international.
               </p>
 

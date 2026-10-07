@@ -30,7 +30,7 @@ export default function AboutPage() {
       <h2>Notre institution</h2>
       <p>
         {INSTITUTION.name} est un établissement d'enseignement supérieur basé à Bamako, au
-        Mali. Il propose des Licences LMD et des Certificats Métiers accélérés conçus
+        Mali. Il propose des Licences et Masters LMD ainsi que des Certificats Métiers accélérés conçus
         autour de trois exigences : la maîtrise académique, la pratique professionnelle
         et l'employabilité durable de ses diplômés.
       </p>
@@ -77,16 +77,16 @@ export default function AboutPage() {
         ))}
       </ul>
       <p>
-        Le catalogue complet des licences et des certificats est consultable sur la{' '}
+        Le catalogue complet des licences, des masters et des certificats est consultable sur la{' '}
         <Link to="/formations">page des formations</Link>.
       </p>
 
       <h2>L'Institut d'Excellence en Sciences de la Santé Horizon</h2>
       <p>
         Le pôle Sciences de la Santé est porté par l'Institut d'Excellence en Sciences de la
-        Santé Horizon, qui accueille sa première rentrée. Il regroupe {HEALTH_COURSES.length} licences
-        professionnelles — infirmier obstétricien, sage-femme, santé publique, biologie médicale
-        et laboratoire de pharmacie — ainsi que {INSTITUTE.keyDomains.length} domaines cliniques, des laboratoires
+        Santé Horizon, qui accueille sa première rentrée. Il regroupe {HEALTH_COURSES.length} formations
+        professionnelles (Licence et Master) — infirmier obstétricien, Sage femme, Santé Publique, Biologie médicale
+        et Labo pharmacie — ainsi que {INSTITUTE.keyDomains.length} domaines cliniques, des laboratoires
         et des conventions avec des structures de soins.
       </p>
       <p>

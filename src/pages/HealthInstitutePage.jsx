@@ -74,7 +74,7 @@ export default function HealthInstitutePage({ onOpenApply }) {
               <div style={{ display:'flex', flexDirection:'column', gap:'14px' }}>
                 {[
                   { icon: Target, title:'Domaines clés', value:`${INSTITUTE.keyDomains.length} domaines`, color:'#0E9F6E' },
-                  { icon: GraduationCap, title:'Formations rattachées', value:`${HEALTH_COURSES.length} licences`, color:'#2563EB' },
+                  { icon: GraduationCap, title:'Formations rattachées', value:`${HEALTH_COURSES.length} formations`, color:'#2563EB' },
                   { icon: Calendar, title:'Rentrée', value:INSTITUTE.intake.date, color:'#C99726' },
                   { icon: Users, title:'Effectifs', value:INSTITUTE.intake.capacity, color:'#7C3AED' },
                 ].map((item) => (
@@ -103,8 +103,8 @@ export default function HealthInstitutePage({ onOpenApply }) {
               <h2 className="section-title">Les pôles de l'Institut</h2>
               <p className="section-lead">
                 {INSTITUTE.keyDomains.length} domaines clés structurent l'Institut d'Excellence.
-                Chacun ouvre un cursus de licence structuré en trois ans et adossé à des
-                équipements spécifiques.
+                Chacun ouvre un cursus de licence structuré en trois ans, prolongé par un
+                master de deux ans, et adossé à des équipements spécifiques.
               </p>
             </Reveal>
           </div>
@@ -123,7 +123,7 @@ export default function HealthInstitutePage({ onOpenApply }) {
                       Formations rattachées
                     </div>
                     <div style={{ fontSize:'0.875rem', color:'#0E9F6E', fontWeight:'600' }}>
-                      {domain.courseIds.length} licence{domain.courseIds.length > 1 ? 's' : ''}
+                      {domain.courseIds.length} formation{domain.courseIds.length > 1 ? 's' : ''}
                     </div>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function HealthInstitutePage({ onOpenApply }) {
               <span className="section-badge"><BookOpen size={13}/> Cursus</span>
               <h2 className="section-title">Formations de l'Institut</h2>
               <p className="section-lead">
-                {HEALTH_COURSES.length} licences professionnelles, toutes adossées à des
+                {HEALTH_COURSES.length} formations (Licences et Masters), toutes adossées à des
                 stages cliniques encadrés.
               </p>
             </Reveal>

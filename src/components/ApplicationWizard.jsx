@@ -268,7 +268,7 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
                   >
                     {COURSES.map(c => (
                       <option key={c.id} value={c.id}>
-                        [{c.type === 'accelerated' ? 'Accélérée' : 'Diplômante LMD'}] {c.title}
+                        [{c.type === 'accelerated' ? 'Accélérée' : c.level.startsWith('Master') ? 'Master' : 'Licence'}] {c.title}
                       </option>
                     ))}
                   </select>
@@ -344,6 +344,7 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
                     <option value="BacEtranger">Baccalauréat étranger reconnu</option>
                     <option value="DUT_BTS">DUT / BTS / DEUG (Bac+2)</option>
                     <option value="Licence">Licence (Bac+3)</option>
+                    <option value="Master">Master (Bac+5)</option>
                     <option value="Professionnel">Expérience professionnelle équivalente</option>
                   </select>
                 </div>

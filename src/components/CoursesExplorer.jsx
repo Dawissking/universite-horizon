@@ -26,7 +26,9 @@ export const CoursesExplorer = ({ onOpenApply, selectedCourseModal, setSelectedC
       const matchesType = 
         selectedType === 'all' ||
         (selectedType === 'accelerated' && c.type === 'accelerated') ||
-        (selectedType === 'degree' && c.type !== 'accelerated');
+        (selectedType === 'degree' && c.type !== 'accelerated') ||
+        (selectedType === 'licence' && c.type !== 'accelerated' && c.level.startsWith('Licence')) ||
+        (selectedType === 'master' && c.type !== 'accelerated' && c.level.startsWith('Master'));
 
       return matchesSearch && matchesDomain && matchesType;
     });
@@ -127,6 +129,8 @@ export const CoursesExplorer = ({ onOpenApply, selectedCourseModal, setSelectedC
               >
                 <option value="all">Tous types de cursus</option>
                 <option value="degree">Diplômes Universitaires LMD</option>
+                <option value="licence">Licences LMD (Bac+3)</option>
+                <option value="master">Masters LMD (Bac+5)</option>
                 <option value="accelerated">Formations Accélérées Métiers</option>
               </select>
             </div>

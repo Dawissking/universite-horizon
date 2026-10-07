@@ -114,11 +114,11 @@ export default function ContactPage() {
         <div className='hz-container'>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:'1.25rem', marginBottom:'4rem' }}>
             {[
-                { icon:Phone, color:'var(--hz-gold-500)', title:'Téléphone', content: INSTITUTION.contacts.phones, href: 'tel:+22377677575', type:'phones' },
+                { icon:Phone, color:'var(--hz-gold-500)', title:'Téléphone', content: INSTITUTION.contacts.phones, href: 'tel:+22376757329', type:'phones' },
               { icon:Mail, color:'#2563EB', title:'Email', content:[INSTITUTION.contacts.email, INSTITUTION.contacts.emailAdmissions], href:`mailto:${INSTITUTION.contacts.email}`, type:'emails' },
               { icon:MapPin, color:'var(--hz-red-600)', title:'Adresse Principale', content:['Baco Djicoroni Golf','Bamako, Mali'], href:INSTITUTION.campuses[0].mapsUrl, type:'map' },
                 { icon:Clock, color:'#7C3AED', title:"Heures d'Accueil", content:['Lun — Ven : 07h30 — 18h00','Samedi : 08h00 — 13h00'], type:'schedule' },
-                { icon:MessageCircle, color:'#10B981', title:'WhatsApp Rapide', content:['+223 77 67 75 75','Réponse sous 24h ouvrables'], href:INSTITUTION.socialLinks.whatsapp, type:'whatsapp' },
+                { icon:MessageCircle, color:'#10B981', title:'WhatsApp Rapide', content:['+223 76 75 73 29','Réponse sous 24h ouvrables'], href:INSTITUTION.socialLinks.whatsapp, type:'whatsapp' },
             ].map((item, i) => {
               const ItemIcon = item.icon;
               return (
@@ -155,7 +155,7 @@ export default function ContactPage() {
                   Venez nous rencontrer au campus Baco Djicoroni Golf, du lundi au samedi.
                 </p>
                 <div style={{ display:'flex', flexWrap:'wrap', gap:'8px' }}>
-                    <a href='tel:+22377677575' className='btn btn-primary btn-sm'><Phone size={14}/> Appeler</a>
+                    <a href='tel:+22376757329' className='btn btn-primary btn-sm'><Phone size={14}/> Appeler</a>
                   <a href={INSTITUTION.campuses[0].mapsUrl} target='_blank' rel='noopener noreferrer' className='btn btn-outline btn-sm'><MapPin size={14}/> Itinéraire</a>
                 </div>
               </div>

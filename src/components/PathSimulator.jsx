@@ -25,7 +25,7 @@ export const PathSimulator = ({ onOpenApply }) => {
     {
       stepNumber: "02",
       title: "Formation Horizon",
-      badge: activeCourse.type === 'accelerated' ? "Certificat Accéléré" : "Licence LMD (3 ans)",
+      badge: activeCourse.type === 'accelerated' ? "Certificat Accéléré" : activeCourse.level,
       detail: activeCourse.title,
       icon: Award,
       color: "var(--hz-gold-primary)"

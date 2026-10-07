@@ -11,7 +11,7 @@ export const INSTITUTION = {
   accreditation: "Diplômes reconnus par l'État malien",
 
   contacts: {
-    phones:  ["+223 77 67 75 75", "+223 76 75 73 29"],
+    phones:  ["+223 76 75 73 29"],
     email:   "contact@universite-horizon.ml",
     emailAdmissions: "admissions@universite-horizon.ml",
   },
@@ -23,7 +23,7 @@ export const INSTITUTION = {
       city:  "Bamako — Baco Djicoroni Golf",
       address: "Baco Djicoroni Golf, Bamako, Mali",
       mapsUrl: "https://www.google.com/maps/search/Baco+Djicoroni+Golf+Bamako",
-      phone: "+223 77 67 75 75",
+      phone: "+223 76 75 73 29",
       image: "/assets/campus_students.jpeg",
       features: [
         "Amphithéâtres climatisés",
@@ -56,7 +56,7 @@ export const INSTITUTION = {
   socialLinks: {
     facebook:  "[LIEN OFFICIEL À FOURNIR]",
     linkedin:  "[LIEN OFFICIEL À FOURNIR]",
-    whatsapp:  "https://wa.me/22377677575"
+    whatsapp:  "https://wa.me/22376757329"
   }
 };
 
@@ -68,7 +68,7 @@ export const KEY_DOMAIN_COUNT = 12;
 export const DOMAINS = [
   {
     id:          "marches-publics",
-    name:        "Passation des Marchés Publics",
+    name:        "Passation de Marché Public",
     badge:       "Pôle Achats Publics",
     color:       "#B45309",
     icon:        "Gavel",
@@ -77,7 +77,7 @@ export const DOMAINS = [
   },
   {
     id:          "energie-renouvelable",
-    name:        "Énergies Renouvelables",
+    name:        "Énergie Renouvelable",
     badge:       "Pôle Transition Énergétique",
     color:       "#16A34A",
     icon:        "Zap",
@@ -86,7 +86,7 @@ export const DOMAINS = [
   },
   {
     id:          "gestion-projets",
-    name:        "Gestion des Projets",
+    name:        "Gestion de projet",
     badge:       "Pôle Pilotage",
     color:       "#2563EB",
     icon:        "FolderKanban",
@@ -104,7 +104,7 @@ export const DOMAINS = [
   },
   {
     id:          "relation-internationale",
-    name:        "Relation Internationnelle",
+    name:        "Relation Internationale",
     badge:       "Pôle Coopération",
     color:       "#0D9488",
     icon:        "Globe",
@@ -122,7 +122,7 @@ export const DOMAINS = [
   },
   {
     id:          "marketing-digital",
-    name:        "Marketing Digital & Commerce",
+    name:        "Marketing Digital",
     badge:       "Pôle Croissance",
     color:       "#DB2777",
     icon:        "Megaphone",
@@ -181,7 +181,7 @@ export const DOMAINS = [
     color:       "#0E9F6E",
     icon:        "HeartPulse",
     description: "Former des professionnels de santé de qualité : soignants, sages-femmes, techniciens de laboratoire et gestionnaires hospitaliers.",
-    programs:    "Infirmier Obstétricien, Sage-Femme, Biologie Médicale, Labo Pharmacie",
+    programs:    "Infirmier Obstétricien, Sage femme, Santé Publique, Biologie médicale, Labo pharmacie",
     // L'institut d'excellence est l'entité de rattachement du pôle santé.
     institute:   "institut-sante"
   }
@@ -218,31 +218,31 @@ export const INSTITUTE = {
       icon: "graduation",
       description:
         "Suivi de la grossesse, accouchement, soins néonatals et accompagnement de la femme et de l'enfant.",
-      courseIds: ["lic-infirmier-obstetricien", "lic-sage-femme"]
+      courseIds: ["lic-infirmier-obstetricien", "lic-sage-femme", "mas-sage-femme"]
     },
     {
       id: "sante-publique",
-      name: "Santé Publique et Épidémiologie",
+      name: "Santé Publique",
       icon: "chart",
       description:
         "Prévention, surveillance des maladies, statistiques sanitaires et politiques de santé publique.",
-      courseIds: ["lic-sante-publique"]
+      courseIds: ["lic-sante-publique", "mas-sante-publique"]
     },
     {
       id: "biologie-medicale",
-      name: "Biologie Médicale et Analyses Cliniques",
+      name: "Biologie médicale",
       icon: "laptop",
       description:
         "Analyses d'échantillons biologiques, hématologie, biochimie, microbiologie et contrôle qualité.",
-      courseIds: ["lic-biologie-medicale"]
+      courseIds: ["lic-biologie-medicale", "mas-biologie-medicale"]
     },
     {
       id: "pharmacie-dispensation",
-      name: "Pharmacie et Dispensation",
+      name: "Labo pharmacie",
       icon: "settings",
       description:
         "Pharmacognosie, chimie pharmaceutique, dispensation, conseil pharmaceutique et réglementation.",
-      courseIds: ["lic-labo-pharmacie"]
+      courseIds: ["lic-labo-pharmacie", "mas-labo-pharmacie"]
     }
   ],
 
@@ -297,7 +297,7 @@ export const COURSES = [
     id: "fa-qhse",
     title: "QHSE & Responsabilité Sociétale (RSE)",
     domainId: "gestion-projets",
-    domainName: "Gestion des Projets",
+    domainName: "Gestion de projet",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -342,7 +342,7 @@ export const COURSES = [
     id: "fa-humanitaire",
     title: "Action Humanitaire & Protection de l'Enfance",
     domainId: "relation-internationale",
-    domainName: "Relation Internationnelle",
+    domainName: "Relation Internationale",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -419,7 +419,7 @@ export const COURSES = [
     id: "lic-communication",
     title: "Licence — Communication Digitale & Médias",
     domainId: "marketing-digital",
-    domainName: "Marketing Digital & Commerce",
+    domainName: "Marketing Digital",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -432,7 +432,7 @@ export const COURSES = [
   },
   {
     id: "lic-gesta",
-    title: "Licence — Gestion des Entreprises et des Administrations (G.E.S.T.A.)",
+    title: "Licence — Gestion des Entreprises et des Administrations (GEA)",
     domainId: "management-rh",
     domainName: "Management des RH",
     level: "Licence (Bac+3)",
@@ -449,9 +449,9 @@ export const COURSES = [
   // ---- LICENCES — 12 DOMAINES CLÉS OFFICIELS ----
   {
     id: "lic-marches-publics",
-    title: "Licence — Passation des Marchés Publics & Contrats Publics",
+    title: "Licence — Passation de Marché Public",
     domainId: "marches-publics",
-    domainName: "Passation des Marchés Publics",
+    domainName: "Passation de Marché Public",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -464,9 +464,9 @@ export const COURSES = [
   },
   {
     id: "lic-energie-renouvelable",
-    title: "Licence — Énergies Renouvelables & Efficacité Énergétique",
+    title: "Licence — Énergie Renouvelable",
     domainId: "energie-renouvelable",
-    domainName: "Énergies Renouvelables",
+    domainName: "Énergie Renouvelable",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -479,9 +479,9 @@ export const COURSES = [
   },
   {
     id: "lic-gestion-projets",
-    title: "Licence — Gestion de Projet & Management de Projet",
+    title: "Licence — Gestion de projet",
     domainId: "gestion-projets",
-    domainName: "Gestion des Projets",
+    domainName: "Gestion de projet",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -494,9 +494,9 @@ export const COURSES = [
   },
   {
     id: "lic-relation-internationale",
-    title: "Licence — Relation Internationnelle & Coopération",
+    title: "Licence — Relation Internationale",
     domainId: "relation-internationale",
-    domainName: "Relation Internationnelle",
+    domainName: "Relation Internationale",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -524,9 +524,9 @@ export const COURSES = [
   },
   {
     id: "lic-marketing-digital",
-    title: "Licence — Marketing Digital & Commerce Électronique",
+    title: "Licence — Marketing Digital",
     domainId: "marketing-digital",
-    domainName: "Marketing Digital & Commerce",
+    domainName: "Marketing Digital",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -601,7 +601,7 @@ export const COURSES = [
   },
   {
     id: "lic-sage-femme",
-    title: "Licence — Sage-Femme (Maîtrise en Maïeutique)",
+    title: "Licence — Sage femme",
     domainId: "sante",
     domainName: "Sciences de la Santé",
     level: "Licence (Bac+3)",
@@ -616,7 +616,7 @@ export const COURSES = [
   },
   {
     id: "lic-sante-publique",
-    title: "Licence — Santé Publique & Épidémiologie",
+    title: "Licence — Santé Publique",
     domainId: "sante",
     domainName: "Sciences de la Santé",
     level: "Licence (Bac+3)",
@@ -631,7 +631,7 @@ export const COURSES = [
   },
   {
     id: "lic-biologie-medicale",
-    title: "Licence — Biologie Médicale & Analyses Cliniques",
+    title: "Licence — Biologie médicale",
     domainId: "sante",
     domainName: "Sciences de la Santé",
     level: "Licence (Bac+3)",
@@ -646,7 +646,7 @@ export const COURSES = [
   },
   {
     id: "lic-labo-pharmacie",
-    title: "Licence — Laboratoire de Pharmacie & Dispensation",
+    title: "Licence — Labo pharmacie",
     domainId: "sante",
     domainName: "Sciences de la Santé",
     level: "Licence (Bac+3)",
@@ -658,6 +658,158 @@ export const COURSES = [
     objectives: "Former des préparateurs en pharmacie capables d'assurer la dispensation, le stockage des médicaments et le conseil pharmaceutique.",
     skills: ["Pharmacognosie", "Chimie pharmaceutique", "Pharmacie clinique", "Dispensation & Conseil", "Réglementation pharmaceutique"],
     careers: ["Préparateur en pharmacie", "Responsable d'officine", "Gestionnaire de stock pharmaceutique", "Conseiller en pharmacie"]
+  },
+
+  // MASTERS LMD
+  {
+    id: "mas-gea",
+    title: "Master — Gestion des Entreprises et des Administrations (GEA)",
+    domainId: "management-rh",
+    domainName: "Management des RH",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Stages et mémoire professionnel",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en gestion, économie, comptabilité, droit ou une filière connexe",
+    objectives: "Approfondir les compétences de pilotage global de l'entreprise et de l'administration : stratégie, gouvernance, finances, ressources humaines et décision managériale.",
+    skills: ["Stratégie & gouvernance", "Contrôle de gestion avancé", "Management des organisations publiques", "Négociation & conduite du changement", "Mémoire professionnel"],
+    careers: ["Cadre dirigeant", "Directeur administratif et financier", "Consultant en management", "Attaché d'administration supérieure"]
+  },
+  {
+    id: "mas-marches-publics",
+    title: "Master — Passation de Marché Public",
+    domainId: "marches-publics",
+    domainName: "Passation de Marché Public",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Cas de passation réels",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en droit, gestion, économie ou une filière connexe",
+    objectives: "Maîtriser à un niveau expert la commande publique : montage des dossiers de consultation, analyse des offres, négociation, exécution et contrôle des marchés de l'État.",
+    skills: ["Réglementation des marchés publics UEMOA", "Audit & contrôle des achats publics", "Négociation contractuelle", "Contentieux de la commande publique"],
+    careers: ["Responsable des achats publics", "Auditeur de marchés", "Contrôleur financier de l'État", "Consultant en passation"]
+  },
+  {
+    id: "mas-energie-renouvelable",
+    title: "Master — Énergie Renouvelable",
+    domainId: "energie-renouvelable",
+    domainName: "Énergie Renouvelable",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Projets de chantier et mémoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en énergie, électronique, génie électrique, physique ou une filière technique connexe",
+    objectives: "Concevoir et piloter des projets d'envergure en énergies renouvelables : dimensionnement, financement, exploitation et gestion des réseaux intelligents.",
+    skills: ["Dimensionnement de centrales solaires et éoliennes", "Gestion de projets énergétiques", "Stockage & réseaux intelligents", "Audit et efficacité énergétique"],
+    careers: ["Ingénieur en énergies renouvelables", "Chef de projet ENR", "Consultant en efficacité énergétique", "Responsable d'exploitation"]
+  },
+  {
+    id: "mas-gestion-projet",
+    title: "Master — Gestion de projet",
+    domainId: "gestion-projets",
+    domainName: "Gestion de projet",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Projets tutés et mémoire professionnel",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en gestion, droit, informatique, sciences humaines ou une filière connexe",
+    objectives: "Piloter des projets complexes de bout en bout : portefeuille, gouvernance, budget, risques, qualité et conduite du changement.",
+    skills: ["Gestion de portefeuille", "Méthodologies agiles & PRINCE2", "Pilotage des risques et de la qualité", "Management des parties prenantes"],
+    careers: ["Chef de projet senior", "Directeur de programme", "Consultant en organisation", "Responsable PMO"]
+  },
+  {
+    id: "mas-relation-internationale",
+    title: "Master — Relation Internationale",
+    domainId: "relation-internationale",
+    domainName: "Relation Internationale",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Simulations et mémoire de recherche",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en droit, sciences politiques, histoire, économie ou une filière connexe",
+    objectives: "Analyser et intervenir dans les affaires internationales : négociation diplomatique, coopération au développement, intégration régionale et géopolitique.",
+    skills: ["Négociation & diplomatie", "Intégration régionale (UA, CEDEAO, ONU)", "Évaluation des programmes de coopération", "Analyse géopolitique"],
+    careers: ["Diplomate / attaché", "Chargé de mission coopération", "Analyste géopolitique", "Conseiller en affaires internationales"]
+  },
+  {
+    id: "mas-marketing-digital",
+    title: "Master — Marketing Digital",
+    domainId: "marketing-digital",
+    domainName: "Marketing Digital",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Campagnes réelles et mémoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en marketing, communication, commerce, gestion ou une filière connexe",
+    objectives: "Concevoir et piloter la stratégie digitale globale d'une organisation : marque, acquisition, data, contenu et performance commerciale en ligne.",
+    skills: ["Stratégie digitale & data marketing", "SEO / SEA & growth", "E-commerce & marketplaces", "Management d'équipe marketing"],
+    careers: ["Directeur marketing digital", "Responsable acquisition / growth", "Consultant en stratégie digitale", "Responsable e-commerce"]
+  },
+  {
+    id: "mas-sage-femme",
+    title: "Master — Sage femme",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Internat clinique et mémoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en santé ou filière scientifique connexe",
+    objectives: "Former des sages-femmes de niveau master, capables de gérer les grossesses à risque, d'assurer la pathologie gynécologique et de coordonner les soins maternels.",
+    skills: ["Obstétrique clinique avancée", "Pathologie maternelle & néonatale", "Coordination des soins", "Santé communautaire & mentorat"],
+    careers: ["Sage-femme clinicienne", "Cadre de santé maternelle", "Responsable de maternité", "Formateur en maïeutique"]
+  },
+  {
+    id: "mas-sante-publique",
+    title: "Master — Santé Publique",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Terrain et mémoire de recherche",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en santé, biologie, statistiques, économie ou une filière connexe",
+    objectives: "Concevoir, mettre en œuvre et évaluer les politiques sanitaires : épidémiologie, santé communautaire, gestion des programmes et système d'information sanitaire.",
+    skills: ["Épidémiologie analytique", "Gestion des urgences sanitaires", "Systèmes d'information de santé", "Évaluation des programmes"],
+    careers: ["Épidémiologiste senior", "Cadre de direction sanitaire", "Responsable de programme ONG", "Consultant en politiques de santé"]
+  },
+  {
+    id: "mas-biologie-medicale",
+    title: "Master — Biologie médicale",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Laboratoire central et mémoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en biologie médicale, biologie ou filière scientifique connexe",
+    objectives: "Maîtriser les techniques d'analyse avancées et encadrer un laboratoire : biologie moléculaire, contrôle qualité, hygiène et gestion du service.",
+    skills: ["Biologie moléculaire & génétique", "Immuno-hématologie avancée", "Contrôle qualité & accréditation", "Management de laboratoire"],
+    careers: ["Biologiste / responsable de laboratoire", "Chef de service d'analyses", "Responsable qualité laboratoire", "Chercheur en biologie médicale"]
+  },
+  {
+    id: "mas-labo-pharmacie",
+    title: "Master — Labo pharmacie",
+    domainId: "sante",
+    domainName: "Sciences de la Santé",
+    level: "Master (Bac+5)",
+    type: "degree",
+    duration: "2 ans — 4 semestres",
+    modality: "Présentiel + Officine / hôpital et mémoire",
+    tuition: "[TARIF À FOURNIR]",
+    prerequisites: "Licence (Bac+3) en pharmacie, biologie ou filière scientifique connexe",
+    objectives: "Approfondir la dispensation, la galénique et la gestion des approvisionnements en médicaments, ainsi que la réglementation pharmaceutique.",
+    skills: ["Galénique & préparations", "Pharmacie clinique & thérapeutique", "Gestion des approvisionnements", "Réglementation et pharmacovigilance"],
+    careers: ["Responsable de laboratoire pharmaceutique", "Cadre officinal", "Gestionnaire des circuits du médicament", "Conseiller en pharmacie"]
   }
 ];
 
@@ -668,7 +820,7 @@ export const HEALTH_COURSES = COURSES.filter(c => c.domainId === 'sante');
 export const FAQ = [
   {
     q: "Quels sont les domaines clés de l'Université Horizon ?",
-    a: "Nos 12 domaines clés sont : Passation des Marchés Publics, Énergies Renouvelables, Gestion des Projets, Droit et Sciences Politiques, Relation Internationuelle, Informatique et IA, Marketing Digital & Commerce, Comptabilité-Finances-Audit, Banque Finances et Assurance, Management des RH, Logistique et Supply Chain, Réseaux et Télécommunications. S'y ajoute le pôle Sciences de la Santé, porté par notre Institut d'Excellence.",
+    a: "Nos 12 domaines clés sont : Passation de Marché Public, Énergie Renouvelable, Gestion de projet, Droit et Sciences Politiques, Relation Internationale, Informatique et IA, Marketing Digital, Comptabilité-Finances-Audit, Banque Finances et Assurance, Management des RH, Logistique et Supply Chain, Réseaux et Télécommunications. S'y ajoute le pôle Sciences de la Santé, porté par notre Institut d'Excellence.",
     cat: "Formations"
   },
   {
@@ -683,7 +835,7 @@ export const FAQ = [
   },
   {
     q: "Où se situent les campus ?",
-    a: "L'Université Horizon dispose de deux campus : Campus Baco Djicoroni Golf (Bamako) — notre site principal, et un second site à Bamako. Contactez-nous au +223 77 67 75 75 pour un accueil personnalisé.",
+    a: "L'Université Horizon dispose de deux campus : Campus Baco Djicoroni Golf (Bamako) — notre site principal, et un second site à Bamako. Contactez-nous au +223 76 75 73 29 pour un accueil personnalisé.",
     cat: "Campus & Localisation"
   },
   {
@@ -693,7 +845,7 @@ export const FAQ = [
   },
   {
     q: "Quels sont les frais de scolarité ?",
-    a: "Les tarifs officiels sont communiqués par le service des admissions lors du dépôt de dossier ou sur demande au +223 77 67 75 75 / 76 75 73 29.",
+    a: "Les tarifs officiels sont communiqués par le service des admissions lors du dépôt de dossier ou sur demande au +223 76 75 73 29.",
     cat: "Admissions & Tarifs"
   },
   {
@@ -767,6 +919,6 @@ export const WHY_HORIZON = [
     id: "diplomes",
     icon: "ShieldCheck",
     title: "Diplômes Reconnus par l'État",
-    desc: "Certificats et Licences officiellement homologués par le ministère de l'Enseignement Supérieur."
+    desc: "Certificats, Licences et Masters officiellement homologués par le ministère de l'Enseignement Supérieur."
   }
 ];

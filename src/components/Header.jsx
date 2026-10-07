@@ -63,8 +63,8 @@ export const Header = ({ onOpenSearch, onOpenPortals, onOpenApply }) => {
             <span className="header-topbar-text">Diplômes reconnus par l'État malien &bull; Bamako</span>
           </div>
           <div className="header-topbar-right">
-            <a href="tel:+22377677575" className="header-topbar-phone">
-              <Phone size={12}/> +223 77 67 75 75
+            <a href="tel:+22376757329" className="header-topbar-phone">
+              <Phone size={12}/> +223 76 75 73 29
             </a>
             <button onClick={onOpenPortals} className="header-topbar-portals">
               <UserCheck size={12}/> Portails

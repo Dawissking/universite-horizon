@@ -151,7 +151,7 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
               <div style={{ display:'flex', flexDirection:'column', gap:'1.25rem' }}>
                 <div><label className='hz-label'>Formation souhaitée</label>
                   <select value={form.courseId} onChange={e=>setForm({...form,courseId:e.target.value})} className='hz-input'>
-                    {COURSES.map(c=><option key={c.id} value={c.id}>[{c.type==='accelerated'?'Accéléré':'LMD'}] {c.title}</option>)}
+                    {COURSES.map(c=><option key={c.id} value={c.id}>[{c.type==='accelerated'?'Accéléré':c.level.startsWith('Master')?'Master':'Licence'}] {c.title}</option>)}
                   </select>
                 </div>
                 <div><label className='hz-label'>Campus préféré</label>
@@ -350,14 +350,14 @@ const QUESTIONS = [
     {label:'Comptabilité, Finance & Audit',value:'finance'},
     {label:'Banque & Assurance',value:'banque'},
     {label:'Logistique, Transit & Douane',value:'transit'},
-    {label:'Passation des marchés publics',value:'marches'},
+    {label:'Passation de Marché Public',value:'marches'},
     {label:'Droit & Sciences Politiques',value:'droit'},
-    {label:'Relation Internationnelle',value:'ri'},
-    {label:'Marketing Digital & Commerce',value:'comm'},
-    {label:'Gestion de Projet',value:'projets'},
+    {label:'Relation Internationale',value:'ri'},
+    {label:'Marketing Digital',value:'comm'},
+    {label:'Gestion de projet',value:'projets'},
     {label:'Management des RH',value:'rh'},
     {label:'Réseaux & Télécommunications',value:'telecom'},
-    {label:'Énergies Renouvelables',value:'energie'},
+    {label:'Énergie Renouvelable',value:'energie'},
     {label:'Action humanitaire & ONG',value:'humanitaire'},
     {label:'Santé & Soins aux populations',value:'sante'},
     {label:'Sécurité, Environnement & QHSE',value:'qhse'},
@@ -569,7 +569,7 @@ const handleTracker = async () => {
                   Institut d'Excellence en Sciences de la Santé Horizon
                 </div>
                 <div style={{ fontSize:'0.8125rem', color:'var(--text-600)' }}>
-                  Première rentrée {INSTITUTE.intake.date} — {HEALTH_COURSES.length} licences de santé et {INSTITUTE.keyDomains.length} domaines clés
+                  Première rentrée {INSTITUTE.intake.date} — {HEALTH_COURSES.length} formations de santé et {INSTITUTE.keyDomains.length} domaines clés
                 </div>
               </div>
             </div>
@@ -610,6 +610,7 @@ const handleTracker = async () => {
               <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
                 {[
                   { title:'Licences LMD (Bac+3)', items:['Baccalauréat malien ou étranger reconnu','Dossier scolaire complet + relevés de notes','Pièce d\'identité ou passeport valide','2 photos d\'identité récentes (fond blanc)'] },
+                  { title:'Masters LMD (Bac+5)', items:['Licence (Bac+3) dans la filière ou une discipline connexe','Relevés de notes de Licence + diplôme','Pièce d\'identité ou passeport valide','2 photos d\'identité récentes (fond blanc)'] },
                   { title:'Certificats Métiers Accélérés', items:['Baccalauréat ou expérience professionnelle équivalente','Acte de naissance officiel','Pièce d\'identité','Motivation éventuellement requise'] },
                 ].map((section, i) => (
                   <Reveal key={i} delay={i*120+200}>
@@ -632,8 +633,8 @@ const handleTracker = async () => {
                     <p style={{ fontSize:'0.875rem', color:'var(--text-600)' }}>
                       Communiqués par le service des admissions sur demande.
                     </p>
-                    <a href='tel:+22377677575' className='btn btn-gold btn-sm' style={{ marginTop:'10px', display:'inline-flex' }}>
-                      Renseignements : +223 77 67 75 75
+                    <a href='tel:+22376757329' className='btn btn-gold btn-sm' style={{ marginTop:'10px', display:'inline-flex' }}>
+                      Renseignements : +223 76 75 73 29
                     </a>
                   </div>
                 </Reveal>

@@ -25,7 +25,10 @@ export default function FormationsPage({ onOpenApply }) {
     const q = search.toLowerCase();
     const matchText = !q || c.title.toLowerCase().includes(q) || c.skills.some(s => s.toLowerCase().includes(q)) || c.careers.some(o => o.toLowerCase().includes(q));
     const matchDomain = domain === 'all' || c.domainId === domain;
-    const matchType   = type   === 'all' || c.type === type;
+    const matchType   = type   === 'all'
+      || (type === 'accelerated' && c.type === 'accelerated')
+      || (type === 'licence' && c.type !== 'accelerated' && c.level.startsWith('Licence'))
+      || (type === 'master' && c.type !== 'accelerated' && c.level.startsWith('Master'));
     return matchText && matchDomain && matchType;
   }), [search, domain, type]);
 
@@ -38,7 +41,7 @@ export default function FormationsPage({ onOpenApply }) {
         breadcrumb='Formations'
         title='Nos'
         highlight='Formations'
-        description="Licences LMD et Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
+        description="Licences et Masters LMD ainsi que Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
       />
 
       {/* RENVOI INSTITUT SANTÉ */}
@@ -54,7 +57,7 @@ export default function FormationsPage({ onOpenApply }) {
                   Institut d'Excellence en Sciences de la Santé Horizon
                 </div>
                 <div style={{ fontSize:'0.8125rem', color:'var(--text-600)' }}>
-                  {HEALTH_COURSES.length} licences de santé, domaines clés et débouchés — première rentrée {INSTITUTE.intake.date}
+                  {HEALTH_COURSES.length} formations de santé, domaines clés et débouchés — première rentrée {INSTITUTE.intake.date}
                 </div>
               </div>
             </div>
@@ -96,7 +99,8 @@ export default function FormationsPage({ onOpenApply }) {
             </div>
             <select value={type} onChange={e => setType(e.target.value)} className='hz-input'>
               <option value='all'>Tous les types</option>
-              <option value='degree'>Licences LMD (Bac+3)</option>
+              <option value='licence'>Licences LMD (Bac+3)</option>
+              <option value='master'>Masters LMD (Bac+5)</option>
               <option value='accelerated'>Certificats Métiers Accélérés</option>
             </select>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', fontSize:'0.84rem', color:'var(--text-400)' }}>
