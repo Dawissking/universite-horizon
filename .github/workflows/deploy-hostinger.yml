@@ -20,6 +20,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,25 +40,19 @@ jobs:
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
 
       - name: Upload to Hostinger
-        uses: SamMills/ftp-deploy-action@v4.4.3
-        env:
-          FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-          FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
-          FTP_PORT: ${{ secrets.HOSTINGER_FTP_PORT }}
-          FTP_DIRECTORY: /
-          LOCAL_DIR: dist/
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          timeout-minutes: 10
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          port: ${{ secrets.HOSTINGER_FTP_PORT || 21 }}
+          local-dir: ./dist/
+          server-dir: ./
           # Ne jamais purger le dossier distant : les dossiers de candidature
           # téléversés par les étudiants vivent dans /uploads et doivent
           # survivre aux déploiements.
-          empty-remote-dir: false
+          dangerous-clean-slate: false
           exclude: |
-            .git/
-            node_modules/
-            src/
-            .github/
-            database.sql
-            DEPLOY.md
-            package-lock.json
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
