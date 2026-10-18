@@ -68,7 +68,7 @@ export const KEY_DOMAIN_COUNT = 12;
 export const DOMAINS = [
   {
     id:          "marches-publics",
-    name:        "Passation de Marché Public",
+    name:        "Passation de Marchés Publics et Contrats",
     badge:       "Pôle Achats Publics",
     color:       "#B45309",
     icon:        "Gavel",
@@ -77,7 +77,7 @@ export const DOMAINS = [
   },
   {
     id:          "energie-renouvelable",
-    name:        "Énergie Renouvelable",
+    name:        "Énergies Renouvelables",
     badge:       "Pôle Transition Énergétique",
     color:       "#16A34A",
     icon:        "Zap",
@@ -86,7 +86,7 @@ export const DOMAINS = [
   },
   {
     id:          "gestion-projets",
-    name:        "Gestion de projet",
+    name:        "Gestion de Projets et MEAL",
     badge:       "Pôle Pilotage",
     color:       "#2563EB",
     icon:        "FolderKanban",
@@ -95,7 +95,7 @@ export const DOMAINS = [
   },
   {
     id:          "droit-politique",
-    name:        "Droit et Sciences Politiques",
+    name:        "Droit et Science Politiques",
     badge:       "Pôle Régalien",
     color:       "#C0392B",
     icon:        "Scale",
@@ -104,7 +104,7 @@ export const DOMAINS = [
   },
   {
     id:          "relation-internationale",
-    name:        "Relation Internationale",
+    name:        "Relations Internationales et Diplomatie",
     badge:       "Pôle Coopération",
     color:       "#0D9488",
     icon:        "Globe",
@@ -113,7 +113,7 @@ export const DOMAINS = [
   },
   {
     id:          "informatique-ia",
-    name:        "Informatique et IA",
+    name:        "Informatique et Intelligence Artificielle",
     badge:       "Pôle Innovation",
     color:       "#7C3AED",
     icon:        "Cpu",
@@ -122,7 +122,7 @@ export const DOMAINS = [
   },
   {
     id:          "marketing-digital",
-    name:        "Marketing Digital",
+    name:        "Marketing Digital et Commerce",
     badge:       "Pôle Croissance",
     color:       "#DB2777",
     icon:        "Megaphone",
@@ -131,7 +131,7 @@ export const DOMAINS = [
   },
   {
     id:          "comptabilite-finance-audit",
-    name:        "Comptabilité-Finances-Audit",
+    name:        "Comptabilité, Finance et Audit",
     badge:       "Pôle Excellence",
     color:       "#C99726",
     icon:        "Calculator",
@@ -140,7 +140,7 @@ export const DOMAINS = [
   },
   {
     id:          "banque-finance-assurance",
-    name:        "Banque Finances et Assurance",
+    name:        "Banque Finance et Assurance",
     badge:       "Pôle Marchés Financiers",
     color:       "#1D4ED8",
     icon:        "Landmark",
@@ -149,7 +149,7 @@ export const DOMAINS = [
   },
   {
     id:          "management-rh",
-    name:        "Management des RH",
+    name:        "Gestion des Ressources Humaines et Management",
     badge:       "Pôle Capital Humain",
     color:       "#EA580C",
     icon:        "Users",
@@ -218,7 +218,7 @@ export const INSTITUTE = {
       icon: "graduation",
       description:
         "Suivi de la grossesse, accouchement, soins néonatals et accompagnement de la femme et de l'enfant.",
-      courseIds: ["lic-infirmier-obstetricien", "lic-sage-femme", "mas-sage-femme"]
+      courseIds: ["lic-infirmier-obstetricien", "lic-sage-femme"]
     },
     {
       id: "sante-publique",
@@ -226,7 +226,7 @@ export const INSTITUTE = {
       icon: "chart",
       description:
         "Prévention, surveillance des maladies, statistiques sanitaires et politiques de santé publique.",
-      courseIds: ["lic-sante-publique", "mas-sante-publique"]
+      courseIds: ["lic-sante-publique"]
     },
     {
       id: "biologie-medicale",
@@ -234,7 +234,7 @@ export const INSTITUTE = {
       icon: "laptop",
       description:
         "Analyses d'échantillons biologiques, hématologie, biochimie, microbiologie et contrôle qualité.",
-      courseIds: ["lic-biologie-medicale", "mas-biologie-medicale"]
+      courseIds: ["lic-biologie-medicale"]
     },
     {
       id: "pharmacie-dispensation",
@@ -242,7 +242,7 @@ export const INSTITUTE = {
       icon: "settings",
       description:
         "Pharmacognosie, chimie pharmaceutique, dispensation, conseil pharmaceutique et réglementation.",
-      courseIds: ["lic-labo-pharmacie", "mas-labo-pharmacie"]
+      courseIds: ["lic-labo-pharmacie"]
     }
   ],
 
@@ -297,7 +297,7 @@ export const COURSES = [
     id: "fa-qhse",
     title: "QHSE & Responsabilité Sociétale (RSE)",
     domainId: "gestion-projets",
-    domainName: "Gestion de projet",
+    domainName: "Gestion de Projets et MEAL",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -312,7 +312,7 @@ export const COURSES = [
     id: "fa-bureautique",
     title: "Informatique Bureautique & Outils Collaboratifs",
     domainId: "informatique-ia",
-    domainName: "Informatique et IA",
+    domainName: "Informatique et Intelligence Artificielle",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -327,7 +327,7 @@ export const COURSES = [
     id: "fa-comptable",
     title: "Assistante Comptable & Gestion Financière",
     domainId: "comptabilite-finance-audit",
-    domainName: "Comptabilité-Finances-Audit",
+    domainName: "Comptabilité, Finance et Audit",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -342,7 +342,7 @@ export const COURSES = [
     id: "fa-humanitaire",
     title: "Action Humanitaire & Protection de l'Enfance",
     domainId: "relation-internationale",
-    domainName: "Relation Internationale",
+    domainName: "Relations Internationales et Diplomatie",
     level: "Certificat Métier",
     type: "accelerated",
     duration: "[DURÉE À FOURNIR]",
@@ -374,7 +374,7 @@ export const COURSES = [
     id: "lic-genie-logiciel",
     title: "Licence — Génie Logiciel & Systèmes d'Information",
     domainId: "informatique-ia",
-    domainName: "Informatique et IA",
+    domainName: "Informatique et Intelligence Artificielle",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -389,7 +389,7 @@ export const COURSES = [
     id: "lic-comptabilite",
     title: "Licence — Comptabilité, Contrôle & Audit (CCA)",
     domainId: "comptabilite-finance-audit",
-    domainName: "Comptabilité-Finances-Audit",
+    domainName: "Comptabilité, Finance et Audit",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -404,7 +404,7 @@ export const COURSES = [
     id: "lic-droit",
     title: "Licence — Droit des Affaires & Carrières Juridiques",
     domainId: "droit-politique",
-    domainName: "Droit et Sciences Politiques",
+    domainName: "Droit et Science Politiques",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -419,7 +419,7 @@ export const COURSES = [
     id: "lic-communication",
     title: "Licence — Communication Digitale & Médias",
     domainId: "marketing-digital",
-    domainName: "Marketing Digital",
+    domainName: "Marketing Digital et Commerce",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -434,7 +434,7 @@ export const COURSES = [
     id: "lic-gesta",
     title: "Licence — Gestion des Entreprises et des Administrations (GEA)",
     domainId: "management-rh",
-    domainName: "Management des RH",
+    domainName: "Gestion des Ressources Humaines et Management",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -449,9 +449,9 @@ export const COURSES = [
   // ---- LICENCES — 12 DOMAINES CLÉS OFFICIELS ----
   {
     id: "lic-marches-publics",
-    title: "Licence — Passation de Marché Public",
+    title: "Licence — Passation de Marchés Publics et Contrats",
     domainId: "marches-publics",
-    domainName: "Passation de Marché Public",
+    domainName: "Passation de Marchés Publics et Contrats",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -464,9 +464,9 @@ export const COURSES = [
   },
   {
     id: "lic-energie-renouvelable",
-    title: "Licence — Énergie Renouvelable",
+    title: "Licence — Énergies Renouvelables",
     domainId: "energie-renouvelable",
-    domainName: "Énergie Renouvelable",
+    domainName: "Énergies Renouvelables",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -479,9 +479,9 @@ export const COURSES = [
   },
   {
     id: "lic-gestion-projets",
-    title: "Licence — Gestion de projet",
+    title: "Licence — Gestion de Projets et MEAL",
     domainId: "gestion-projets",
-    domainName: "Gestion de projet",
+    domainName: "Gestion de Projets et MEAL",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -494,9 +494,9 @@ export const COURSES = [
   },
   {
     id: "lic-relation-internationale",
-    title: "Licence — Relation Internationale",
+    title: "Licence — Relations Internationales et Diplomatie",
     domainId: "relation-internationale",
-    domainName: "Relation Internationale",
+    domainName: "Relations Internationales et Diplomatie",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -509,9 +509,9 @@ export const COURSES = [
   },
   {
     id: "lic-informatique-ia",
-    title: "Licence — Informatique & Intelligence Artificielle",
+    title: "Licence — Informatique et Intelligence Artificielle",
     domainId: "informatique-ia",
-    domainName: "Informatique et IA",
+    domainName: "Informatique et Intelligence Artificielle",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -524,9 +524,9 @@ export const COURSES = [
   },
   {
     id: "lic-marketing-digital",
-    title: "Licence — Marketing Digital",
+    title: "Licence — Marketing Digital et Commerce",
     domainId: "marketing-digital",
-    domainName: "Marketing Digital",
+    domainName: "Marketing Digital et Commerce",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -539,9 +539,9 @@ export const COURSES = [
   },
   {
     id: "lic-banque-finance-assurance",
-    title: "Licence — Banque, Finance & Assurance",
+    title: "Licence — Banque Finance et Assurance",
     domainId: "banque-finance-assurance",
-    domainName: "Banque Finances et Assurance",
+    domainName: "Banque Finance et Assurance",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -554,9 +554,9 @@ export const COURSES = [
   },
   {
     id: "lic-management-rh",
-    title: "Licence — Management des Ressources Humaines",
+    title: "Licence — Gestion des Ressources Humaines et Management",
     domainId: "management-rh",
-    domainName: "Management des RH",
+    domainName: "Gestion des Ressources Humaines et Management",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -569,7 +569,7 @@ export const COURSES = [
   },
   {
     id: "lic-reseaux-telecom",
-    title: "Licence — Réseaux & Télécommunications",
+    title: "Licence — Réseaux et Télécommunications",
     domainId: "reseaux-telecom",
     domainName: "Réseaux et Télécommunications",
     level: "Licence (Bac+3)",
@@ -665,7 +665,7 @@ export const COURSES = [
     id: "mas-gea",
     title: "Master — Gestion des Entreprises et des Administrations (GEA)",
     domainId: "management-rh",
-    domainName: "Management des RH",
+    domainName: "Gestion des Ressources Humaines et Management",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -678,9 +678,9 @@ export const COURSES = [
   },
   {
     id: "mas-marches-publics",
-    title: "Master — Passation de Marché Public",
+    title: "Master — Passation de Marchés Publics et Contrats",
     domainId: "marches-publics",
-    domainName: "Passation de Marché Public",
+    domainName: "Passation de Marchés Publics et Contrats",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -693,9 +693,9 @@ export const COURSES = [
   },
   {
     id: "mas-energie-renouvelable",
-    title: "Master — Énergie Renouvelable",
+    title: "Master — Énergies Renouvelables",
     domainId: "energie-renouvelable",
-    domainName: "Énergie Renouvelable",
+    domainName: "Énergies Renouvelables",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -708,9 +708,9 @@ export const COURSES = [
   },
   {
     id: "mas-gestion-projet",
-    title: "Master — Gestion de projet",
+    title: "Master — Gestion de Projets et MEAL",
     domainId: "gestion-projets",
-    domainName: "Gestion de projet",
+    domainName: "Gestion de Projets et MEAL",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -723,9 +723,9 @@ export const COURSES = [
   },
   {
     id: "mas-relation-internationale",
-    title: "Master — Relation Internationale",
+    title: "Master — Relations Internationales et Diplomatie",
     domainId: "relation-internationale",
-    domainName: "Relation Internationale",
+    domainName: "Relations Internationales et Diplomatie",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -738,9 +738,9 @@ export const COURSES = [
   },
   {
     id: "mas-marketing-digital",
-    title: "Master — Marketing Digital",
+    title: "Master — Marketing Digital et Commerce",
     domainId: "marketing-digital",
-    domainName: "Marketing Digital",
+    domainName: "Marketing Digital et Commerce",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -750,66 +750,6 @@ export const COURSES = [
     objectives: "Concevoir et piloter la stratégie digitale globale d'une organisation : marque, acquisition, data, contenu et performance commerciale en ligne.",
     skills: ["Stratégie digitale & data marketing", "SEO / SEA & growth", "E-commerce & marketplaces", "Management d'équipe marketing"],
     careers: ["Directeur marketing digital", "Responsable acquisition / growth", "Consultant en stratégie digitale", "Responsable e-commerce"]
-  },
-  {
-    id: "mas-sage-femme",
-    title: "Master — Sage femme",
-    domainId: "sante",
-    domainName: "Sciences de la Santé",
-    level: "Master (Bac+5)",
-    type: "degree",
-    duration: "2 ans — 4 semestres",
-    modality: "Présentiel + Internat clinique et mémoire",
-    tuition: "[TARIF À FOURNIR]",
-    prerequisites: "Licence (Bac+3) en santé ou filière scientifique connexe",
-    objectives: "Former des sages-femmes de niveau master, capables de gérer les grossesses à risque, d'assurer la pathologie gynécologique et de coordonner les soins maternels.",
-    skills: ["Obstétrique clinique avancée", "Pathologie maternelle & néonatale", "Coordination des soins", "Santé communautaire & mentorat"],
-    careers: ["Sage-femme clinicienne", "Cadre de santé maternelle", "Responsable de maternité", "Formateur en maïeutique"]
-  },
-  {
-    id: "mas-sante-publique",
-    title: "Master — Santé Publique",
-    domainId: "sante",
-    domainName: "Sciences de la Santé",
-    level: "Master (Bac+5)",
-    type: "degree",
-    duration: "2 ans — 4 semestres",
-    modality: "Présentiel + Terrain et mémoire de recherche",
-    tuition: "[TARIF À FOURNIR]",
-    prerequisites: "Licence (Bac+3) en santé, biologie, statistiques, économie ou une filière connexe",
-    objectives: "Concevoir, mettre en œuvre et évaluer les politiques sanitaires : épidémiologie, santé communautaire, gestion des programmes et système d'information sanitaire.",
-    skills: ["Épidémiologie analytique", "Gestion des urgences sanitaires", "Systèmes d'information de santé", "Évaluation des programmes"],
-    careers: ["Épidémiologiste senior", "Cadre de direction sanitaire", "Responsable de programme ONG", "Consultant en politiques de santé"]
-  },
-  {
-    id: "mas-biologie-medicale",
-    title: "Master — Biologie médicale",
-    domainId: "sante",
-    domainName: "Sciences de la Santé",
-    level: "Master (Bac+5)",
-    type: "degree",
-    duration: "2 ans — 4 semestres",
-    modality: "Présentiel + Laboratoire central et mémoire",
-    tuition: "[TARIF À FOURNIR]",
-    prerequisites: "Licence (Bac+3) en biologie médicale, biologie ou filière scientifique connexe",
-    objectives: "Maîtriser les techniques d'analyse avancées et encadrer un laboratoire : biologie moléculaire, contrôle qualité, hygiène et gestion du service.",
-    skills: ["Biologie moléculaire & génétique", "Immuno-hématologie avancée", "Contrôle qualité & accréditation", "Management de laboratoire"],
-    careers: ["Biologiste / responsable de laboratoire", "Chef de service d'analyses", "Responsable qualité laboratoire", "Chercheur en biologie médicale"]
-  },
-  {
-    id: "mas-labo-pharmacie",
-    title: "Master — Labo pharmacie",
-    domainId: "sante",
-    domainName: "Sciences de la Santé",
-    level: "Master (Bac+5)",
-    type: "degree",
-    duration: "2 ans — 4 semestres",
-    modality: "Présentiel + Officine / hôpital et mémoire",
-    tuition: "[TARIF À FOURNIR]",
-    prerequisites: "Licence (Bac+3) en pharmacie, biologie ou filière scientifique connexe",
-    objectives: "Approfondir la dispensation, la galénique et la gestion des approvisionnements en médicaments, ainsi que la réglementation pharmaceutique.",
-    skills: ["Galénique & préparations", "Pharmacie clinique & thérapeutique", "Gestion des approvisionnements", "Réglementation et pharmacovigilance"],
-    careers: ["Responsable de laboratoire pharmaceutique", "Cadre officinal", "Gestionnaire des circuits du médicament", "Conseiller en pharmacie"]
   }
 ];
 
@@ -820,7 +760,7 @@ export const HEALTH_COURSES = COURSES.filter(c => c.domainId === 'sante');
 export const FAQ = [
   {
     q: "Quels sont les domaines clés de l'Université Horizon ?",
-    a: "Nos 12 domaines clés sont : Passation de Marché Public, Énergie Renouvelable, Gestion de projet, Droit et Sciences Politiques, Relation Internationale, Informatique et IA, Marketing Digital, Comptabilité-Finances-Audit, Banque Finances et Assurance, Management des RH, Logistique et Supply Chain, Réseaux et Télécommunications. S'y ajoute le pôle Sciences de la Santé, porté par notre Institut d'Excellence.",
+    a: "Nos 12 filières (DUT, Licence et Master) sont : Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion des Ressources Humaines et Management, Marketing Digital et Commerce, Comptabilité, Finance et Audit, Banque Finance et Assurance, Logistique et Supply Chain, Énergies Renouvelables, Relations Internationales et Diplomatie, Droit et Science Politiques, Gestion de Projets et MEAL. S'y ajoute le pôle Sciences de la Santé (Licence uniquement), porté par notre Institut d'Excellence.",
     cat: "Formations"
   },
   {

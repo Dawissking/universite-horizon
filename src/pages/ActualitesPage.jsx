@@ -42,7 +42,7 @@ const ACTUALITES = [
     type:'Formation', typeColor:'#7C3AED',
     date:'Rentrée 2026',
     title:`${KEY_DOMAIN_COUNT} domaines clés : nouveau catalogue de formations`,
-    excerpt:'Passation de Marché Public, Énergie Renouvelable, Gestion de projet, Informatique et IA, Logistique et Supply Chain… Retrouvez les 12 domaines clés de l’Université Horizon et leurs Licences et Masters LMD.',
+    excerpt:'Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion de Projets et MEAL, Logistique et Supply Chain… Retrouvez les 12 filières de l’Université Horizon et leurs Licences et Masters LMD.',
     icon:'graduation',
     cta:'Explorer les formations',
     ctaLink:'/formations'

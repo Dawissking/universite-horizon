@@ -85,7 +85,7 @@ export default function AboutPage() {
       <p>
         Le pôle Sciences de la Santé est porté par l'Institut d'Excellence en Sciences de la
         Santé Horizon, qui accueille sa première rentrée. Il regroupe {HEALTH_COURSES.length} formations
-        professionnelles (Licence et Master) — infirmier obstétricien, Sage femme, Santé Publique, Biologie médicale
+        professionnelle (Licence) — infirmier obstétricien, Sage femme, Santé Publique, Biologie médicale
         et Labo pharmacie — ainsi que {INSTITUTE.keyDomains.length} domaines cliniques, des laboratoires
         et des conventions avec des structures de soins.
       </p>

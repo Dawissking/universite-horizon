@@ -171,7 +171,7 @@ export default function HealthInstitutePage({ onOpenApply }) {
               <span className="section-badge"><BookOpen size={13}/> Cursus</span>
               <h2 className="section-title">Formations de l'Institut</h2>
               <p className="section-lead">
-                {HEALTH_COURSES.length} formations (Licences et Masters), toutes adossées à des
+                {HEALTH_COURSES.length} formations (Licences), toutes adossées à des
                 stages cliniques encadrés.
               </p>
             </Reveal>
