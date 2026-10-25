@@ -38,7 +38,7 @@ export default function FormationsPage({ onOpenApply }) {
 
       {/* BANDEAU */}
       <PageBanner
-        image='/assets/Etudiant_Informatique.jpeg'
+        image='/assets/etudiante-cours.jpeg'
         breadcrumb='Formations'
         title='Nos'
         highlight='Formations'

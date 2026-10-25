@@ -153,8 +153,8 @@ export const Hero = ({ onOpenApply, onNavigate }) => {
             {/* Cadre de l'image principale des étudiants Horizon */}
             <div className="hero-image-frame">
               <img 
-                src="/assets/hero_students.jpeg" 
-                alt="Étudiants de l'Université Horizon" 
+                src="/assets/classe-horizon.jpeg" 
+                alt="Étudiants de l'Université Horizon en cours" 
                 style={{
                   width: '100%',
                   height: '100%',

@@ -515,7 +515,7 @@ const handleTracker = async () => {
     <div className='page-enter'>
       {/* BANDEAU */}
       <PageBanner
-        image='/assets/graduates.jpeg'
+        image='/assets/etudiante-portrait.jpeg'
         breadcrumb='Admissions'
         title='Admissions &'
         highlight='Candidature'

@@ -21,7 +21,7 @@ export default function CampusPage({ onOpenApply }) {
 
       {/* BANDEAU */}
       <PageBanner
-        image='/assets/Infrastructures.jpeg'
+        image='/assets/campus-principal.jpeg'
         breadcrumb='Campus'
         title='Nos'
         highlight='Campus'
