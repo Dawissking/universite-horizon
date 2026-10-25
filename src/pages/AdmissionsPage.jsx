@@ -151,7 +151,7 @@ function ApplicationWizard({ initialCourse, onClose, onGoToTracker }) {
               <div style={{ display:'flex', flexDirection:'column', gap:'1.25rem' }}>
                 <div><label className='hz-label'>Formation souhaitée</label>
                   <select value={form.courseId} onChange={e=>setForm({...form,courseId:e.target.value})} className='hz-input'>
-                    {COURSES.map(c=><option key={c.id} value={c.id}>[{c.type==='accelerated'?'Accéléré':c.level.startsWith('Master')?'Master':'Licence'}] {c.title}</option>)}
+                    {COURSES.map(c=><option key={c.id} value={c.id}>[{c.type==='accelerated'?'Accéléré':c.level.startsWith('Master')?'Master':c.level.startsWith('DUT')?'DUT':'Licence'}] {c.title}</option>)}
                   </select>
                 </div>
                 <div><label className='hz-label'>Campus préféré</label>
@@ -609,6 +609,7 @@ const handleTracker = async () => {
               </Reveal>
               <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
                 {[
+                  { title:'DUT LMD (Bac+2)', items:['Baccalauréat malien ou étranger reconnu','Dossier scolaire complet + relevés de notes','Pièce d\'identité ou passeport valide','2 photos d\'identité récentes (fond blanc)'] },
                   { title:'Licences LMD (Bac+3)', items:['Baccalauréat malien ou étranger reconnu','Dossier scolaire complet + relevés de notes','Pièce d\'identité ou passeport valide','2 photos d\'identité récentes (fond blanc)'] },
                   { title:'Masters LMD (Bac+5)', items:['Licence (Bac+3) dans la filière ou une discipline connexe','Relevés de notes de Licence + diplôme','Pièce d\'identité ou passeport valide','2 photos d\'identité récentes (fond blanc)'] },
                   { title:'Certificats Métiers Accélérés', items:['Baccalauréat ou expérience professionnelle équivalente','Acte de naissance officiel','Pièce d\'identité','Motivation éventuellement requise'] },

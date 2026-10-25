@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS courses (
   domain_id     INT UNSIGNED NOT NULL,
   code          VARCHAR(30)  NOT NULL,
   title         VARCHAR(180) NOT NULL,
-  level         ENUM('Licence','Master','Certificat') NOT NULL DEFAULT 'Licence',
+  level         ENUM('DUT','Licence','Master','Certificat') NOT NULL DEFAULT 'Licence',
   duration      VARCHAR(60)  NULL,
   capacity      SMALLINT UNSIGNED NULL,
   is_active     TINYINT(1)   NOT NULL DEFAULT 1,

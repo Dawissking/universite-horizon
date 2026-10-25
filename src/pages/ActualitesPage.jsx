@@ -22,7 +22,7 @@ const ACTUALITES = [
     type:'Admission', typeColor:'var(--hz-gold-500)',
     date:'Rentrée 2026',
     title:'Ouverture des dossiers de candidature 2026',
-    excerpt:"L'Université Horizon ouvre officiellement sa plateforme de candidature pour toutes ses filières : Licences et Masters LMD ainsi que Certificats Métiers accélérés. Rejoignez la promotion 2026.",
+    excerpt:"L'Université Horizon ouvre officiellement sa plateforme de candidature pour toutes ses filières : DUT, Licences et Masters LMD ainsi que Certificats Métiers accélérés. Rejoignez la promotion 2026.",
     icon:'graduation',
     cta:'Candidater maintenant',
     ctaLink:'/admissions'
@@ -42,7 +42,7 @@ const ACTUALITES = [
     type:'Formation', typeColor:'#7C3AED',
     date:'Rentrée 2026',
     title:`${KEY_DOMAIN_COUNT} domaines clés : nouveau catalogue de formations`,
-    excerpt:'Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion de Projets et MEAL, Logistique et Supply Chain… Retrouvez les 12 filières de l’Université Horizon et leurs Licences et Masters LMD.',
+    excerpt:'Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion de Projets et MEAL, Logistique et Supply Chain… Retrouvez les 12 filières de l’Université Horizon et leurs DUT, Licences et Masters LMD.',
     icon:'graduation',
     cta:'Explorer les formations',
     ctaLink:'/formations'
@@ -125,7 +125,7 @@ export default function ActualitesPage() {
                     Candidature 2026 — Dossiers Ouverts
                   </h2>
                   <p style={{ fontSize:'1rem', color:'rgba(255,255,255,0.8)', lineHeight:1.7 }}>
-                    Rejoignez la promotion 2026 de l'Université Horizon : Licences et Masters LMD ainsi que Certificats Métiers accélérés disponibles sur notre plateforme de candidature en ligne.
+                    Rejoignez la promotion 2026 de l'Université Horizon : DUT, Licences et Masters LMD ainsi que Certificats Métiers accélérés disponibles sur notre plateforme de candidature en ligne.
                   </p>
                 </div>
                 <div style={{ padding:'1.5rem', display:'flex', justifyContent:'space-between', alignItems:'center' }}>

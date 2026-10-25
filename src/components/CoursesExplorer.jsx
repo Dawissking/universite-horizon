@@ -8,7 +8,7 @@ import {
 export const CoursesExplorer = ({ onOpenApply, selectedCourseModal, setSelectedCourseModal }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDomain, setSelectedDomain] = useState('all');
-  const [selectedType, setSelectedType] = useState('all'); // all, accelerated, licence, master
+  const [selectedType, setSelectedType] = useState('all'); // all, accelerated, dut, licence, master
 
   const filteredCourses = useMemo(() => {
     return COURSES.filter((c) => {
@@ -27,6 +27,7 @@ export const CoursesExplorer = ({ onOpenApply, selectedCourseModal, setSelectedC
         selectedType === 'all' ||
         (selectedType === 'accelerated' && c.type === 'accelerated') ||
         (selectedType === 'degree' && c.type !== 'accelerated') ||
+        (selectedType === 'dut' && c.type !== 'accelerated' && c.level.startsWith('DUT')) ||
         (selectedType === 'licence' && c.type !== 'accelerated' && c.level.startsWith('Licence')) ||
         (selectedType === 'master' && c.type !== 'accelerated' && c.level.startsWith('Master'));
 
@@ -129,6 +130,7 @@ export const CoursesExplorer = ({ onOpenApply, selectedCourseModal, setSelectedC
               >
                 <option value="all">Tous types de cursus</option>
                 <option value="degree">Diplômes Universitaires LMD</option>
+                <option value="dut">DUT LMD (Bac+2)</option>
                 <option value="licence">Licences LMD (Bac+3)</option>
                 <option value="master">Masters LMD (Bac+5)</option>
                 <option value="accelerated">Formations Accélérées Métiers</option>

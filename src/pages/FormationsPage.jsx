@@ -27,6 +27,7 @@ export default function FormationsPage({ onOpenApply }) {
     const matchDomain = domain === 'all' || c.domainId === domain;
     const matchType   = type   === 'all'
       || (type === 'accelerated' && c.type === 'accelerated')
+      || (type === 'dut' && c.type !== 'accelerated' && c.level.startsWith('DUT'))
       || (type === 'licence' && c.type !== 'accelerated' && c.level.startsWith('Licence'))
       || (type === 'master' && c.type !== 'accelerated' && c.level.startsWith('Master'));
     return matchText && matchDomain && matchType;
@@ -41,7 +42,7 @@ export default function FormationsPage({ onOpenApply }) {
         breadcrumb='Formations'
         title='Nos'
         highlight='Formations'
-        description="Licences et Masters LMD ainsi que Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
+        description="DUT, Licences et Masters LMD ainsi que Certificats Métiers accélérés pour bâtir votre excellence professionnelle au Mali et à l'international."
       />
 
       {/* RENVOI INSTITUT SANTÉ */}
@@ -99,6 +100,7 @@ export default function FormationsPage({ onOpenApply }) {
             </div>
             <select value={type} onChange={e => setType(e.target.value)} className='hz-input'>
               <option value='all'>Tous les types</option>
+              <option value='dut'>DUT LMD (Bac+2)</option>
               <option value='licence'>Licences LMD (Bac+3)</option>
               <option value='master'>Masters LMD (Bac+5)</option>
               <option value='accelerated'>Certificats Métiers Accélérés</option>

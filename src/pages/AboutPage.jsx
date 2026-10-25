@@ -30,7 +30,7 @@ export default function AboutPage() {
       <h2>Notre institution</h2>
       <p>
         {INSTITUTION.name} est un établissement d'enseignement supérieur basé à Bamako, au
-        Mali. Il propose des Licences et Masters LMD ainsi que des Certificats Métiers accélérés conçus
+        Mali. Il propose des DUT, Licences et Masters LMD ainsi que des Certificats Métiers accélérés conçus
         autour de trois exigences : la maîtrise académique, la pratique professionnelle
         et l'employabilité durable de ses diplômés.
       </p>

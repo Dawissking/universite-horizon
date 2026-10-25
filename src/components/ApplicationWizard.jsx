@@ -268,7 +268,7 @@ export const ApplicationWizard = ({ isOpen, onClose, initialCourse, onGoToTracke
                   >
                     {COURSES.map(c => (
                       <option key={c.id} value={c.id}>
-                        [{c.type === 'accelerated' ? 'Accélérée' : c.level.startsWith('Master') ? 'Master' : 'Licence'}] {c.title}
+                        [{c.type === 'accelerated' ? 'Accélérée' : c.level.startsWith('Master') ? 'Master' : c.level.startsWith('DUT') ? 'DUT' : 'Licence'}] {c.title}
                       </option>
                     ))}
                   </select>
