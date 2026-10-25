@@ -54,7 +54,7 @@ export const HorizonAssist = ({ onOpenApply, onOpenPortals }) => {
       } else if (query.includes('campus') || query.includes('adresse') || query.includes('localisation') || query.includes('bamako') || query.includes('golf')) {
         botResponse = "L'Université Horizon dispose de deux campus : le Campus Principal à Bamako et le Campus Horizon Golf, dotés d'amphithéâtres et de laboratoires technologiques.";
       } else if (query.includes('accélérée') || query.includes('certificat') || query.includes('transit') || query.includes('qhse') || query.includes('court')) {
-        botResponse = "L'Université Horizon dispense 6 formations certifiantes accélérées : Transit Douane, QHSE & RSE, Informatique Bureautique, Assistante Comptable, Action Humanitaire et Logistique Humanitaire.";
+        botResponse = "L'Université Horizon dispense 6 formations certifiantes accélérées : Transit Douane, Qualité Hygiène Sécurité et Environnement, Informatique Bureautique, Assistante Comptable, Action Humanitaire et Logistique Humanitaire.";
       } else if (query.includes('candidater') || query.includes('inscription') || query.includes('postuler') || query.includes('dossier')) {
         botResponse = "Vous pouvez candidater directement en ligne via notre plateforme en 7 étapes simples (Bouton 'Candidater' en haut de page), ou déposer votre dossier physique auprès du service de scolarité.";
       } else if (query.includes('prix') || query.includes('frais') || query.includes('tarif') || query.includes('coût') || query.includes('combien')) {

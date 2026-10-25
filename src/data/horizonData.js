@@ -95,12 +95,12 @@ export const DOMAINS = [
   },
   {
     id:          "droit-politique",
-    name:        "Droit et Science Politiques",
+    name:        "Droit Privé et Droit Public",
     badge:       "Pôle Régalien",
     color:       "#C0392B",
     icon:        "Scale",
-    description: "Droit des affaires OHADA, droit public, institutions politiques et carrières juridiques.",
-    programs:    "Droit des Affaires, Droit Public, Sciences Politiques"
+    description: "Maîtriser le droit privé OHADA et le droit public : droit des affaires, droit administratif et carrières juridiques.",
+    programs:    "Droit Privé, Droit Public, Droit des Affaires OHADA"
   },
   {
     id:          "relation-internationale",
@@ -278,7 +278,7 @@ export const COURSES = [
   // FORMATIONS ACCÉLÉRÉES (officiellement documentées)
   {
     id: "fa-transit",
-    title: "Transit Douane & Procédures Portuaires",
+    title: "Transit Douane",
     domainId: "logistique-supply-chain",
     domainName: "Logistique et Supply Chain",
     level: "Certificat Métier",
@@ -293,7 +293,7 @@ export const COURSES = [
   },
   {
     id: "fa-qhse",
-    title: "QHSE & Responsabilité Sociétale (RSE)",
+    title: "Qualité Hygiène Sécurité et Environnement",
     domainId: "gestion-projets",
     domainName: "Gestion de Projets et MEAL",
     level: "Certificat Métier",
@@ -308,7 +308,7 @@ export const COURSES = [
   },
   {
     id: "fa-bureautique",
-    title: "Informatique Bureautique & Outils Collaboratifs",
+    title: "Informatique Bureautique",
     domainId: "informatique-ia",
     domainName: "Informatique et Intelligence Artificielle",
     level: "Certificat Métier",
@@ -415,9 +415,9 @@ export const COURSES = [
   },
   {
     id: "dut-droit",
-    title: "DUT — Droit et Science Politiques",
+    title: "DUT — Droit Privé et Droit Public",
     domainId: "droit-politique",
-    domainName: "Droit et Science Politiques",
+    domainName: "Droit Privé et Droit Public",
     level: "DUT (Bac+2)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -582,9 +582,9 @@ export const COURSES = [
   },
   {
     id: "lic-droit",
-    title: "Licence — Droit des Affaires & Carrières Juridiques",
+    title: "Licence — Droit Privé et Droit Public",
     domainId: "droit-politique",
-    domainName: "Droit et Science Politiques",
+    domainName: "Droit Privé et Droit Public",
     level: "Licence (Bac+3)",
     type: "degree",
     duration: "3 ans — 6 semestres",
@@ -948,9 +948,9 @@ export const COURSES = [
   },
   {
     id: "mas-droit",
-    title: "Master — Droit et Science Politiques",
+    title: "Master — Droit Privé et Droit Public",
     domainId: "droit-politique",
-    domainName: "Droit et Science Politiques",
+    domainName: "Droit Privé et Droit Public",
     level: "Master (Bac+5)",
     type: "degree",
     duration: "2 ans — 4 semestres",
@@ -1045,7 +1045,7 @@ export const HEALTH_COURSES = COURSES.filter(c => c.domainId === 'sante');
 export const FAQ = [
   {
     q: "Quels sont les domaines clés de l'Université Horizon ?",
-    a: "Nos 12 filières (DUT, Licence et Master) sont : Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion des Ressources Humaines et Management, Marketing Digital et Commerce, Comptabilité, Finance et Audit, Banque Finance et Assurance, Logistique et Supply Chain, Énergies Renouvelables, Relations Internationales et Diplomatie, Droit et Science Politiques, Gestion de Projets et MEAL. S'y ajoute le pôle Sciences de la Santé (Licence uniquement), porté par notre Institut d'Excellence.",
+    a: "Nos 12 filières (DUT, Licence et Master) sont : Passation de Marchés Publics et Contrats, Réseaux et Télécommunications, Informatique et Intelligence Artificielle, Gestion des Ressources Humaines et Management, Marketing Digital et Commerce, Comptabilité, Finance et Audit, Banque Finance et Assurance, Logistique et Supply Chain, Énergies Renouvelables, Relations Internationales et Diplomatie, Droit Privé et Droit Public, Gestion de Projets et MEAL. S'y ajoute le pôle Sciences de la Santé (Licence uniquement), porté par notre Institut d'Excellence.",
     cat: "Formations"
   },
   {
@@ -1065,7 +1065,7 @@ export const FAQ = [
   },
   {
     q: "Quelles formations accélérées sont disponibles ?",
-    a: "6 certificats métiers intensifs : Transit Douane, QHSE & RSE, Informatique Bureautique, Assistante Comptable, Action Humanitaire, et Logistique Humanitaire.",
+    a: "6 certificats métiers intensifs : Transit Douane, Qualité Hygiène Sécurité et Environnement, Informatique Bureautique, Assistante Comptable, Action Humanitaire et Logistique Humanitaire.",
     cat: "Formations"
   },
   {

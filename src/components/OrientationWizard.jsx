@@ -48,11 +48,11 @@ export const OrientationWizard = ({ onOpenApply, onOpenCourseDetails }) => {
         { label: 'Logistique et Supply Chain', value: 'transit' },
         { label: 'Énergies Renouvelables', value: 'energie' },
         { label: 'Relations Internationales et Diplomatie', value: 'ri' },
-        { label: 'Droit et Science Politiques', value: 'droit' },
+        { label: 'Droit Privé et Droit Public', value: 'droit' },
         { label: 'Gestion de Projets et MEAL', value: 'projets' },
         { label: 'Action humanitaire, Solidarité & ONG', value: 'humanitaire' },
         { label: 'Santé, Soins & Bien-être des populations', value: 'sante' },
-        { label: 'Hygiène, Sécurité & Environnement (QHSE)', value: 'qhse' }
+        { label: 'Qualité Hygiène Sécurité et Environnement', value: 'qhse' }
       ]
     },
     {

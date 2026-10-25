@@ -356,11 +356,11 @@ const QUESTIONS = [
     {label:'Logistique et Supply Chain',value:'transit'},
     {label:'Énergies Renouvelables',value:'energie'},
     {label:'Relations Internationales et Diplomatie',value:'ri'},
-    {label:'Droit et Science Politiques',value:'droit'},
+    {label:'Droit Privé et Droit Public',value:'droit'},
     {label:'Gestion de Projets et MEAL',value:'projets'},
     {label:'Action humanitaire & ONG',value:'humanitaire'},
     {label:'Santé & Soins aux populations',value:'sante'},
-    {label:'Sécurité, Environnement & QHSE',value:'qhse'},
+    {label:'Qualité Hygiène Sécurité et Environnement',value:'qhse'},
   ]},
   { id:'duration', title:'Format souhaité ?', type:'single', options:[
     {label:'Formation accélérée certifiante (quelques mois)',value:'court'},
