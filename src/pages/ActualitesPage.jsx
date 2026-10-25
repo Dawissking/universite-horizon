@@ -70,7 +70,7 @@ const ACTUALITES = [
   {
     id:4,
     type:'Événement', typeColor:'#7C3AED',
-    date:'[DATE À FOURNIR]',
+    date:'Novembre 2026',
     title:'Horizon Forum 2026 — Innovation & Emploi au Mali',
     excerpt:"L'Université Horizon organise son forum annuel réunissant professionnels, anciens étudiants et recruteurs pour des conférences, tables rondes et job dating.",
     icon:'globe',
@@ -90,8 +90,8 @@ const ACTUALITES = [
   {
     id:6,
     type:'Partenariat', typeColor:'#C0392B',
-    date:'[DATE À FOURNIR]',
-    title:'Convention avec des entreprises partenaires — [À FOURNIR]',
+    date:'En cours',
+    title:'Convention avec des entreprises partenaires',
       excerpt:"L'Université Horizon développe activement son réseau de partenariats pour favoriser les stages et l'insertion professionnelle de ses étudiants.",
     icon:'handshake',
     cta:'Voir nos partenariats',

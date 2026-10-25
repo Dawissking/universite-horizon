@@ -58,7 +58,7 @@ export const HorizonAssist = ({ onOpenApply, onOpenPortals }) => {
       } else if (query.includes('candidater') || query.includes('inscription') || query.includes('postuler') || query.includes('dossier')) {
         botResponse = "Vous pouvez candidater directement en ligne via notre plateforme en 7 étapes simples (Bouton 'Candidater' en haut de page), ou déposer votre dossier physique auprès du service de scolarité.";
       } else if (query.includes('prix') || query.includes('frais') || query.includes('tarif') || query.includes('coût') || query.includes('combien')) {
-        botResponse = "Les informations financières officielles et grilles tarifaires sont communiquées par le service des admissions lors du dépôt de votre dossier [INFORMATION OFFICIELLE À FOURNIR].";
+        botResponse = "Les informations financières officielles et grilles tarifaires sont communiquées par le service des admissions lors du dépôt de votre dossier ou sur demande au +223 76 75 73 29.";
       } else if (query.includes('portail') || query.includes('connexion') || query.includes('espace')) {
         botResponse = "Les portails dédiés (Espace Étudiant, Espace Enseignant et Administration RBAC) sont accessibles via le bouton 'Portails & Espaces' situé en haut de page.";
       } else {

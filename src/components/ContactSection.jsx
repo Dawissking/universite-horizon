@@ -125,13 +125,13 @@ export const ContactSection = () => {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <MapPin size={18} color="var(--hz-gold-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong>Campus Bamako :</strong> [ADRESSE OFFICIELLE : INFORMATION OFFICIELLE À FOURNIR]
+                    <strong>Campus Bamako :</strong> {INSTITUTION.campuses.find(c => c.id === 'bamako')?.address}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <MapPin size={18} color="var(--hz-gold-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong>Campus Golf :</strong> [ADRESSE ZONE GOLF : INFORMATION OFFICIELLE À FOURNIR]
+                    <strong>Campus Golf :</strong> {INSTITUTION.campuses.find(c => c.id === 'golf')?.address}
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
